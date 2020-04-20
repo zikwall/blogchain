@@ -1,5 +1,6 @@
 import {Header, Icon, Image, Label, Segment} from "semantic-ui-react";
 import moment from "moment";
+import Link from "next/link";
 
 export const TagBar = ({ tags, tagget }) => {
     return (
@@ -24,10 +25,12 @@ export const LabelBar = ({ ratings, views, bookmarks, comments }) => (
         <Label basic pointing>
             <Icon name='bookmark' /> { bookmarks }
         </Label>
-        <Label basic color='blue' pointing>
-            Comments
-            <Label.Detail>{ comments }</Label.Detail>
-        </Label>
+        <Link href="/post/13#comments" as="/post/13/#comments">
+            <Label basic color='blue' pointing as='a'>
+                Comments
+                <Label.Detail>{ comments }</Label.Detail>
+            </Label>
+        </Link>
     </>
 );
 

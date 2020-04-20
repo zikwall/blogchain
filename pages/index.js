@@ -7,7 +7,8 @@ import {
 } from 'semantic-ui-react';
 import Article from "../app/components/Article";
 import IndexLayout from "../app/layouts/IndexLayout";
-import {Content} from "../app/services";
+import { Content } from "../app/services";
+import { Time } from "../app/utils";
 
 export default function Index({ contents }) {
 
@@ -19,7 +20,7 @@ export default function Index({ contents }) {
                     key={key}
                     publisher={{
                         author: content.related.publisher.profile.name,
-                        time: 1587373474000,
+                        time: Time.toJsUnix(content.created_at),
                         avatar: content.related.publisher.profile.avatar
                     }}
                     tags={[
