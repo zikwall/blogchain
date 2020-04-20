@@ -1,4 +1,5 @@
 import {Header, Icon, Image, Label, Segment} from "semantic-ui-react";
+import moment from "moment";
 
 export const TagBar = ({ tags, tagget }) => {
     return (
@@ -36,17 +37,21 @@ const ImageWrap = ({ src }) => (
     </div>
 );
 
-const Publisher = ({ name, time, avatar }) => (
-    <>
-        <Label as='a' basic image>
-            <img src={ avatar } />
-            { name }
-        </Label>
-        <Label as='a' basic>
-            { time }
-        </Label>
-    </>
-);
+const Publisher = ({ name, time, avatar }) => {
+    const avatarIs = !!avatar ? avatar : "/images/zebra_pl.jpg";
+
+    return (
+        <>
+            <Label as='a' basic image>
+                <img src={avatarIs}/>
+                {name}
+            </Label>
+            <Label as='a' basic>
+                {moment(time).fromNow()}
+            </Label>
+        </>
+    )
+};
 
 const Article = ({ title, text, image, tags, labels, publisher }) => {
     return (
@@ -79,8 +84,9 @@ const Article = ({ title, text, image, tags, labels, publisher }) => {
 
             { text }
 
+            <div style={{ paddingTop: '5px' }} />
             <LabelBar
-                rating={labels.ratings}
+                ratings={labels.ratings}
                 views={labels.views}
                 comments={labels.comments}
                 bookmarks={labels.bookmarks}

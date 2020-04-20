@@ -44,3 +44,19 @@ export const GetContent = (id) => {
         }
     })
 };
+
+export const GetContents = () => {
+    return apiFetch('/api/v1/contents').then((res) => {
+        if (res.status === 100) {
+            return {
+                status: false,
+                contents: [],
+            }
+        }
+
+        return {
+            status: true,
+            contents: res.contents,
+        }
+    })
+};
