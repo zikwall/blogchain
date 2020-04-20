@@ -1,8 +1,8 @@
-import { Editor } from "../app/components";
-import { ProtectedLayout } from "../app/layouts";
+import { Editor } from "../../../app/components";
+import { ProtectedLayout } from "../../../app/layouts";
 import { Container, Form, Message, Button } from "semantic-ui-react";
 import { createRef, useState } from 'react';
-import { Content } from "../app/services";
+import { Content } from "../../../app/services";
 
 const EditorPage = () => {
     const contextRef = createRef();
