@@ -16,7 +16,7 @@ const Header = ({ isAuthenticated }) => {
             <MenuItemLink name="Моя лента" href="/" as="/"/>
             <MenuItemLink href="/editor1" as="/editor1" name="Все потоки" />
             <MenuItemLink href="/editor2" as="/editor2" name="Как стать автором" />
-            <MenuItemLink href="/editor" as="/editor" name="Новая публикаця!" />
+            <MenuItemLink href="/editor/create" as="/editor" name="Новая публикаця!" />
 
             <Menu.Menu position='right'>
                 <Menu.Item>
