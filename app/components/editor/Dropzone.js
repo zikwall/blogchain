@@ -64,7 +64,12 @@ function Dropzone({ setFiles, files }) {
         }}>
             <div {...getRootProps({className: 'dropzone'})} multiple={false}>
                 <input {...getInputProps()} multiple={false} />
-                <p>Drag 'n' drop image here, or click to select image</p>
+                <p style={{
+                    padding: '10px',
+                    border: '3px solid #f0f1f4',
+                    borderRadius: '5px',
+                    borderStyle: 'dashed',
+                }}>Drag 'n' drop image here, or click to select image</p>
             </div>
             <aside style={thumbsContainer}>
                 {thumbs}
