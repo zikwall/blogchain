@@ -1,30 +1,40 @@
-import { Editor, Dropzone } from "../../../app/components";
 import { ProtectedLayout } from "../../../app/layouts";
-import { Container, Form, Message, Button } from "semantic-ui-react";
-import { useState } from 'react';
+import { Container } from "semantic-ui-react";
+import { useState, useEffect } from 'react';
 import { Content } from "../../../app/services";
 import { connect } from "react-redux";
+import { makeCdn } from "../../../app/constants";
+import { CommonForm } from "../CommonForm";
 
 const EditorPage = ({ token, id, content }) => {
-    const [files, setFiles] = useState([]);
-
+    const [ image, setImage ] = useState([]);
+    const [ preview, setPreview ] = useState(content.image);
     const [ contents, setContents ] = useState(content.content);
     const [ titles, setTitles ] = useState(content.title);
+    const [ annotation, setAnnotation ] = useState(content.annotation);
+
+    useEffect(() => {
+        if (typeof image[0] !== 'undefined') {
+            setPreview(image[0].preview)
+        } else if (!!content.image) {
+            setPreview(makeCdn(content.image))
+        }
+    }, [image]);
 
     const onSubmit = async (e) => {
         const data = new FormData();
 
-        if (files.length > 0) {
-            data.append('image', files[0]);
+        if (image.length > 0) {
+            data.append('image', image[0]);
         }
 
         data.append('title', titles);
         data.append('content', contents);
+        data.append('annotation', annotation);
 
         const { status } = await Content.UpdateContent(id, data, token);
 
         if (status === false) {
-            alert('Opps');
             return
         }
     };
@@ -32,27 +42,17 @@ const EditorPage = ({ token, id, content }) => {
     return (
         <ProtectedLayout>
             <Container>
-                <Form success>
-                    <Form.Group>
-                        <Form.Input value={titles} onChange={(e, { name, value }) => setTitles(value)} placeholder='Как думаете назвать свое твоерени?' width={14}/>
-                        <Button primary floated='right' onClick={onSubmit}>Отправить!</Button>
-                    </Form.Group>
-                    <Form.TextArea label='Annonation' placeholder='Tell us more about you...' />
-
-                    <Dropzone
-                        setFiles={setFiles}
-                        files={files}
-                    />
-
-                    <Message
-                        success
-                        header='Form Completed'
-                        content="You're all signed up for the newsletter"
-                    />
-                    <div style={{ paddingBottom: '10px' }} />
-                </Form>
-                <Editor initialValue={contents}
-                    onChange={setContents}
+                <CommonForm
+                    title={titles}
+                    content={contents}
+                    annotation={annotation}
+                    image={image}
+                    preview={preview}
+                    onSubmit={onSubmit}
+                    setTitle={setTitles}
+                    setContent={setContents}
+                    setAnnotation={setAnnotation}
+                    setImage={setImage}
                 />
             </Container>
         </ProtectedLayout>

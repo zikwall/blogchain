@@ -1,14 +1,17 @@
 import { apiFetch, apiPost } from "../api";
 
-export const CreateContent = (user_id, title, content) => {
-    return apiFetch("/api/v1/content/add", {
+const MakeDMLRequest = (url, fields, token) => {
+    return apiPost(url, {
         method: 'POST',
-        body: JSON.stringify({
-            user_id: user_id,
-            title: title,
-            content: content
-        })
-    }).then((res) => {
+        body: fields,
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    })
+};
+
+export const CreateContent = (fields, token) => {
+    return MakeDMLRequest("/api/editor/content/add", fields, token).then((res) => {
         if (res.status === 100) {
             return {
                 status: false,
@@ -26,13 +29,7 @@ export const CreateContent = (user_id, title, content) => {
 };
 
 export const UpdateContent = (id, fields, token) => {
-    return apiPost(`/api/editor/content/update/${id}`, {
-        method: 'POST',
-        body: fields,
-        headers: {
-            "Authorization": "Bearer " + token
-        }
-    }).then((res) => {
+    return MakeDMLRequest(`/api/editor/content/update/${id}`, fields, token).then((res) => {
         if (res.status === 100) {
             return {
                 status: false,
