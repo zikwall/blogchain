@@ -4,8 +4,8 @@ import { Session } from '../auth';
 import { Cookie } from "../../help";
 import { SESSION_TOKEN_KEY } from "../../constants";
 
-export const apiFetch = (url, options, req) => {
-    let headers = {};
+export const apiFetch = (url, options, req, h={}) => {
+    let headers = h;
 
     if (!!req) {
         console.log(["USER AUTH", getAuthorizationHeader(req)]);
@@ -15,11 +15,23 @@ export const apiFetch = (url, options, req) => {
     return pureFetch(apiUrl(url), options, headers);
 };
 
+export const apiPost = (url, options) => {
+    return purePostFetch(apiUrl(url), options);
+};
+
+export const purePostFetch = (url, options) => {
+    return fetch(url, {
+        ...options
+    })
+        .then(handleResponse)
+        .then(response => response.json());
+};
+
 export const pureFetch = (url, options, headers) => {
-    headers = {...headers, ...{
+    headers = {...{
             'Accept': "application/json",
             "Content-Type": "application/json",
-        }};
+        }, ...headers};
 
     return fetch(url, {
         headers: headers,
