@@ -14,7 +14,11 @@ const Header = ({ isAuthenticated }) => {
             <UIMenuItemLink name="Моя лента" href="/" as="/"/>
             <UIMenuItemLink href="/editor1" as="/editor1" name="Все потоки" />
             <UIMenuItemLink href="/editor2" as="/editor2" name="Как стать автором" />
-            <UIMenuItemLink href="/editor/create" as="/editor" name="Новая публикаця!" />
+
+            {
+                isAuthenticated &&
+                <UIMenuItemLink href="/editor/create" as="/editor/create" name="Новая публикаця!" />
+            }
 
             <Menu.Menu position='right'>
                 <Menu.Item>
