@@ -45,18 +45,7 @@ const reauthenticate = (token, user) => {
 // removing the token
 const deauthenticate = () => {
     return (dispatch) => {
-        apiFetch('/auth/logout', {
-            method: 'POST',
-            body: JSON.stringify({
-                'action': 'logout'
-            })
-        }).then((response) => {
-            Cookie.removeCookie(SESSION_TOKEN_KEY);
-            Cookie.removeCookie(USER_KEY);
-            dispatch({type: DEAUTHENTICATE});
-        }).catch((error) => {
-            throw new Error(error);
-        });
+        dispatch({type: DEAUTHENTICATE});
     };
 };
 

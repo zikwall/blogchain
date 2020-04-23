@@ -19,7 +19,7 @@ const authentication = (state = initialState, action) => {
         case AUTHENTICATE:
             return { token: action.token, user: action.user};
         case DEAUTHENTICATE:
-            return { token: null };
+            return { token: null, user: null };
         default:
             return state;
     }

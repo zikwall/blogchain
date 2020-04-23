@@ -1,6 +1,7 @@
 import decode from 'jwt-decode';
 import { Cookie } from '../../help';
-import { SESSION_TOKEN_KEY } from "../../constants";
+import Cookies from 'js-cookie';
+import { SESSION_TOKEN_KEY, USER_KEY } from "../../constants";
 
 export default class Session {
     static isGuest = (req) => {
@@ -21,6 +22,11 @@ export default class Session {
             return (decoded.exp < Date.now() / 1000);
         } catch (err) {
             console.log('Expired token! Logout...');
+
+            // only remove from client
+            Cookies.remove(SESSION_TOKEN_KEY);
+            Cookies.remove(USER_KEY);
+
             return false;
         }
     };
