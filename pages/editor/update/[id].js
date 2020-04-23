@@ -63,15 +63,10 @@ EditorPage.getInitialProps = async ({ res, query, req }) => {
     const { id } = query;
     const { status, content } = await Content.GetEditContent(id, req);
 
-    if (status === false) {
-        res.statusCode = 404;
-        res.end('Not found');
-        return;
-    }
-
     return {
         id: id,
         content: content,
+        statusCode: status ? false : 404
     }
 };
 
