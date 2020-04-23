@@ -56,13 +56,7 @@ Post.getInitialProps = async ({ query, res }) => {
     const { id } = query;
     const { status, content } = await Content.GetContent(id);
 
-    if (status === false) {
-        res.statusCode = 404;
-        res.end('Not found');
-        return;
-    }
-
-    return { content: content }
+    return { content: content, statusCode: status ? false : 404 }
 };
 
 export default Post;
