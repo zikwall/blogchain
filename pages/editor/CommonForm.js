@@ -1,5 +1,10 @@
 import { Button, Form, Message } from "semantic-ui-react";
-import { Dropzone, Editor, UICoverImage } from "../../app/components";
+import {
+    Dropzone,
+    Editor,
+    UICoverImage,
+    UITextArea
+} from "../../app/components";
 
 const CommonForm = (
     {
@@ -28,11 +33,12 @@ const CommonForm = (
                     <Button primary floated='right' onClick={onSubmit}>Отправить!</Button>
                 </Form.Group>
 
-                <Form.TextArea
+                <UITextArea
                     value={annotation}
                     onChange={(e, { name, value }) => setAnnotation(value)}
                     label='Annonation'
                     placeholder='Tell us more about you...'
+                    limit={500}
                 />
 
                 <Dropzone
