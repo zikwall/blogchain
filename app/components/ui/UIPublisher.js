@@ -1,5 +1,6 @@
 import { Label } from "semantic-ui-react";
 import moment from "moment";
+import { Time } from '../../utils';
 
 const UIPublisher = ({ name, time, avatar }) => {
     const avatarIs = !!avatar ? avatar : "/images/zebra_pl.jpg";
@@ -11,7 +12,7 @@ const UIPublisher = ({ name, time, avatar }) => {
                 {name}
             </Label>
             <Label as='a' basic>
-                {moment(time).fromNow()}
+                {moment(Time.toJsUnix(time)).fromNow()}
             </Label>
         </>
     )

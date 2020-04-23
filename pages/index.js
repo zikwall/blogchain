@@ -1,7 +1,6 @@
 import Article from "../app/components/Article";
 import IndexLayout from "../app/layouts/IndexLayout";
 import { Content } from "../app/services";
-import { Time } from "../app/utils";
 import { UIMostReading, UIPagination } from '../app/components';
 
 export default function Index({ contents }) {
@@ -14,7 +13,7 @@ export default function Index({ contents }) {
                     image={content.image}
                     publisher={{
                         author: content.related.publisher.profile.name,
-                        time: Time.toJsUnix(content.created_at),
+                        time: content.created_at,
                         avatar: content.related.publisher.profile.avatar
                     }}
                     tags={[
