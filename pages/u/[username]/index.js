@@ -3,7 +3,7 @@ import {
     Header,
     Segment
 } from "semantic-ui-react";
-import { LabelBar } from "../../../app/components/Article";
+import { LabelBar } from "../../../app/components/ui/UIArticle";
 import UserLayout from "../../../app/layouts/UserLayout";
 import { apiFetch } from "../../../app/services/api";
 
