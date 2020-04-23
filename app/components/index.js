@@ -1,7 +1,9 @@
 export { default as Header } from './header/Header';
 export { default as CloseWrapper } from './close/CloseWrapper';
-export { default as Editor } from './editor/Editor';
-export { default as Dropzone } from './editor/Dropzone';
+
+// UI
+export { default as UIEditor } from './ui/UIEditor';
+export { default as UIDropzone } from './ui/UIDropzone';
 export { default as UICoverImage } from './ui/UICoverImage';
 export { default as UITextArea } from './ui/UITextArea';
 

@@ -26,7 +26,7 @@ const defFormats = [
     'link', 'image', 'video', 'code-block', 'formula'
 ];
 
-const Editor = ({ modules, formats, onChange, initialValue }) => {
+const UIEditor = ({ modules, formats, onChange, initialValue }) => {
     formats = [ ...defFormats, ...formats ];
     modules = { ...defModules, ...modules };
 
@@ -44,11 +44,11 @@ const Editor = ({ modules, formats, onChange, initialValue }) => {
     );
 };
 
-Editor.defaultProps = {
+UIEditor.defaultProps = {
     formats: [],
     modules: {},
     onChange: () => {},
     initialValue: ''
 };
 
-export default Editor;
+export default UIEditor;

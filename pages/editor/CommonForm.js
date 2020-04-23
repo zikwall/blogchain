@@ -1,7 +1,7 @@
 import { Button, Form, Message } from "semantic-ui-react";
 import {
-    Dropzone,
-    Editor,
+    UIDropzone,
+    UIEditor,
     UICoverImage,
     UITextArea
 } from "../../app/components";
@@ -41,7 +41,7 @@ const CommonForm = (
                     limit={500}
                 />
 
-                <Dropzone
+                <UIDropzone
                     setFiles={setImage}
                     files={image}
                 />
@@ -54,7 +54,7 @@ const CommonForm = (
                 <div style={{ paddingBottom: '10px' }} />
             </Form>
 
-            <Editor
+            <UIEditor
                 initialValue={content}
                 onChange={setContent}
             />

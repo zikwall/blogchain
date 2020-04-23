@@ -32,7 +32,7 @@ const thumbsContainer = {
     marginTop: 16
 };
 
-function Dropzone({ setFiles, files }) {
+function UIDropzone({ setFiles, files }) {
     const {getRootProps, getInputProps} = useDropzone({
         accept: 'image/*',
         onDrop: acceptedFiles => {
@@ -78,4 +78,4 @@ function Dropzone({ setFiles, files }) {
     );
 }
 
-export default Dropzone;
+export default UIDropzone;
