@@ -2,7 +2,7 @@ import { Content } from "../../app/services";
 import { Container } from 'semantic-ui-react';
 import { ProtectedLayout } from "../../app/layouts";
 import UICoverImage from "../../app/components/ui/UICoverImage";
-import {makeCdn} from "../../app/constants";
+import { makeCdn } from "../../app/constants";
 
 const ContentPage = ({ content }) => {
     return (
