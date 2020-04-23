@@ -3,7 +3,6 @@ import Head from "next/head";
 import {
     Container,
     Grid,
-    Header,
     Ref,
     Sticky,
 } from "semantic-ui-react";
