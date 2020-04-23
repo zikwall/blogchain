@@ -20,14 +20,15 @@ import {
     UIPublisherSection,
     UICompanyInfo,
 } from "../../app/components";
+import { Content } from "../../app/services";
 
-const Post = () => {
+const Post = ({ content }) => {
     const contextRef = createRef();
 
     return (
         <CommonLayout>
             <Head>
-                <title>Как мы научились делить видео на сцены с помощью хитрой математики</title>
+                <title>{ content.title } | Blocgchain</title>
             </Head>
             <Container>
                 <UICompanyBanner />
@@ -37,12 +38,12 @@ const Post = () => {
                         <Grid.Row columns={2}>
                             <Grid.Column width={12}>
                                 <UIPublisher
-                                    name='SashulyaK'
-                                    time='сегодня в 13:08'
-                                    avatar="https://habrastorage.org/getpro/habr/avatars/791/217/d31/791217d314e7458aef0f63497e212538.png"
+                                    name={content.related.publisher.profile.name}
+                                    time={content.created_at}
+                                    avatar={content.related.publisher.profile.avatar}
                                 />
                                 <Header as='h1'>
-                                    Как мы научились делить видео на сцены с помощью хитрой математики
+                                    { content.title }
                                 </Header>
 
                                 <UITagbar tags={[
@@ -51,6 +52,10 @@ const Post = () => {
                                     "DIY или Сделай сам"
                                 ]} />
 
+                                <div
+                                    className="root-dangerous-content-html"
+                                    dangerouslySetInnerHTML={{ __html: content.content }}
+                                />
 
                                 <UITags />
                                 <UIPublisherSection />
@@ -69,6 +74,19 @@ const Post = () => {
             </Container>
         </CommonLayout>
     )
+};
+
+Post.getInitialProps = async ({ query, res }) => {
+    const { id } = query;
+    const { status, content } = await Content.GetContent(id);
+
+    if (status === false) {
+        res.statusCode = 404;
+        res.end('Not found');
+        return;
+    }
+
+    return { content: content }
 };
 
 export default Post;

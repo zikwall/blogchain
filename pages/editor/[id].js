@@ -7,7 +7,7 @@ const ContentPage = ({ content }) => {
     return (
         <ProtectedLayout>
             <Container>
-                <div className="root-dangerous-content-html" dangerouslySetInnerHTML={{ __html: content }} />
+                <div className="root-dangerous-content-html" dangerouslySetInnerHTML={{ __html: content.content }} />
             </Container>
         </ProtectedLayout>
     )
@@ -15,7 +15,7 @@ const ContentPage = ({ content }) => {
 
 ContentPage.getInitialProps = async ({ res, query }) => {
     const { id } = query;
-    const { status, content, title, user } = await Content.GetContent(id);
+    const { status, content } = await Content.GetContent(id);
 
     if (status === false) {
         res.statusCode = 404;

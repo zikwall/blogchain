@@ -50,19 +50,15 @@ export const GetContent = (id) => {
         if (res.status === 100) {
             return {
                 status: false,
-                content: "",
-                title: "",
-                user: null
+                content: {},
             }
         }
 
         return {
-            status: true,
             content: res.content,
-            title: res.title,
-            user: res.user
+            status: true,
         }
-    })
+    });
 };
 
 export const GetEditContent = (id, req) => {
