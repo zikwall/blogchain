@@ -10,6 +10,7 @@ export default function Index({ contents }) {
             {contents.map((content, key) => (
                 <Article
                     key={key}
+                    id={content.id}
                     image={content.image}
                     publisher={{
                         author: content.related.publisher.profile.name,

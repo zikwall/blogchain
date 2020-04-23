@@ -1,13 +1,11 @@
 import { Header, Icon, Label, Segment } from "semantic-ui-react";
-import moment from "moment";
 import Link from "next/link";
 import { makeCdn } from "../constants";
 import UICoverImage from "./ui/UICoverImage";
 import UIPublisher from "./ui/UIPublisher";
 import UITagBar from "./ui/UITagbar";
 
-
-export const LabelBar = ({ ratings, views, bookmarks, comments }) => (
+export const LabelBar = ({ link, ratings, views, bookmarks, comments }) => (
     <>
         <Label basic pointing>
             <Icon name='lightning' /> { ratings }
@@ -18,7 +16,7 @@ export const LabelBar = ({ ratings, views, bookmarks, comments }) => (
         <Label basic pointing>
             <Icon name='bookmark' /> { bookmarks }
         </Label>
-        <Link href="/post/13#comments" as="/post/13/#comments">
+        <Link href={`${link}#comments`} as={`${link}#comments`}>
             <Label basic color='blue' pointing as='a'>
                 Comments
                 <Label.Detail>{ comments }</Label.Detail>
@@ -27,7 +25,9 @@ export const LabelBar = ({ ratings, views, bookmarks, comments }) => (
     </>
 );
 
-const Article = ({ title, text, image, tags, labels, publisher }) => {
+const Article = ({ id, title, text, image, tags, labels, publisher }) => {
+    const link = `/post/${id}`;
+
     return (
         <Segment>
 
@@ -38,12 +38,12 @@ const Article = ({ title, text, image, tags, labels, publisher }) => {
             />
 
             <Header as='h2'>
-                <a href="/post/13" style={{
-                    textDecoration: 'none',
-                    color: 'rgba(0,0,0,.87)'
-                }}>
-                    { title }
-                </a>
+                <Link href={link} as={link}>
+                    <a style={{
+                        textDecoration: 'none',
+                        color: 'rgba(0,0,0,.87)'
+                    }}>{ title }</a>
+                </Link>
             </Header>
 
             {
@@ -60,6 +60,7 @@ const Article = ({ title, text, image, tags, labels, publisher }) => {
 
             <div style={{ paddingTop: '5px' }} />
             <LabelBar
+                link={link}
                 ratings={labels.ratings}
                 views={labels.views}
                 comments={labels.comments}
