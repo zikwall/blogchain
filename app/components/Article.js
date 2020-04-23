@@ -3,18 +3,9 @@ import moment from "moment";
 import Link from "next/link";
 import { makeCdn } from "../constants";
 import UICoverImage from "./ui/UICoverImage";
+import UIPublisher from "./ui/UIPublisher";
+import UITagBar from "./ui/UITagbar";
 
-export const TagBar = ({ tags, tagget }) => {
-    return (
-        <div style={{ paddingBottom: '20px' }}>
-            {tags.map((v, k) => (
-                <Label key={k} as='a' horizontal tag={tagget} pointing={tagget}>
-                    { v }
-                </Label>
-            ))}
-        </div>
-    )
-};
 
 export const LabelBar = ({ ratings, views, bookmarks, comments }) => (
     <>
@@ -36,27 +27,11 @@ export const LabelBar = ({ ratings, views, bookmarks, comments }) => (
     </>
 );
 
-const Publisher = ({ name, time, avatar }) => {
-    const avatarIs = !!avatar ? avatar : "/images/zebra_pl.jpg";
-
-    return (
-        <>
-            <Label as='a' basic image>
-                <img src={avatarIs}/>
-                {name}
-            </Label>
-            <Label as='a' basic>
-                {moment(time).fromNow()}
-            </Label>
-        </>
-    )
-};
-
 const Article = ({ title, text, image, tags, labels, publisher }) => {
     return (
         <Segment>
 
-            <Publisher
+            <UIPublisher
                 name={publisher.author}
                 time={publisher.time}
                 avatar={publisher.avatar}
@@ -73,7 +48,7 @@ const Article = ({ title, text, image, tags, labels, publisher }) => {
 
             {
                 tags &&
-                <TagBar tags={tags} />
+                <UITagBar tags={tags} />
             }
 
             {
