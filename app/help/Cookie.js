@@ -39,9 +39,9 @@ const getCookieFromServer = (key, req) => {
         return undefined;
     }
 
-    const rawCookie = req.headers.cookie
-        .split(';')
-        .find(c => c.trim().startsWith(`${key}=`));
+    const rawCookie = !!req.headers.cookie
+        ? req.headers.cookie.split(';').find(c => c.trim().startsWith(`${key}=`))
+        : '';
 
     if (!rawCookie) {
         return undefined;
