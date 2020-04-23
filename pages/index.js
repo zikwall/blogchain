@@ -18,6 +18,7 @@ export default function Index({ contents }) {
             {contents.map((content, key) => (
                 <Article
                     key={key}
+                    image={content.image}
                     publisher={{
                         author: content.related.publisher.profile.name,
                         time: Time.toJsUnix(content.created_at),

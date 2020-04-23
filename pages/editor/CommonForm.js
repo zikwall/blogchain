@@ -1,5 +1,5 @@
 import { Button, Form, Message } from "semantic-ui-react";
-import { Dropzone, Editor } from "../../app/components";
+import { Dropzone, Editor, UICoverImage } from "../../app/components";
 
 const CommonForm = (
     {
@@ -14,12 +14,7 @@ const CommonForm = (
                 <div style={{
                     paddingBottom: '10px'
                 }}>
-                    <img style={{
-                        width: '100%',
-                        height: '300px',
-                        objectFit: 'cover',
-                        borderRadius: '5px'
-                    }} src={preview} />
+                    <UICoverImage src={preview} />
                 </div>
             }
             <Form success>

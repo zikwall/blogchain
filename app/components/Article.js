@@ -1,6 +1,8 @@
-import {Header, Icon, Image, Label, Segment} from "semantic-ui-react";
+import { Header, Icon, Label, Segment } from "semantic-ui-react";
 import moment from "moment";
 import Link from "next/link";
+import { makeCdn } from "../constants";
+import UICoverImage from "./ui/UICoverImage";
 
 export const TagBar = ({ tags, tagget }) => {
     return (
@@ -32,12 +34,6 @@ export const LabelBar = ({ ratings, views, bookmarks, comments }) => (
             </Label>
         </Link>
     </>
-);
-
-const ImageWrap = ({ src }) => (
-    <div style={{ paddingBottom: '10px' }}>
-        <Image src={src} centered />
-    </div>
 );
 
 const Publisher = ({ name, time, avatar }) => {
@@ -82,7 +78,7 @@ const Article = ({ title, text, image, tags, labels, publisher }) => {
 
             {
                 image &&
-                <ImageWrap src={image} />
+                <UICoverImage src={makeCdn(image)} />
             }
 
             { text }
