@@ -1,14 +1,13 @@
-import Article from "../app/components/Article";
 import IndexLayout from "../app/layouts/IndexLayout";
 import { Content } from "../app/services";
-import { UIMostReading, UIPagination } from '../app/components';
+import { UIMostReading, UIPagination, UIArticle } from '../app/components';
 
 export default function Index({ contents }) {
     return (
         <IndexLayout>
 
             {contents.map((content, key) => (
-                <Article
+                <UIArticle
                     key={key}
                     id={content.id}
                     image={content.image}

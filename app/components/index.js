@@ -19,3 +19,5 @@ export { default as UICompanyInfo } from './ui/UICompanyInfo';
 export { default as UIMoreItem } from './ui/UIMoreItem';
 export { default as UIMostReading } from './ui/UIMostReading';
 export { default as UIPagination } from './ui/UIPagination';
+export { default as UIArticle } from './ui/UIArticle';
+export { default as UIArticleContent } from './ui/UIArticleContent';

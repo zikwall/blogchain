@@ -13,16 +13,12 @@ import MoreOfAuthor from "./MoreOfAuthor";
 import { CommonLayout } from "../../app/layouts";
 
 import {
-    UIPublisher,
-    UITagbar,
-    UITags,
     UICompanyBanner,
     UIPublisherSection,
     UICompanyInfo,
+    UIArticleContent
 } from "../../app/components";
 import { Content } from "../../app/services";
-import UICoverImage from "../../app/components/ui/UICoverImage";
-import { makeCdn } from "../../app/constants";
 
 const Post = ({ content }) => {
     const contextRef = createRef();
@@ -39,34 +35,8 @@ const Post = ({ content }) => {
                     <Ref innerRef={contextRef}>
                         <Grid.Row columns={2}>
                             <Grid.Column width={12}>
-                                <UIPublisher
-                                    name={content.related.publisher.profile.name}
-                                    time={content.created_at}
-                                    avatar={content.related.publisher.profile.avatar}
-                                />
-                                <Header as='h1'>
-                                    { content.title }
-                                </Header>
-
-                                <UITagbar tags={[
-                                    "Разработка под Arduino",
-                                    "Периферия",
-                                    "DIY или Сделай сам"
-                                ]} />
-
-                                {
-                                    content.image &&
-                                    <UICoverImage src={makeCdn(content.image)} />
-                                }
-
-                                <div
-                                    className="root-dangerous-content-html"
-                                    dangerouslySetInnerHTML={{ __html: content.content }}
-                                />
-
-                                <UITags />
+                                <UIArticleContent content={content} />
                                 <UIPublisherSection />
-
                                 <CommentExampleThreaded />
                             </Grid.Column>
                             <Grid.Column width={4}>

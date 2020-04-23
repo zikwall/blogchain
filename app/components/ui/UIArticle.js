@@ -1,9 +1,9 @@
 import { Header, Icon, Label, Segment } from "semantic-ui-react";
 import Link from "next/link";
-import { makeCdn } from "../constants";
-import UICoverImage from "./ui/UICoverImage";
-import UIPublisher from "./ui/UIPublisher";
-import UITagBar from "./ui/UITagbar";
+import { makeCdn } from "../../constants";
+import UICoverImage from "./UICoverImage";
+import UIPublisher from "./UIPublisher";
+import UITagBar from "./UITagbar";
 
 export const LabelBar = ({ link, ratings, views, bookmarks, comments }) => (
     <>
@@ -25,7 +25,7 @@ export const LabelBar = ({ link, ratings, views, bookmarks, comments }) => (
     </>
 );
 
-const Article = ({ id, title, text, image, tags, labels, publisher }) => {
+const UIArticle = ({ id, title, text, image, tags, labels, publisher }) => {
     const link = `/post/${id}`;
 
     return (
@@ -70,4 +70,4 @@ const Article = ({ id, title, text, image, tags, labels, publisher }) => {
     )
 };
 
-export default Article;
+export default UIArticle;
