@@ -21,6 +21,8 @@ import {
     UICompanyInfo,
 } from "../../app/components";
 import { Content } from "../../app/services";
+import UICoverImage from "../../app/components/ui/UICoverImage";
+import { makeCdn } from "../../app/constants";
 
 const Post = ({ content }) => {
     const contextRef = createRef();
@@ -51,6 +53,11 @@ const Post = ({ content }) => {
                                     "Периферия",
                                     "DIY или Сделай сам"
                                 ]} />
+
+                                {
+                                    content.image &&
+                                    <UICoverImage src={makeCdn(content.image)} />
+                                }
 
                                 <div
                                     className="root-dangerous-content-html"

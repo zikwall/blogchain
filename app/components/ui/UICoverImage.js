@@ -6,7 +6,9 @@ const UICoverImage = ({ src, mode='cover' }) => {
             width: '100%',
             height: '300px',
             objectFit: mode,
-            borderRadius: '5px'
+            borderRadius: '5px',
+            marginTop: '10px',
+            marginBottom: '10px'
         }} src={src} />
     )
 };
