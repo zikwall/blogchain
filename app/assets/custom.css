@@ -20,6 +20,11 @@
 .root-dangerous-content-html img {
     max-width: 100%; height: auto;
 }
+.ql-syntax {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 5px;
+}
 
 /* quick login */
 #top_profile_menu.shown {
