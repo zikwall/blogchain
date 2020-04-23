@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import AuthItem from "./AuthItem";
 import QuickLogin from "./QuickLogin";
 import CloseWrapper from "../close/CloseWrapper";
-import { DropdownItemLink } from '../ui/Active';
+import UIDropdownItemLink from "../ui/UIDropdownItemLink";
 
 const ProfileMenu = ({ isAuthenticated, logout, user }) => {
     const [ isDropped, setIsDropped ] = useState(false);
@@ -49,14 +49,14 @@ const ProfileMenu = ({ isAuthenticated, logout, user }) => {
                     </span>
                     } disabled/>
 
-                    <DropdownItemLink name='Мой профиль' href={`/u/${user.username}`} />
-                    <DropdownItemLink name='Новый пост' href='/editor/create' />
-                    <DropdownItemLink name='Мои звезды' href={`/u/${user.username}/stars`} />
-                    <DropdownItemLink name='Публикации' href={`/u/${user.username}/all`} />
-                    <DropdownItemLink name='Диалоги' href='/dialogs' />
-                    <DropdownItemLink name='Закладки' href='/bookmarks' />
-                    <DropdownItemLink name='Помощь' href='/help' />
-                    <DropdownItemLink name='Настройки' href='/settings' />
+                    <UIDropdownItemLink name='Мой профиль' href={`/u/${user.username}`} />
+                    <UIDropdownItemLink name='Новый пост' href='/editor/create' />
+                    <UIDropdownItemLink name='Мои звезды' href={`/u/${user.username}/stars`} />
+                    <UIDropdownItemLink name='Публикации' href={`/u/${user.username}/all`} />
+                    <UIDropdownItemLink name='Диалоги' href='/dialogs' />
+                    <UIDropdownItemLink name='Закладки' href='/bookmarks' />
+                    <UIDropdownItemLink name='Помощь' href='/help' />
+                    <UIDropdownItemLink name='Настройки' href='/settings' />
 
                     <Dropdown.Divider />
 

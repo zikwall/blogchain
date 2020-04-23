@@ -1,6 +1,6 @@
 import { Header } from "../components";
 import { Container, Menu, Icon, Button, Image } from 'semantic-ui-react';
-import { MenuItemLink } from "../components";
+import { UIMenuItemLink } from "../components";
 
 const CommonLayout = ({ children }) => (
     <>
@@ -21,9 +21,9 @@ const CommonLayout = ({ children }) => (
                         <Menu.Item header>
                             <span style={{ paddingRight: '5px' }}>Crafted with</span> <Icon name='heart outline' /> by zikwall
                         </Menu.Item>
-                        <MenuItemLink name="О Сайте" href="/" />
-                        <MenuItemLink name="Служба поддержки" href="/" />
-                        <MenuItemLink name="Мобильные приложения" href="/" />
+                        <UIMenuItemLink name="О Сайте" href="/" />
+                        <UIMenuItemLink name="Служба поддержки" href="/" />
+                        <UIMenuItemLink name="Мобильные приложения" href="/" />
                     </Menu>
                 </div>
                 <div style={{

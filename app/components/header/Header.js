@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { Input, Menu, Image } from 'semantic-ui-react'
+import { Input, Menu } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { authenticate, reauthenticate } from '../../redux/actions';
 import ProfileMenu from './ProfileMenu';
-import { useRouter } from "next/router";
-import { MenuItemLink } from "../ui/Active";
+import UIMenuItemLink from "../ui/UIMenuItemLink";
 
 const Header = ({ isAuthenticated }) => {
     return (
@@ -13,10 +11,10 @@ const Header = ({ isAuthenticated }) => {
                 <img src={'/images/bc_300.png'} />
             </Menu.Item>
 
-            <MenuItemLink name="Моя лента" href="/" as="/"/>
-            <MenuItemLink href="/editor1" as="/editor1" name="Все потоки" />
-            <MenuItemLink href="/editor2" as="/editor2" name="Как стать автором" />
-            <MenuItemLink href="/editor/create" as="/editor" name="Новая публикаця!" />
+            <UIMenuItemLink name="Моя лента" href="/" as="/"/>
+            <UIMenuItemLink href="/editor1" as="/editor1" name="Все потоки" />
+            <UIMenuItemLink href="/editor2" as="/editor2" name="Как стать автором" />
+            <UIMenuItemLink href="/editor/create" as="/editor" name="Новая публикаця!" />
 
             <Menu.Menu position='right'>
                 <Menu.Item>

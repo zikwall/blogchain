@@ -2,7 +2,7 @@ import ProtectedLayout from "./ProtectedLayout";
 import Head from "next/head";
 import { Button, Container, Grid, Header, Icon, Image, Label, Menu, Ref, Sticky} from "semantic-ui-react";
 import { createRef } from 'react';
-import { MenuItemLink } from "../components";
+import { UIMenuItemLink } from "../components";
 
 const Sidebar = ({ user }) => {
     const avatar = !!user.profile.avatar ? user.profile.avatar : "/images/zebra_pl.jpg";
@@ -81,11 +81,11 @@ const Sidebar = ({ user }) => {
 
 const TabBar = ({ user }) => (
     <Menu pointing secondary>
-        <MenuItemLink href="/u/[username]" as={`/u/${user.username}`} name="Обзор" />
-        <MenuItemLink href="/u/[username]/all" as={`/u/${user.username}/all`} name="Все статьи" />
-        <MenuItemLink href="/u/[username]/stars" as={`/u/${user.username}/stars`} name="Звезды" />
-        <MenuItemLink href="/u/[username]/followers" as={`/u/${user.username}/followers`} name="Подписчики" />
-        <MenuItemLink href="/u/[username]/followings" as={`/u/${user.username}/followings`} name="Подписки" />
+        <UIMenuItemLink href="/u/[username]" as={`/u/${user.username}`} name="Обзор" />
+        <UIMenuItemLink href="/u/[username]/all" as={`/u/${user.username}/all`} name="Все статьи" />
+        <UIMenuItemLink href="/u/[username]/stars" as={`/u/${user.username}/stars`} name="Звезды" />
+        <UIMenuItemLink href="/u/[username]/followers" as={`/u/${user.username}/followers`} name="Подписчики" />
+        <UIMenuItemLink href="/u/[username]/followings" as={`/u/${user.username}/followings`} name="Подписки" />
     </Menu>
 );
 

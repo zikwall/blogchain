@@ -1,6 +1,6 @@
 import { Container, Grid, Label, Menu, Ref, Sticky } from "semantic-ui-react";
 import CommonLayout from "./CommonLayout";
-import { MenuItemLink } from "../components";
+import { UIMenuItemLink } from "../components";
 import { createRef } from "react";
 
 const Flows = [
@@ -16,10 +16,10 @@ const Flows = [
 
 const TabMenu = () => (
     <Menu pointing secondary>
-        <MenuItemLink href="/" name="Статьи" as="/" />
-        <MenuItemLink href="/news" name="Новости" as="/news" />
-        <MenuItemLink href="/authors" name="Авторы" as="/authors" />
-        <MenuItemLink href="/companies" name="Компании" as="companies" />
+        <UIMenuItemLink href="/" name="Статьи" as="/" />
+        <UIMenuItemLink href="/news" name="Новости" as="/news" />
+        <UIMenuItemLink href="/authors" name="Авторы" as="/authors" />
+        <UIMenuItemLink href="/companies" name="Компании" as="companies" />
     </Menu>
 );
 
@@ -40,7 +40,7 @@ const IndexLayout = ({ children }) => {
                                 <Sticky context={contextRef} offset={30}>
                                     <Menu pointing secondary vertical fluid>
                                         {Flows.map((v, k) => (
-                                            <MenuItemLink
+                                            <UIMenuItemLink
                                                 key={k}
                                                 href={v.href}
                                                 as={v.href}
