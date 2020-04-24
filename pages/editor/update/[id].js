@@ -12,6 +12,7 @@ const EditorPage = ({ token, id, content }) => {
     const [ contents, setContents ] = useState(content.content);
     const [ titles, setTitles ] = useState(content.title);
     const [ annotation, setAnnotation ] = useState(content.annotation);
+    const [ tags, setTags ] = useState(content.tags);
 
     useEffect(() => {
         if (typeof image[0] !== 'undefined') {
@@ -53,6 +54,7 @@ const EditorPage = ({ token, id, content }) => {
                     setContent={setContents}
                     setAnnotation={setAnnotation}
                     setImage={setImage}
+                    tags={tags}
                 />
             </Container>
         </ProtectedLayout>

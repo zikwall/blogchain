@@ -1,16 +1,23 @@
+import { useEffect, useState } from 'react';
 import { Button, Form, Message } from "semantic-ui-react";
 import {
     UIDropzone,
     UIEditor,
     UICoverImage,
-    UITextArea
+    UITextArea,
+    UISelect
 } from "../../app/components";
+
+import { Tag } from '../../app/services';
 
 const CommonForm = (
     {
         title, content, image, annotation, preview,
         onSubmit, setTitle, setAnnotation, setImage, setContent
     }) => {
+
+    const [ select, setSelect ] = useState(null);
+    const [ search, setSearch ] = useState(null);
 
     return (
         <>
@@ -22,6 +29,7 @@ const CommonForm = (
                     <UICoverImage src={preview} />
                 </div>
             }
+
             <Form success>
                 <Form.Group>
                     <Form.Input
@@ -44,6 +52,16 @@ const CommonForm = (
                 <UIDropzone
                     setFiles={setImage}
                     files={image}
+                />
+
+                <UISelect
+                    search={true}
+                    multiple={true}
+                    placeholder={'Select tags'}
+                    fetcher={Tag.getTags}
+                    value={select}
+                    onChange={(value) => setSelect(value)}
+                    onSearch={(query) => setSearch(query)}
                 />
 
                 <Message
