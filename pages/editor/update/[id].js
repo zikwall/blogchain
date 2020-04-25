@@ -12,7 +12,7 @@ const EditorPage = ({ token, id, content }) => {
     const [ contents, setContents ] = useState(content.content);
     const [ titles, setTitles ] = useState(content.title);
     const [ annotation, setAnnotation ] = useState(content.annotation);
-    const [ tags, setTags ] = useState(content.tags);
+    const [ tags, setTags ] = useState(!!content.related.tags ? content.related.tags.map(v => v.id) : []);
 
     useEffect(() => {
         if (typeof image[0] !== 'undefined') {
@@ -32,6 +32,7 @@ const EditorPage = ({ token, id, content }) => {
         data.append('title', titles);
         data.append('content', contents);
         data.append('annotation', annotation);
+        data.append('tags', JSON.stringify(tags));
 
         const { status } = await Content.UpdateContent(id, data, token);
 
@@ -54,6 +55,7 @@ const EditorPage = ({ token, id, content }) => {
                     setContent={setContents}
                     setAnnotation={setAnnotation}
                     setImage={setImage}
+                    setTags={setTags}
                     tags={tags}
                 />
             </Container>

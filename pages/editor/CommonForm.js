@@ -12,11 +12,10 @@ import { Tag } from '../../app/services';
 
 const CommonForm = (
     {
-        title, content, image, annotation, preview,
-        onSubmit, setTitle, setAnnotation, setImage, setContent
+        title, content, image, annotation, preview, tags,
+        onSubmit, setTitle, setAnnotation, setImage, setContent, setTags
     }) => {
 
-    const [ select, setSelect ] = useState(null);
     const [ search, setSearch ] = useState(null);
 
     return (
@@ -59,8 +58,8 @@ const CommonForm = (
                     multiple={true}
                     placeholder={'Select tags'}
                     fetcher={Tag.getTags}
-                    value={select}
-                    onChange={(value) => setSelect(value)}
+                    value={tags}
+                    onChange={(value) => setTags(value)}
                     onSearch={(query) => setSearch(query)}
                 />
 
