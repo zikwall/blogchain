@@ -29,6 +29,10 @@
     font-family: Monaco, Courier New, monospace;
 }
 
+.root-dangerous-content-html .ql-align-justify {
+    text-align: justify;
+}
+
 .tagget-content .ui.horizontal.label {
     margin: .5em .5em .5em 0
 }
