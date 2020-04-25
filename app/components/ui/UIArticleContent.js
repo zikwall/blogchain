@@ -18,11 +18,7 @@ const UIArticleContent = ({ content }) => {
                 { content.title }
             </Header>
 
-            <UITagbar tags={[
-                "Разработка под Arduino",
-                "Периферия",
-                "DIY или Сделай сам"
-            ]} />
+            <UITagbar tags={content.related.tags} />
 
             {
                 content.image &&
