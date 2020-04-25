@@ -11,6 +11,7 @@ const CreatePage = ({ token }) => {
     const [ contents, setContents ] = useState('');
     const [ titles, setTitles ] = useState('');
     const [ annotation, setAnnotation ] = useState('');
+    const [ tags, setTags ] = useState([]);
 
     useEffect(() => {
         if (typeof image[0] !== 'undefined') {
@@ -28,6 +29,7 @@ const CreatePage = ({ token }) => {
         data.append('title', titles);
         data.append('content', contents);
         data.append('annotation', annotation);
+        data.append('tags', JSON.stringify(tags));
 
         const { status } = await Content.CreateContent(data, token);
 
@@ -50,6 +52,8 @@ const CreatePage = ({ token }) => {
                     setContent={setContents}
                     setAnnotation={setAnnotation}
                     setImage={setImage}
+                    setTags={setTags}
+                    tags={tags}
                 />
             </Container>
         </ProtectedLayout>
