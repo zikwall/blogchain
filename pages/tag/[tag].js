@@ -1,8 +1,8 @@
-import IndexLayout from "../app/layouts/IndexLayout";
-import { Content } from "../app/services";
-import { UIMostReading, UIPagination, UIArticle } from '../app/components';
+import IndexLayout from "../../app/layouts/IndexLayout";
+import { Content } from "../../app/services";
+import { UIMostReading, UIPagination, UIArticle } from '../../app/components';
 
-export default function Index({ contents }) {
+export default function Tag({ contents }) {
     return (
         <IndexLayout>
 
@@ -34,8 +34,9 @@ export default function Index({ contents }) {
     );
 }
 
-Index.getInitialProps = async ({ res }) => {
-    const { status, contents } = await Content.GetContents();
+Tag.getInitialProps = async ({ res, query }) => {
+    const { tag } = query;
+    const { status, contents } = await Content.GetContents(tag);
 
     return { contents: contents }
 };

@@ -80,8 +80,14 @@ export const GetEditContent = (id, req) => {
     })
 };
 
-export const GetContents = () => {
-    return apiFetch('/api/v1/contents').then((res) => {
+export const GetContents = (tag = null) => {
+    let url = '/api/v1/contents';
+
+    if (!!tag) {
+        url = `/api/v1/tag/${tag}`;
+    }
+
+    return apiFetch(url).then((res) => {
         if (res.status === 100) {
             return {
                 status: false,

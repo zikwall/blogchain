@@ -47,7 +47,7 @@ const UIArticle = ({ id, title, text, image, tags, labels, publisher }) => {
             </Header>
 
             {
-                tags &&
+                !!tags > 0 &&
                 <UITagBar tags={tags} />
             }
 
