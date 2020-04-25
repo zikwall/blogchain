@@ -25,6 +25,9 @@
     padding: 10px;
     border-radius: 5px;
 }
+.tagget-content .ui.horizontal.label {
+    margin: .5em .5em .5em 0
+}
 
 /* quick login */
 #top_profile_menu.shown {

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const UITagBar = ({ tags, tagget }) => {
     return (
-        <div style={{ paddingBottom: '10px' }}>
+        <div className='tagget-content'>
             {tags.map((v, k) => (
                 <Link href={`/tag/${v.label}`} as={`/tag/${v.label}`}>
                     <Label key={k} as='a' horizontal tag={tagget} pointing={tagget}>
