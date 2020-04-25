@@ -22,3 +22,4 @@ export { default as UIPagination } from './ui/UIPagination';
 export { default as UIArticle } from './ui/UIArticle';
 export { default as UIArticleContent } from './ui/UIArticleContent';
 export { default as UIPinned } from './ui/UIPinned';
+export { default as UISelect } from './ui/UISelect';
