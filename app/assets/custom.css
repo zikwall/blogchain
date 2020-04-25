@@ -25,6 +25,10 @@
     padding: 10px;
     border-radius: 5px;
 }
+.root-dangerous-content-html .ql-font-monospace {
+    font-family: Monaco, Courier New, monospace;
+}
+
 .tagget-content .ui.horizontal.label {
     margin: .5em .5em .5em 0
 }
