@@ -12,7 +12,7 @@ const ActivePaginationButton = withRouter(({ link, page, router }) => {
                 icon
                 active={(router.asPath === href)}
             >
-                {page}
+                {page + 1}
             </Button>
         </Link>
     )
@@ -27,7 +27,7 @@ const UIPagination = ({ link, pages, current }) => {
 
     const renderButtons = () => {
         return [...new Array(pages)].map((v, k) => (
-            <ActivePaginationButton page={k+1} link={link}/>
+            <ActivePaginationButton page={k} link={link}/>
         ))
     };
 
