@@ -1,7 +1,7 @@
 import { UIMenuItemLink } from "../index";
 import { Label, Menu } from "semantic-ui-react";
 
-const UITgasAsside = ({ tags }) => {
+const UITagsAsside = ({ tags }) => {
     return (
         <Menu pointing secondary vertical fluid>
             {tags.map((v, k) => (
@@ -21,4 +21,4 @@ const UITgasAsside = ({ tags }) => {
     )
 };
 
-export default UITgasAsside;
+export default UITagsAsside;
