@@ -8,7 +8,7 @@ const UITagsAsside = ({ tags }) => {
                 {tags.map((v, k) => (
                     <UIMenuItemLink
                         key={k}
-                        href={v.href}
+                        href={'/tag/[tag]'}
                         as={v.href}
                         name={
                             <div style={{

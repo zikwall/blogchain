@@ -4,7 +4,7 @@ import { useRouter, withRouter } from 'next/router';
 import Link from 'next/link';
 
 const ActivePaginationButton = withRouter(({ link, page, router }) => {
-    const href = `${link}/?page=${page}`;
+    const href = `${link}?page=${page}`;
 
     return (
         <Link href={href}>
@@ -32,7 +32,7 @@ const UIPagination = ({ link, pages, current }) => {
     };
 
     const navigate = (page) => {
-        router.push(`${link}/?page=${page}`);
+        router.push(`${link}?page=${page}`);
     };
 
     const onPressNext = () => {
