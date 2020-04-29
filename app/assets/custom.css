@@ -32,6 +32,9 @@
 .root-dangerous-content-html .ql-align-justify {
     text-align: justify;
 }
+.root-tag-asside .item {
+    padding: .62857143em 0.44285714em!important;
+}
 
 .tagget-content .ui.horizontal.label {
     margin: .5em .5em .5em 0

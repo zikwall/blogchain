@@ -3,21 +3,30 @@ import { Label, Menu } from "semantic-ui-react";
 
 const UITagsAsside = ({ tags }) => {
     return (
-        <Menu pointing secondary vertical fluid>
-            {tags.map((v, k) => (
-                <UIMenuItemLink
-                    key={k}
-                    href={v.href}
-                    as={v.href}
-                    name={
-                        <>
-                            { v.title }
-                            <Label basic color='green'>{ v.count }</Label>
-                        </>
-                    }
-                />
-            ))}
-        </Menu>
+        <div className='root-tag-asside'>
+            <Menu pointing secondary vertical fluid>
+                {tags.map((v, k) => (
+                    <UIMenuItemLink
+                        key={k}
+                        href={v.href}
+                        as={v.href}
+                        name={
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                lineHeight: 1.6,
+                                alignItems: 'center'
+                            }}>
+                                { v.title }
+                                <div>
+                                    <Label basic color='green'>{ v.count }</Label>
+                                </div>
+                            </div>
+                        }
+                    />
+                ))}
+            </Menu>
+        </div>
     )
 };
 

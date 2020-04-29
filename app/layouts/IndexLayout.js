@@ -1,7 +1,8 @@
 import { Container, Grid, Ref, Sticky } from "semantic-ui-react";
 import CommonLayout from "./CommonLayout";
 import { UIMenuItemLink, UITagsAsside, UITabMenu } from "../components";
-import { createRef } from "react";
+import { createRef, useEffect, useState } from "react";
+import { Tag } from '../services';
 
 const Flows = [
     {title: 'Разработка', count: '+55', href: '/flows/develop'},
@@ -16,6 +17,22 @@ const Flows = [
 
 const IndexLayout = ({ children }) => {
     const contextRef = createRef();
+    const [ tags, setTags ] = useState(null);
+
+    useEffect(() => {
+        Tag.getTags().then(({ status, tags }) => {
+            // tmp
+            if (!!tags) {
+                setTags(tags.map((v) => (
+                    {
+                        href: `/tag/${v.label}`,
+                        title: v.name,
+                        count: '+5'
+                    }
+                )))
+            }
+        });
+    }, []);
 
     return (
         <CommonLayout>
@@ -34,7 +51,10 @@ const IndexLayout = ({ children }) => {
                             </Grid.Column>
                             <Grid.Column width={4}>
                                 <Sticky context={contextRef} offset={30}>
-                                    <UITagsAsside tags={Flows} />
+                                    {
+                                        !!tags &&
+                                        <UITagsAsside tags={tags} />
+                                    }
                                 </Sticky>
                             </Grid.Column>
                         </Grid.Row>
