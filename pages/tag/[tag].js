@@ -35,7 +35,7 @@ export default function Tag({ contents }) {
 }
 
 Tag.getInitialProps = async ({ res, query }) => {
-    const { tag } = query;
+    const { tag, page } = query;
     const { status, contents } = await Content.GetContents(tag);
 
     return { contents: contents }

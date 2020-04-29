@@ -34,7 +34,8 @@ export default function Index({ contents }) {
     );
 }
 
-Index.getInitialProps = async ({ res }) => {
+Index.getInitialProps = async ({ res, query }) => {
+    const { page } = query;
     const { status, contents } = await Content.GetContents();
 
     return { contents: contents }
