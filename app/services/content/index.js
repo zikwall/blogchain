@@ -80,11 +80,15 @@ export const GetEditContent = (id, req) => {
     })
 };
 
-export const GetContents = (tag = null) => {
+export const GetContents = (tag = null, page = 0) => {
     let url = '/api/v1/contents';
 
     if (!!tag) {
         url = `/api/v1/tag/${tag}`;
+    }
+
+    if (typeof page !== 'undefined' && page > 0) {
+        url = url + `/${page}`
     }
 
     return apiFetch(url).then((res) => {
@@ -92,12 +96,14 @@ export const GetContents = (tag = null) => {
             return {
                 status: false,
                 contents: [],
+                meta: {}
             }
         }
 
         return {
             status: true,
             contents: res.contents,
+            meta: res.meta
         }
     })
 };

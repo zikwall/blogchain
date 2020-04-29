@@ -2,7 +2,7 @@ import IndexLayout from "../../app/layouts/IndexLayout";
 import { Content } from "../../app/services";
 import { UIMostReading, UIPagination, UIArticle } from '../../app/components';
 
-export default function Tag({ contents }) {
+export default function Tag({ contents, meta, currentPage, tagName }) {
     return (
         <IndexLayout>
 
@@ -28,7 +28,7 @@ export default function Tag({ contents }) {
                 />
             ))}
 
-            <UIPagination />
+            <UIPagination link={`/tag/${tagName}`} pages={meta.pages} current={currentPage} />
             <UIMostReading />
         </IndexLayout>
     );
@@ -36,7 +36,7 @@ export default function Tag({ contents }) {
 
 Tag.getInitialProps = async ({ res, query }) => {
     const { tag, page } = query;
-    const { status, contents } = await Content.GetContents(tag);
+    const { status, contents, meta } = await Content.GetContents(tag, page);
 
-    return { contents: contents }
+    return { contents: contents, meta: meta, currentPage: !!page ? page : 0, tagName: tag }
 };

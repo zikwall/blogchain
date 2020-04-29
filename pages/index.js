@@ -2,7 +2,7 @@ import IndexLayout from "../app/layouts/IndexLayout";
 import { Content } from "../app/services";
 import { UIMostReading, UIPagination, UIArticle } from '../app/components';
 
-export default function Index({ contents }) {
+export default function Index({ contents, meta, currentPage }) {
     return (
         <IndexLayout>
 
@@ -28,7 +28,7 @@ export default function Index({ contents }) {
                 />
             ))}
 
-            <UIPagination />
+            <UIPagination link='' pages={meta.pages} current={currentPage} />
             <UIMostReading />
         </IndexLayout>
     );
@@ -36,7 +36,7 @@ export default function Index({ contents }) {
 
 Index.getInitialProps = async ({ res, query }) => {
     const { page } = query;
-    const { status, contents } = await Content.GetContents();
+    const { status, contents, meta } = await Content.GetContents(null, page);
 
-    return { contents: contents }
+    return { contents: contents, meta: meta, currentPage: !!page ? page : 0 }
 };

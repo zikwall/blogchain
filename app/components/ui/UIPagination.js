@@ -1,33 +1,80 @@
-import {Button} from "semantic-ui-react";
+import React from "react";
+import { Button } from "semantic-ui-react";
+import { useRouter, withRouter } from 'next/router';
+import Link from 'next/link';
 
-const UIPagination = () => (
-    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', }}>
-        <div>
-            <Button.Group>
-                <Button labelPosition='left' icon='left chevron' content='Туда' />
-                <Button labelPosition='right' icon='right chevron' content='Сюда' />
-            </Button.Group>
-        </div>
-        <div>
-            <Button.Group>
-                <Button icon>
-                    1
-                </Button>
-                <Button icon>
-                    2
-                </Button>
-                <Button icon>
-                    3
-                </Button>
-                <Button icon>
-                    4
-                </Button>
-                <Button icon>
-                    5
-                </Button>
-            </Button.Group>{' '}
+const ActivePaginationButton = withRouter(({ link, page, router }) => {
+    const href = `${link}/?page=${page}`;
 
-            <Button.Group>
+    return (
+        <Link href={href}>
+            <Button
+                icon
+                active={(router.asPath === href)}
+            >
+                {page}
+            </Button>
+        </Link>
+    )
+});
+
+const UIPagination = ({ link, pages, current }) => {
+    if (pages <= 0) {
+        return null;
+    }
+
+    const router = useRouter();
+
+    const renderButtons = () => {
+        return [...new Array(pages)].map((v, k) => (
+            <ActivePaginationButton page={k+1} link={link}/>
+        ))
+    };
+
+    const navigate = (page) => {
+        router.push(`${link}/?page=${page}`);
+    };
+
+    const onPressNext = () => {
+        if (current >= pages) {
+            return;
+        }
+
+        return navigate(++current);
+    };
+
+    const onPressPrev = () => {
+        if (current <= 0) {
+            return;
+        }
+
+        return navigate(--current);
+    };
+
+    return (
+        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',}}>
+            <div>
+                <Button.Group>
+                    <Button
+                        labelPosition='left'
+                        icon='left chevron'
+                        content='Туда'
+                        onClick={onPressPrev}
+                    />
+                    <Button
+                        labelPosition='right'
+                        icon='right chevron'
+                        content='Сюда'
+                        onClick={onPressNext}
+                    />
+                </Button.Group>
+            </div>
+            <div>
+                <Button.Group>
+                    {renderButtons()}
+                </Button.Group>{' '}
+
+                {/*<Button.Group>
                 <Button icon>
                     10
                 </Button>
@@ -37,9 +84,10 @@ const UIPagination = () => (
                 <Button icon>
                     30
                 </Button>
-            </Button.Group>
+            </Button.Group>*/}
+            </div>
         </div>
-    </div>
-);
+    )
+};
 
 export default UIPagination;
