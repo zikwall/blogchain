@@ -4,7 +4,9 @@ import { UIMostReading, UIPagination, UIArticle } from '../app/components';
 
 export default function Index({ contents, meta, currentPage }) {
     return (
-        <IndexLayout>
+        <IndexLayout
+            title={'Blogchain | Ваш лучший блогер'}
+        >
 
             {contents.map((content, key) => (
                 <UIArticle

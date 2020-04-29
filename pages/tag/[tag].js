@@ -4,8 +4,9 @@ import { UIMostReading, UIPagination, UIArticle } from '../../app/components';
 
 export default function Tag({ contents, meta, currentPage, tagName }) {
     return (
-        <IndexLayout>
-
+        <IndexLayout
+            title={`Поиск по тегу ${tagName} | Blogchain`}
+        >
             {contents.map((content, key) => (
                 <UIArticle
                     key={key}

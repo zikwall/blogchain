@@ -1,10 +1,15 @@
+import Head from "next/head";
 import { Header } from "../components";
 import { Container, Menu, Icon, Button, Image } from 'semantic-ui-react';
 import { UIMenuItemLink } from "../components";
 
-const CommonLayout = ({ children }) => (
+const CommonLayout = ({ children, title }) => (
     <>
-        <Header />
+        <Head>
+            <title>{title}</title>
+        </Head>
+
+        <Header/>
 
         <main className="app root-content">
             { children }

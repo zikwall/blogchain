@@ -23,10 +23,9 @@ const Post = ({ content }) => {
     const contextRef = createRef();
 
     return (
-        <CommonLayout>
-            <Head>
-                <title>{ content.title } | Blocgchain</title>
-            </Head>
+        <CommonLayout
+            title={`${content.title} | Blogchain`}
+        >
             <Container>
                 <UICompanyBanner />
 

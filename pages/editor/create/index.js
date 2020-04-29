@@ -39,7 +39,9 @@ const CreatePage = ({ token }) => {
     };
 
     return (
-        <ProtectedLayout>
+        <ProtectedLayout
+            title={'Содание нового контента'}
+        >
             <Container>
                 <CommonForm
                     title={titles}

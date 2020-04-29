@@ -4,7 +4,7 @@ import { getToken } from "../redux/reducers";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-const ProtectedLayout = ({ children }) => {
+const ProtectedLayout = ({ children, title }) => {
     const isAuth = useSelector(state => getToken(state));
     const router = useRouter();
 
@@ -25,7 +25,9 @@ const ProtectedLayout = ({ children }) => {
         </div>;
     }
 
-    return <CommonLayout>
+    return <CommonLayout
+        title={title}
+    >
         { children }
     </CommonLayout>
 };

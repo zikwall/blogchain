@@ -42,7 +42,9 @@ const EditorPage = ({ token, id, content }) => {
     };
 
     return (
-        <ProtectedLayout>
+        <ProtectedLayout
+            title={`Обновление контента ${content.title}`}
+        >
             <Container>
                 <CommonForm
                     title={titles}

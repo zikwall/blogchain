@@ -79,14 +79,13 @@ const Sidebar = ({ user }) => {
     )
 };
 
-const UserLayout = ({ user, children }) => {
+const UserLayout = ({ user, children, title }) => {
     const contextRef = createRef();
 
     return (
-        <ProtectedLayout>
-            <Head>
-                <title>{ user.profile.name } | Blogchain</title>
-            </Head>
+        <ProtectedLayout
+            title={`${user.profile.name} | Blogchain`}
+        >
             <Container>
                 <Grid>
                     <Ref innerRef={contextRef}>

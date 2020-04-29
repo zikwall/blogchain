@@ -15,7 +15,7 @@ const Flows = [
     {title: 'Маркетинг', count: '+1', href: '/flows/develop'},
 ];
 
-const IndexLayout = ({ children }) => {
+const IndexLayout = ({ children, title }) => {
     const contextRef = createRef();
     const [ tags, setTags ] = useState(null);
 
@@ -35,7 +35,9 @@ const IndexLayout = ({ children }) => {
     }, []);
 
     return (
-        <CommonLayout>
+        <CommonLayout
+            title={title}
+        >
             <Container>
                 <Grid>
                     <Ref innerRef={contextRef}>

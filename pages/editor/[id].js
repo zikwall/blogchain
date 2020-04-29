@@ -6,7 +6,9 @@ import { makeCdn } from "../../app/constants";
 
 const ContentPage = ({ content }) => {
     return (
-        <ProtectedLayout>
+        <ProtectedLayout
+            title={`Просмотр контента ${content.title}`}
+        >
             <Container>
                 {
                     content.image &&
