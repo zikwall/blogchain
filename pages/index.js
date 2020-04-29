@@ -30,7 +30,7 @@ export default function Index({ contents, meta, currentPage }) {
                 />
             ))}
 
-            <UIPagination link='' pages={meta.pages} current={currentPage} />
+            <UIPagination link='/' pages={meta.pages} current={currentPage} />
             <UIMostReading />
         </IndexLayout>
     );

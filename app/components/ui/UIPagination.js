@@ -36,7 +36,7 @@ const UIPagination = ({ link, pages, current }) => {
     };
 
     const onPressNext = () => {
-        if (current >= pages) {
+        if (current >= pages - 1) {
             return;
         }
 
