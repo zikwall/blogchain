@@ -20,7 +20,10 @@
 .root-dangerous-content-html img {
     max-width: 100%; height: auto;
 }
-.ql-syntax {
+.root-dangerous-content-html p {
+    line-height: 1.7em;
+}
+.root-dangerous-content-html .ql-syntax {
     background-color: #f7f7f7;
     padding: 10px;
     border-radius: 5px;
@@ -28,7 +31,6 @@
 .root-dangerous-content-html .ql-font-monospace {
     font-family: Monaco, Courier New, monospace;
 }
-
 .root-dangerous-content-html .ql-align-justify {
     text-align: justify;
 }
