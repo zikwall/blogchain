@@ -23,3 +23,5 @@ export { default as UIArticle } from './ui/UIArticle';
 export { default as UIArticleContent } from './ui/UIArticleContent';
 export { default as UIPinned } from './ui/UIPinned';
 export { default as UISelect } from './ui/UISelect';
+export { default as UITagsAsside } from './ui/UITagsAsside';
+export { default as UITabMenu } from './ui/UITabMenu';

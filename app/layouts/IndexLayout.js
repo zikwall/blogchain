@@ -1,6 +1,6 @@
-import { Container, Grid, Label, Menu, Ref, Sticky } from "semantic-ui-react";
+import { Container, Grid, Ref, Sticky } from "semantic-ui-react";
 import CommonLayout from "./CommonLayout";
-import { UIMenuItemLink } from "../components";
+import { UIMenuItemLink, UITagsAsside, UITabMenu } from "../components";
 import { createRef } from "react";
 
 const Flows = [
@@ -14,15 +14,6 @@ const Flows = [
     {title: 'Маркетинг', count: '+1', href: '/flows/develop'},
 ];
 
-const TabMenu = () => (
-    <Menu pointing secondary>
-        <UIMenuItemLink href="/" name="Статьи" as="/" />
-        <UIMenuItemLink href="/news" name="Новости" as="/news" />
-        <UIMenuItemLink href="/authors" name="Авторы" as="/authors" />
-        <UIMenuItemLink href="/companies" name="Компании" as="companies" />
-    </Menu>
-);
-
 const IndexLayout = ({ children }) => {
     const contextRef = createRef();
 
@@ -33,26 +24,17 @@ const IndexLayout = ({ children }) => {
                     <Ref innerRef={contextRef}>
                         <Grid.Row columns={2}>
                             <Grid.Column width={12}>
-                                <TabMenu />
+                                <UITabMenu>
+                                    <UIMenuItemLink href="/" name="Статьи" as="/" />
+                                    <UIMenuItemLink href="/news" name="Новости" as="/news" />
+                                    <UIMenuItemLink href="/authors" name="Авторы" as="/authors" />
+                                    <UIMenuItemLink href="/companies" name="Компании" as="companies" />
+                                </UITabMenu>
                                 { children }
                             </Grid.Column>
                             <Grid.Column width={4}>
                                 <Sticky context={contextRef} offset={30}>
-                                    <Menu pointing secondary vertical fluid>
-                                        {Flows.map((v, k) => (
-                                            <UIMenuItemLink
-                                                key={k}
-                                                href={v.href}
-                                                as={v.href}
-                                                name={
-                                                    <>
-                                                        { v.title }
-                                                        <Label basic color='green'>{ v.count }</Label>
-                                                    </>
-                                                }
-                                            />
-                                        ))}
-                                    </Menu>
+                                    <UITagsAsside tags={Flows} />
                                 </Sticky>
                             </Grid.Column>
                         </Grid.Row>
