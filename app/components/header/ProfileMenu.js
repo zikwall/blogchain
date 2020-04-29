@@ -49,10 +49,10 @@ const ProfileMenu = ({ isAuthenticated, logout, user }) => {
                     </span>
                     } disabled/>
 
-                    <UIDropdownItemLink name='Мой профиль' href={`/u/${user.username}`} />
+                    <UIDropdownItemLink name='Мой профиль' href={'/u/[username]'} as={`/u/${user.username}`} />
                     <UIDropdownItemLink name='Новый пост' href='/editor/create' />
-                    <UIDropdownItemLink name='Мои звезды' href={`/u/${user.username}/stars`} />
-                    <UIDropdownItemLink name='Публикации' href={`/u/${user.username}/all`} />
+                    <UIDropdownItemLink name='Мои звезды' href={'/u/[username]/stars'} as={`/u/${user.username}/stars`} />
+                    <UIDropdownItemLink name='Публикации' href={'/u/[username]/all'} as={`/u/${user.username}/all`} />
                     <UIDropdownItemLink name='Диалоги' href='/dialogs' />
                     <UIDropdownItemLink name='Закладки' href='/bookmarks' />
                     <UIDropdownItemLink name='Помощь' href='/help' />

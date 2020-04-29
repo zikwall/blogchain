@@ -1,3 +1,4 @@
+import React from 'react';
 import { Header, Icon, Label, Segment } from "semantic-ui-react";
 import Link from "next/link";
 import { makeCdn } from "../../constants";
@@ -16,7 +17,7 @@ export const LabelBar = ({ link, ratings, views, bookmarks, comments }) => (
         <Label basic pointing>
             <Icon name='bookmark' /> { bookmarks }
         </Label>
-        <Link href={`${link}#comments`} as={`${link}#comments`}>
+        <Link href={`/post/[id]/#comments`} as={`${link}#comments`}>
             <Label basic color='blue' pointing as='a'>
                 Comments
                 <Label.Detail>{ comments }</Label.Detail>
@@ -38,11 +39,8 @@ const UIArticle = ({ id, title, text, image, tags, labels, publisher }) => {
             />
 
             <Header as='h2'>
-                <Link href={link} as={link}>
-                    <a style={{
-                        textDecoration: 'none',
-                        color: 'rgba(0,0,0,.87)'
-                    }}>{ title }</a>
+                <Link href={'/post/[id]'} as={link} passHref>
+                    { title }
                 </Link>
             </Header>
 

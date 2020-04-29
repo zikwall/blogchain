@@ -5,7 +5,7 @@ const UITagBar = ({ tags, tagget }) => {
     return (
         <div className='tagget-content'>
             {tags.map((v, k) => (
-                <Link href={`/tag/${v.label}`} as={`/tag/${v.label}`}>
+                <Link href={`/tag/[tag]`} as={`/tag/${v.label}`}>
                     <Label key={k} as='a' horizontal tag={tagget} pointing={tagget}>
                         { v.name }
                     </Label>
