@@ -9,8 +9,6 @@ export const getTags = () => {
             }
         }
 
-        console.log(res);
-
         return {
             ...res,
             status: true,
