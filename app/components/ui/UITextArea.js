@@ -32,7 +32,7 @@ const UITexArea = ({ value, onChange, label, placeholder, limit }) => {
                 onChange={onOverrideChange}
                 label={label}
                 placeholder={placeholder}
-                error={!limitation}
+                error={!limitation ? "true" : "false"} // what?
             />
             {
                 limit &&
@@ -51,7 +51,7 @@ const UITexArea = ({ value, onChange, label, placeholder, limit }) => {
 };
 
 UITexArea.propTypes = {
-    limit: PropTypes.bool
+    limit: PropTypes.number
 };
 
 export default UITexArea;
