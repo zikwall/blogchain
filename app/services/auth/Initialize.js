@@ -11,7 +11,7 @@ export default (ctx) => {
             const user = JSON.parse(Cookie.getCookie(USER_KEY, ctx.req));
             const token = Cookie.getCookie(SESSION_TOKEN_KEY, ctx.req);
 
-            if (Session.isSessionExpired(token)) {
+            if (token && Session.isSessionExpired(token)) {
                 ctx.store.dispatch(deauthenticate());
             } else {
                 ctx.store.dispatch(reauthenticate(token, user));
@@ -20,7 +20,7 @@ export default (ctx) => {
     } else {
         let token = ctx.store.getState().authentication.token;
 
-        if (Session.isSessionExpired(token)) {
+        if (token && Session.isSessionExpired(token)) {
             token = null;
             ctx.store.dispatch(deauthenticate());
         }
