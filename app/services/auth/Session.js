@@ -16,9 +16,6 @@ export default class Session {
     static isSessionExpired = (accessToken) => {
         try {
             const decoded = decode(accessToken);
-
-            console.log(decoded.exp);
-
             return (decoded.exp < Date.now() / 1000);
         } catch (err) {
             console.log('Expired token! Logout...');
