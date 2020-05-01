@@ -17,7 +17,7 @@ const UIPinned = ({ items }) => {
 
         let item = items[group];
         groupingItems[c].push(
-            <Grid.Column width={8}>
+            <Grid.Column width={8} key={group}>
                 <PinnedItem
                     tags={item.tags}
                     labels={item.labels}
@@ -42,7 +42,7 @@ const UIPinned = ({ items }) => {
             <Grid>
                 {
                     groupingItems.map(( group, key ) => (
-                        <Grid.Row columns={2}>
+                        <Grid.Row key={key} columns={2}>
                             { group }
                         </Grid.Row>
                     ))
