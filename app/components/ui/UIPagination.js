@@ -27,7 +27,7 @@ const UIPagination = ({ link, pages, current }) => {
 
     const renderButtons = () => {
         return [...new Array(pages)].map((v, k) => (
-            <ActivePaginationButton page={k} link={link}/>
+            <ActivePaginationButton key={k} page={k} link={link}/>
         ))
     };
 
