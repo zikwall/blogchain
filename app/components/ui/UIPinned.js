@@ -1,5 +1,6 @@
-import {Grid, Header, Segment} from "semantic-ui-react";
+import { Grid, Header, Segment } from "semantic-ui-react";
 import {LabelBar} from "./UIArticle";
+import UIPinsModal from "./UIPinsModal";
 
 const UIPinned = ({ items }) => {
     let groupingItems = [];
@@ -28,15 +29,26 @@ const UIPinned = ({ items }) => {
     }
 
     return (
-        <Grid>
-            {
-                groupingItems.map(( group, key ) => (
-                    <Grid.Row columns={2}>
-                        { group }
-                    </Grid.Row>
-                ))
-            }
-        </Grid>
+        <div>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                paddingTop: '10px',
+                paddingBottom: '10px'
+            }}>
+                <span>Pinned</span>
+                <UIPinsModal />
+            </div>
+            <Grid>
+                {
+                    groupingItems.map(( group, key ) => (
+                        <Grid.Row columns={2}>
+                            { group }
+                        </Grid.Row>
+                    ))
+                }
+            </Grid>
+        </div>
     )
 };
 
