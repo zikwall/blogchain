@@ -8,7 +8,7 @@ const UIDropdownItemLink = withRouter(({ name, href, as, router }) => {
     }
 
     return <Dropdown.Item
-        text={name}
+        //text={name}
         selected={(router.asPath === href || router.asPath === as)}
         onClick={() => {
             router.push(as)

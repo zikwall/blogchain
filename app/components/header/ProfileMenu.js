@@ -42,7 +42,7 @@ const ProfileMenu = ({ isAuthenticated, logout, user }) => {
     return (
         <Menu.Item>
             <Dropdown trigger={trigger} pointing='top right'>
-                <Dropdown.Menu pointing secondary>
+                <Dropdown.Menu pointing="true" secondary="true">
                     <Dropdown.Item text={
                         <span>
                          Авторизированы как <strong>{ user.username }</strong>
