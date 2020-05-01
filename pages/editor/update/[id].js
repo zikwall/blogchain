@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Content } from "../../../app/services";
 import { connect } from "react-redux";
 import { makeCdn } from "../../../app/constants";
-import { CommonForm } from "../CommonForm";
+import { CommonForm } from "../../../app/components/editor/CommonForm";
 
 const EditorPage = ({ token, id, content }) => {
     const [ image, setImage ] = useState([]);

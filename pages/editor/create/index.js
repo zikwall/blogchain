@@ -3,7 +3,7 @@ import { Container } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
 import { Content } from "../../../app/services";
 import { connect } from "react-redux";
-import { CommonForm } from "../CommonForm";
+import { CommonForm } from "../../../app/components/editor/CommonForm";
 
 const CreatePage = ({ token }) => {
     const [ image, setImage ] = useState([]);

@@ -8,7 +8,7 @@ import {
 } from "semantic-ui-react";
 
 import CommentExampleThreaded from "../../app/components/examples/Comment";
-import MoreOfAuthor from "./MoreOfAuthor";
+import MoreOfAuthor from "../../app/components/examples/MoreOfAuthor";
 import { CommonLayout } from "../../app/layouts";
 
 import {

@@ -6,9 +6,9 @@ import {
     UICoverImage,
     UITextArea,
     UISelect
-} from "../../app/components";
+} from "../index";
 
-import { Tag } from '../../app/services';
+import { Tag } from '../../services';
 
 const CommonForm = (
     {

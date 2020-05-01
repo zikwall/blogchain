@@ -1,5 +1,5 @@
 import {Divider, Header} from "semantic-ui-react";
-import {UIMoreItem} from "../../app/components";
+import {UIMoreItem} from "../index";
 
 const MoreOfAuthor = () => (
     <div style={{
