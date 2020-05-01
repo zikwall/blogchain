@@ -55,7 +55,7 @@ export const GetContent = (id) => {
         }
 
         return {
-            content: res.content,
+            ...res,
             status: true,
         }
     });
@@ -69,8 +69,6 @@ export const GetEditContent = (id, req) => {
                 content: {},
             }
         }
-
-        console.log(res);
 
         return {
             //id: res.content.id,

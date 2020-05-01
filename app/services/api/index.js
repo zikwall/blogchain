@@ -37,12 +37,12 @@ export const pureFetch = (url, options, headers) => {
         headers: headers,
         ...options
     })
-        .then(handleResponse)
-        .then(response => response.json());
+        .then(response => response.json())
+        .then(statusCodeMiddleware);
 };
 
-const handleResponse = (response) => {
-    return response;
+const statusCodeMiddleware = (response) => {
+    return {...response, ...{ statusCode: response.status }};
 };
 
 export const apiUrl = (url) => {

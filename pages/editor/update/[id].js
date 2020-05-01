@@ -67,12 +67,12 @@ const EditorPage = ({ token, id, content }) => {
 
 EditorPage.getInitialProps = async ({ res, query, req }) => {
     const { id } = query;
-    const { status, content } = await Content.GetEditContent(id, req);
+    const { status, content, statusCode } = await Content.GetEditContent(id, req);
 
     return {
         id: id,
         content: content,
-        statusCode: status ? false : 404
+        statusCode: statusCode
     }
 };
 
