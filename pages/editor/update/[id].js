@@ -1,6 +1,7 @@
 import { ProtectedLayout } from "../../../app/layouts";
 import { Container } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { Content } from "../../../app/services";
 import { connect } from "react-redux";
 import { makeCdn } from "../../../app/constants";
@@ -13,6 +14,8 @@ const EditorPageInner = ({ token, id, content }) => {
     const [ titles, setTitles ] = useState(content.title);
     const [ annotation, setAnnotation ] = useState(content.annotation);
     const [ tags, setTags ] = useState(!!content.related.tags ? content.related.tags.map(v => v.id) : []);
+
+    const router = useRouter();
 
     useEffect(() => {
         if (typeof image[0] !== 'undefined') {
@@ -39,6 +42,8 @@ const EditorPageInner = ({ token, id, content }) => {
         if (status === false) {
             return
         }
+
+        router.push(`/editor/${id}`);
     };
 
     return (

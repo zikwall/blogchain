@@ -1,6 +1,7 @@
 import { ProtectedLayout } from "../../../app/layouts";
 import { Container } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
 import { Content } from "../../../app/services";
 import { connect } from "react-redux";
 import { CommonForm } from "../../../app/components/editor/CommonForm";
@@ -12,6 +13,8 @@ const CreatePage = ({ token }) => {
     const [ titles, setTitles ] = useState('');
     const [ annotation, setAnnotation ] = useState('');
     const [ tags, setTags ] = useState([]);
+
+    const router = useRouter();
 
     useEffect(() => {
         if (typeof image[0] !== 'undefined') {
@@ -31,11 +34,13 @@ const CreatePage = ({ token }) => {
         data.append('annotation', annotation);
         data.append('tags', JSON.stringify(tags));
 
-        const { status } = await Content.CreateContent(data, token);
+        const { status, content_id } = await Content.CreateContent(data, token);
 
         if (status === false) {
             return
         }
+
+        router.push(`/editor/${content_id}`);
     };
 
     return (
