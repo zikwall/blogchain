@@ -53,7 +53,7 @@ const Post = ({ content }) => {
 
 Post.getInitialProps = async ({ query, res }) => {
     const { id } = query;
-    const { status, content, statusCode } = await Content.GetContent(id);
+    const { content, statusCode } = await Content.GetContent(id);
 
     return { content: content, statusCode: statusCode }
 };

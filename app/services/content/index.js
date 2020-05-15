@@ -45,40 +45,15 @@ export const UpdateContent = (id, fields, token) => {
     })
 };
 
-export const GetContent = (id) => {
-    return apiFetch(`/api/v1/content/${id}`).then((res) => {
-        if (res.status === 100) {
-            return {
-                status: false,
-                content: {},
-            }
-        }
-
-        return {
-            ...res,
-            status: true,
-        }
-    });
+export const GetContent = async (id) => {
+    return await apiFetch(`/api/v1/content/${id}`);
 };
 
-export const GetEditContent = (id, req) => {
-    return apiFetch(`/api/editor/content/${id}`, {}, req).then((res) => {
-        if (res.status === 100) {
-            return {
-                status: false,
-                content: {},
-            }
-        }
-
-        return {
-            //id: res.content.id,
-            ...res,
-            status: true,
-        }
-    })
+export const GetEditContent = async (id, req) => {
+    return await apiFetch(`/api/editor/content/${id}`, {}, req);
 };
 
-export const GetContents = (tag = null, page = 0) => {
+export const GetContents = async (tag = null, page = 0) => {
     let url = '/api/v1/contents';
 
     if (!!tag) {
@@ -89,19 +64,5 @@ export const GetContents = (tag = null, page = 0) => {
         url = url + `/${page}`
     }
 
-    return apiFetch(url).then((res) => {
-        if (res.status === 100) {
-            return {
-                status: false,
-                contents: [],
-                meta: {}
-            }
-        }
-
-        return {
-            status: true,
-            contents: res.contents,
-            meta: res.meta
-        }
-    })
+    return await apiFetch(url);
 };

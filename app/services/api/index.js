@@ -23,8 +23,9 @@ export const purePostFetch = (url, options) => {
     return fetch(url, {
         ...options
     })
-        .then(response => response.json())
-        .then(statusCodeMiddleware);
+        .then((r) => {
+            return r.json().then(data => ({...data, statusCode: r.status}))
+        });
 };
 
 export const pureFetch = (url, options, headers) => {
@@ -37,8 +38,9 @@ export const pureFetch = (url, options, headers) => {
         headers: headers,
         ...options
     })
-        .then(response => response.json())
-        .then(statusCodeMiddleware);
+        .then((r) => {
+            return r.json().then(data => ({...data, statusCode: r.status}))
+        });
 };
 
 const statusCodeMiddleware = (response) => {
