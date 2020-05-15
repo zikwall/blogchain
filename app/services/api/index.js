@@ -23,8 +23,8 @@ export const purePostFetch = (url, options) => {
     return fetch(url, {
         ...options
     })
-        .then(handleResponse)
-        .then(response => response.json());
+        .then(response => response.json())
+        .then(statusCodeMiddleware);
 };
 
 export const pureFetch = (url, options, headers) => {
