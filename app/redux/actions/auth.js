@@ -45,6 +45,8 @@ const reauthenticate = (token, user) => {
 // removing the token
 const deauthenticate = () => {
     return (dispatch) => {
+        Cookie.removeCookie(SESSION_TOKEN_KEY);
+        Cookie.removeCookie(USER_KEY);
         dispatch({type: DEAUTHENTICATE});
     };
 };
