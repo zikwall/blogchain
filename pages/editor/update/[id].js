@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { makeCdn } from "../../../app/constants";
 import { CommonForm } from "../../../app/components/editor/CommonForm";
 
-const EditorPage = ({ token, id, content }) => {
+const EditorPageInner = ({ token, id, content }) => {
     const [ image, setImage ] = useState([]);
     const [ preview, setPreview ] = useState(content.image);
     const [ contents, setContents ] = useState(content.content);
@@ -42,25 +42,35 @@ const EditorPage = ({ token, id, content }) => {
     };
 
     return (
+        <Container>
+            <CommonForm
+                title={titles}
+                content={contents}
+                annotation={annotation}
+                image={image}
+                preview={preview}
+                onSubmit={onSubmit}
+                setTitle={setTitles}
+                setContent={setContents}
+                setAnnotation={setAnnotation}
+                setImage={setImage}
+                setTags={setTags}
+                tags={tags}
+            />
+        </Container>
+    )
+};
+
+const EditorPage = ({ token, id, content }) => {
+    return (
         <ProtectedLayout
             title={`Обновление контента ${content.title}`}
         >
-            <Container>
-                <CommonForm
-                    title={titles}
-                    content={contents}
-                    annotation={annotation}
-                    image={image}
-                    preview={preview}
-                    onSubmit={onSubmit}
-                    setTitle={setTitles}
-                    setContent={setContents}
-                    setAnnotation={setAnnotation}
-                    setImage={setImage}
-                    setTags={setTags}
-                    tags={tags}
-                />
-            </Container>
+            <EditorPageInner
+                token={token}
+                content={content}
+                id={id}
+            />
         </ProtectedLayout>
     )
 };
