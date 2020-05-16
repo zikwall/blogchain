@@ -1,5 +1,5 @@
 import IndexLayout from "@blogchain/layouts/IndexLayout";
-import { Content } from "@blogchain/services";
+import { ContentClient } from "@blogchain/services";
 import { UIMostReading, UIPagination, UIArticle } from '@blogchain/components';
 
 export default function Tag({ contents, meta, currentPage, tagName }) {
@@ -37,7 +37,7 @@ export default function Tag({ contents, meta, currentPage, tagName }) {
 
 Tag.getInitialProps = async ({ res, query }) => {
     const { tag, page } = query;
-    const { status, contents, meta, statusCode } = await Content.GetContents(tag, page);
+    const { status, contents, meta, statusCode } = await ContentClient.contents(tag, page);
 
     return {
         contents: contents,

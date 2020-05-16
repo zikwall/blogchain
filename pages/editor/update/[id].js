@@ -2,10 +2,11 @@ import { ProtectedLayout } from "@blogchain/layouts";
 import { Container } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Content } from "@blogchain/services";
+import { ContentClient } from "@blogchain/services";
 import { connect } from "react-redux";
-import { makeCdn } from "@blogchain/constants";
+import { makeCdn, SESSION_TOKEN_KEY } from "@blogchain/constants";
 import { CommonForm } from "@blogchain/components/editor/CommonForm";
+import { Cookie } from "@blogchain/help";
 
 const EditorPageInner = ({ token, id, content }) => {
     const [ image, setImage ] = useState([]);
@@ -82,7 +83,8 @@ const EditorPage = ({ token, id, content }) => {
 
 EditorPage.getInitialProps = async ({ res, query, req }) => {
     const { id } = query;
-    const { status, content, statusCode } = await Content.GetEditContent(id, req);
+    const token = Cookie.getCookie(SESSION_TOKEN_KEY, req);
+    const { status, content, statusCode } = await ContentClient.own(id, token);
 
     return {
         id: id,

@@ -17,7 +17,7 @@ import {
     UICompanyInfo,
     UIArticleContent
 } from "@blogchain/components";
-import { Content } from "@blogchain/services";
+import { ContentClient } from "@blogchain/services";
 
 const Post = ({ content }) => {
     const contextRef = createRef();
@@ -53,7 +53,7 @@ const Post = ({ content }) => {
 
 Post.getInitialProps = async ({ query, res }) => {
     const { id } = query;
-    const { content, statusCode } = await Content.GetContent(id);
+    const { content, statusCode } = await ContentClient.content(id);
 
     return { content: content, statusCode: statusCode }
 };

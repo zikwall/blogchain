@@ -1,5 +1,5 @@
 import UserLayout from "@blogchain/layouts/UserLayout";
-import { apiFetch } from "@blogchain/services/api";
+import { ProfileClient } from "@blogchain/services";
 
 const Index = ({ user }) => {
     return (
@@ -9,17 +9,11 @@ const Index = ({ user }) => {
     )
 };
 
-Index.getInitialProps = async ({ query, req, res }) => {
+Index.getInitialProps = async ({ query }) => {
     const { username } = query;
-    const response = await apiFetch(`/api/v1/profile/${username}`, {}, req);
+    const { user, statusCode } = await ProfileClient.profile(username);
 
-    if (response.status === 100) {
-        res.statusCode = 404;
-        res.end('Not found');
-        return;
-    }
-
-    return { user: response.user }
+    return { user, statusCode };
 };
 
 export default Index;

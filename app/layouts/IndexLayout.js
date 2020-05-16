@@ -2,7 +2,7 @@ import { Container, Grid, Ref, Sticky } from "semantic-ui-react";
 import CommonLayout from "./CommonLayout";
 import { UIMenuItemLink, UITagsAsside, UITabMenu } from "@blogchain/components";
 import { createRef, useEffect, useState } from "react";
-import { Tag } from '../services';
+import { TagClient } from '../services';
 
 const Flows = [
     {title: 'Разработка', count: '+55', href: '/flows/develop'},
@@ -20,7 +20,7 @@ const IndexLayout = ({ children, title }) => {
     const [ tags, setTags ] = useState(null);
 
     useEffect(() => {
-        Tag.getTags().then(({ status, tags }) => {
+        TagClient.tags().then(({ status, tags }) => {
             // tmp
             if (!!tags) {
                 setTags(tags.map((v) => (
