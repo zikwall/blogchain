@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import { API_DOMAIN } from "../../constants";
 import { Session } from '../auth';
 import { Cookie } from "../../help";
