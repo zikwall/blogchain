@@ -1,7 +1,7 @@
 import decode from 'jwt-decode';
-import { Cookie } from '../../help';
+import { Cookie } from '@blogchain/help';
 import Cookies from 'js-cookie';
-import { SESSION_TOKEN_KEY, USER_KEY } from "../../constants";
+import { SESSION_TOKEN_KEY, USER_KEY } from "@blogchain/constants";
 
 export default class Session {
     static isGuest = (req) => {

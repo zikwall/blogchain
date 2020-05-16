@@ -1,6 +1,6 @@
 import { Label } from "semantic-ui-react";
 import moment from "moment";
-import { Time } from '../../utils';
+import { Time } from '@blogchain/utils';
 
 const UIPublisher = ({ name, time, avatar }) => {
     const avatarIs = !!avatar ? avatar : "/images/zebra_pl.jpg";

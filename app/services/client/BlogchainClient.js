@@ -33,16 +33,16 @@ async function request(url, params, options, method = 'GET') {
 
     optionsOverride = ObjectHelper.mergeDeep(optionsOverride, options);
 
-    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-        console.log([ '[HTTP]: Complex query options', optionsOverride ]);
-    }
-
     if (params) {
         if (method === 'GET') {
             url += '?' + objectToQueryString(params);
         } else {
             optionsOverride.body = JSON.stringify(params);
         }
+    }
+
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+        console.log([ `[HTTP]: Complex query: ${url} with options`, optionsOverride ]);
     }
 
     const response = await fetch(API_DOMAIN + url, optionsOverride);

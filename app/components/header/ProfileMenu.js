@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Dropdown, Image, Menu } from "semantic-ui-react";
 import { connect } from 'react-redux';
-import { deauthenticate } from '../../redux/actions';
 import { bindActionCreators } from "redux";
-import AuthItem from "./AuthItem";
-import QuickLogin from "./QuickLogin";
-import CloseWrapper from "../close/CloseWrapper";
-import UIDropdownItemLink from "../ui/UIDropdownItemLink";
+
+import AuthItem from "@blogchain/components/header/AuthItem";
+import QuickLogin from "@blogchain/components/header/QuickLogin";
+import { deauthenticate } from '@blogchain/redux/actions';
+import CloseWrapper from "@blogchain/components/close/CloseWrapper";
+import UIDropdownItemLink from "@blogchain/components/ui/UIDropdownItemLink";
 
 const ProfileMenu = ({ isAuthenticated, logout, user }) => {
     const [ isDropped, setIsDropped ] = useState(false);

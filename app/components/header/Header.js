@@ -1,8 +1,8 @@
 import { Input, Menu } from 'semantic-ui-react'
 import { connect } from 'react-redux';
-import { authenticate, reauthenticate } from '../../redux/actions';
+import { authenticate, reauthenticate } from '@blogchain/redux/actions';
 import ProfileMenu from './ProfileMenu';
-import UIMenuItemLink from "../ui/UIMenuItemLink";
+import UIMenuItemLink from "@blogchain/components/ui/UIMenuItemLink";
 
 const Header = ({ isAuthenticated }) => {
     return (

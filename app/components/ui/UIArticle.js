@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Icon, Label, Segment } from "semantic-ui-react";
 import Link from "next/link";
-import { makeCdn } from "../../constants";
+import { makeCdn } from "@blogchain/constants";
 import UICoverImage from "./UICoverImage";
 import UIPublisher from "./UIPublisher";
 import UITagBar from "./UITagbar";

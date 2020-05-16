@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from "next/router";
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { authenticate } from "../../redux/actions";
+import { authenticate } from "@blogchain/redux/actions";
 import { Message } from "semantic-ui-react";
 import { bindActionCreators } from "redux";
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button, Form, Message } from "semantic-ui-react";
 import {
     UIDropzone,
@@ -6,9 +6,9 @@ import {
     UICoverImage,
     UITextArea,
     UISelect
-} from "../index";
+} from "@blogchain/components";
 
-import { TagClient } from '../../services';
+import { TagClient } from '@blogchain/services';
 
 const CommonForm = (
     {

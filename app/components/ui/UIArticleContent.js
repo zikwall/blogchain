@@ -3,7 +3,7 @@ import UITagbar from "./UITagbar";
 import UITags from "./UITags";
 import { Header} from "semantic-ui-react";
 import UICoverImage from "./UICoverImage";
-import { makeCdn } from "../../constants";
+import { makeCdn } from "@blogchain/constants";
 
 const UIArticleContent = ({ content }) => {
 

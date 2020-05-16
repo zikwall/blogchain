@@ -1,7 +1,7 @@
 import Router from 'next/router';
-import { reauthenticate, deauthenticate } from '../../redux/actions';
-import { Cookie } from '../../help';
-import { USER_KEY, SESSION_TOKEN_KEY } from "../../constants";
+import { reauthenticate, deauthenticate } from '@blogchain/redux/actions';
+import { Cookie } from '@blogchain/help';
+import { USER_KEY, SESSION_TOKEN_KEY } from "@blogchain/constants";
 import Session from "./Session";
 
 // checks if the page is being loaded on the server, and if so, get auth token from the cookie:
