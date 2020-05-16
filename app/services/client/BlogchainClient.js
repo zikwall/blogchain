@@ -3,20 +3,15 @@ import { Http } from "@blogchain/utils";
 import { ObjectHelper } from "@blogchain/help";
 
 export function get(url, params, options) {
-    let headers = {
-        headers : {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        }
-    };
+    return request(url, params, options);
+}
 
-    let optionsOverride = ObjectHelper.mergeDeep(headers, options);
-
-    return request(url, params, optionsOverride);
+export function post(url, params, options) {
+    return request(url, params, options, 'POST');
 }
 
 export function create(url, params, options) {
-    return request(url, params, options, 'POST');
+    return post(url, params, options);
 }
 
 export function update(url, params, options) {
@@ -28,17 +23,25 @@ export function remove(url, params, options) {
 }
 
 async function request(url, params, options, method = 'GET') {
-
-    const optionsOverride = {
+    let optionsOverride = {
         method,
-        ...options
+        headers : {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
     };
+
+    optionsOverride = ObjectHelper.mergeDeep(optionsOverride, options);
+
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+        console.log([ '[HTTP]: Complex query options', optionsOverride ]);
+    }
 
     if (params) {
         if (method === 'GET') {
             url += '?' + objectToQueryString(params);
         } else {
-            options.body = JSON.stringify(params);
+            optionsOverride.body = JSON.stringify(params);
         }
     }
 

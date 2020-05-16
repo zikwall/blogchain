@@ -1,23 +1,16 @@
 import { AUTHENTICATE, DEAUTHENTICATE } from '@blogchain/redux/types';
 import { Cookie } from '@blogchain/help';
-import { apiFetch } from "@blogchain/services/api";
+import { AuthClient } from "@blogchain/services";
 import { SESSION_TOKEN_KEY, USER_KEY } from "@blogchain/constants";
 
-// gets token from the api and stores it in the redux store and in cookie
 const authenticate = ({ username, password }) => {
     return (dispatch) => {
-        return apiFetch('/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                username,
-                password
-            })
-        }).then((response) => {
-            if (response.status && response.status === 200) {
-                Cookie.setCookie(SESSION_TOKEN_KEY, response.token);
-                Cookie.setCookie(USER_KEY, JSON.stringify(response.user));
+        return AuthClient.login({ username, password }).then(({ status, token, user, message }) => {
+            if (status) {
+                Cookie.setCookie(SESSION_TOKEN_KEY, token);
+                Cookie.setCookie(USER_KEY, JSON.stringify(user));
 
-                dispatch({type: AUTHENTICATE, token: response.token, user: response.user});
+                dispatch({type: AUTHENTICATE, token: token, user: user});
 
                 return {
                     status: true,
@@ -27,10 +20,8 @@ const authenticate = ({ username, password }) => {
 
             return {
                 status: false,
-                message: response.message
+                message: message
             };
-        }).catch((error) => {
-            throw new Error(error);
         });
     }
 };
