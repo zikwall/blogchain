@@ -8,7 +8,7 @@ import {
     UISelect
 } from "../index";
 
-import { Tag } from '../../services';
+import { TagClient } from '../../services';
 
 const CommonForm = (
     {
@@ -57,7 +57,7 @@ const CommonForm = (
                     search={true}
                     multiple={true}
                     placeholder={'Select tags'}
-                    fetcher={Tag.getTags}
+                    fetcher={TagClient.tags}
                     value={tags}
                     onChange={(value) => setTags(value)}
                     onSearch={(query) => setSearch(query)}
