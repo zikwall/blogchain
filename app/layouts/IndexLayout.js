@@ -1,6 +1,6 @@
 import { Container, Grid, Ref, Sticky } from "semantic-ui-react";
 import CommonLayout from "./CommonLayout";
-import { UIMenuItemLink, UITagsAsside, UITabMenu } from "../components";
+import { UIMenuItemLink, UITagsAsside, UITabMenu } from "@blogchain/components";
 import { createRef, useEffect, useState } from "react";
 import { Tag } from '../services';
 

@@ -1,7 +1,7 @@
-import { AUTHENTICATE, DEAUTHENTICATE } from '../types';
-import { Cookie } from '../../help';
-import { apiFetch } from "../../services/api";
-import { SESSION_TOKEN_KEY, USER_KEY } from "../../constants";
+import { AUTHENTICATE, DEAUTHENTICATE } from '@blogchain/redux/types';
+import { Cookie } from '@blogchain/help';
+import { apiFetch } from "@blogchain/services/api";
+import { SESSION_TOKEN_KEY, USER_KEY } from "@blogchain/constants";
 
 // gets token from the api and stores it in the redux store and in cookie
 const authenticate = ({ username, password }) => {

@@ -1,5 +1,5 @@
 import { Container } from "semantic-ui-react";
-import IndexLayout from "../app/layouts/IndexLayout";
+import IndexLayout from "@blogchain/layouts/IndexLayout";
 
 const News = () => {
     return (

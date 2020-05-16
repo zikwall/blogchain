@@ -1,6 +1,6 @@
 import CommonLayout from "./CommonLayout";
 import { useSelector } from "react-redux";
-import { getToken } from "../redux/reducers";
+import { getToken } from "@blogchain/redux/reducers";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
