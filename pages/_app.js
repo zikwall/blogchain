@@ -2,14 +2,14 @@ import { Provider } from "react-redux";
 import App from "next/app";
 import ErrorPage from 'next/error';
 import withRedux from "next-redux-wrapper";
-import { MainLayout } from "../app/layouts";
-import { makeStore } from "../app/redux/Store";
-import { Initialize } from '../app/services/auth';
-import { Http } from "../app/utils";
+import { MainLayout } from "@blogchain/layouts";
+import { makeStore } from "@blogchain/redux/Store";
+import { Initialize } from '@blogchain/services/auth';
+import { Http } from "@blogchain/utils";
 
 // assets
 import 'semantic-ui-css/semantic.min.css'
-import '../app/assets/custom.css';
+import '@blogchain/assets/custom.css';
 import 'react-quill/dist/quill.snow.css';
 
 import Router from 'next/router';

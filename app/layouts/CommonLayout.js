@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { Header } from "../components";
+import { Header } from "@blogchain/components";
 import { Container, Menu, Icon, Button, Image } from 'semantic-ui-react';
-import { UIMenuItemLink } from "../components";
+import { UIMenuItemLink } from "@blogchain/components";
 
 const CommonLayout = ({ children, title }) => (
     <>

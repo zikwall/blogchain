@@ -7,17 +7,17 @@ import {
     Sticky,
 } from "semantic-ui-react";
 
-import CommentExampleThreaded from "../../app/components/examples/Comment";
-import MoreOfAuthor from "../../app/components/examples/MoreOfAuthor";
-import { CommonLayout } from "../../app/layouts";
+import CommentExampleThreaded from "@blogchain/components/examples/Comment";
+import MoreOfAuthor from "@blogchain/components/examples/MoreOfAuthor";
+import { CommonLayout } from "@blogchain/layouts";
 
 import {
     UICompanyBanner,
     UIPublisherSection,
     UICompanyInfo,
     UIArticleContent
-} from "../../app/components";
-import { Content } from "../../app/services";
+} from "@blogchain/components";
+import { Content } from "@blogchain/services";
 
 const Post = ({ content }) => {
     const contextRef = createRef();

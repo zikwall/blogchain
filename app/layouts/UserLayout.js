@@ -2,7 +2,7 @@ import ProtectedLayout from "./ProtectedLayout";
 import Head from "next/head";
 import { Button, Container, Grid, Header, Icon, Image, Label, Ref, Sticky} from "semantic-ui-react";
 import { createRef } from 'react';
-import { UIMenuItemLink, UITabMenu } from "../components";
+import { UIMenuItemLink, UITabMenu } from "@blogchain/components";
 
 const Sidebar = ({ user }) => {
     const avatar = !!user.profile.avatar ? user.profile.avatar : "/images/zebra_pl.jpg";

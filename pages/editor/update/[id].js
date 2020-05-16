@@ -1,11 +1,11 @@
-import { ProtectedLayout } from "../../../app/layouts";
+import { ProtectedLayout } from "@blogchain/layouts";
 import { Container } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Content } from "../../../app/services";
+import { Content } from "@blogchain/services";
 import { connect } from "react-redux";
-import { makeCdn } from "../../../app/constants";
-import { CommonForm } from "../../../app/components/editor/CommonForm";
+import { makeCdn } from "@blogchain/constants";
+import { CommonForm } from "@blogchain/components/editor/CommonForm";
 
 const EditorPageInner = ({ token, id, content }) => {
     const [ image, setImage ] = useState([]);

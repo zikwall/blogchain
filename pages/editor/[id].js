@@ -1,8 +1,8 @@
-import { Content } from "../../app/services";
+import { Content } from "@blogchain/services";
 import { Container } from 'semantic-ui-react';
-import { ProtectedLayout } from "../../app/layouts";
-import { UICoverImage } from "../../app/components";
-import { makeCdn } from "../../app/constants";
+import { ProtectedLayout } from "@blogchain/layouts";
+import { UICoverImage } from "@blogchain/components";
+import { makeCdn } from "@blogchain/constants";
 
 const ContentPage = ({ content }) => {
     return (

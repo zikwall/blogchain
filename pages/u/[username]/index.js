@@ -1,6 +1,6 @@
-import UserLayout from "../../../app/layouts/UserLayout";
-import { apiFetch } from "../../../app/services/api";
-import { UIPinned } from "../../../app/components";
+import UserLayout from "@blogchain/layouts/UserLayout";
+import { apiFetch } from "@blogchain/services/api";
+import { UIPinned } from "@blogchain/components";
 
 const Profile = ({ user }) => {
     return (

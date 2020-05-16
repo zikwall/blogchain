@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Button, Card, Image, Form, Header, Grid, Message } from 'semantic-ui-react';
-import { authenticate } from "../app/redux/actions";
+import { authenticate } from "@blogchain/redux/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { WithoutHeaderLayout } from "../app/layouts";
+import { WithoutHeaderLayout } from "@blogchain/layouts";
 
 const Login = ({ isAuthenticated, auth }) => {
     const [ username, setUsername ] = useState('');

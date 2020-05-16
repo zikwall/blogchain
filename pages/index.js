@@ -1,6 +1,6 @@
-import IndexLayout from "../app/layouts/IndexLayout";
-import { Content } from "../app/services";
-import { UIMostReading, UIPagination, UIArticle } from '../app/components';
+import IndexLayout from "@blogchain/layouts/IndexLayout";
+import { Content } from "@blogchain/services";
+import { UIMostReading, UIPagination, UIArticle } from '@blogchain/components';
 
 export default function Index({ contents, meta, currentPage }) {
     return (

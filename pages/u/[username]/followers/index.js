@@ -1,5 +1,5 @@
-import UserLayout from "../../../../app/layouts/UserLayout";
-import { apiFetch } from "../../../../app/services/api";
+import UserLayout from "@blogchain/layouts/UserLayout";
+import { apiFetch } from "@blogchain/services/api";
 
 const Index = ({ user }) => {
     return (
