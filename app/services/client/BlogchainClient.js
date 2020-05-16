@@ -1,6 +1,6 @@
 import { API_DOMAIN } from "@blogchain/constants";
 import { Http } from "@blogchain/utils";
-import { ObjectHelper } from "@blogchain/help";
+import { ObjectHelper, EnvHelper } from "@blogchain/help";
 
 export function get(url, params, options) {
     return request(url, params, options);
@@ -41,7 +41,7 @@ async function request(url, params, options, method = 'GET') {
         }
     }
 
-    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    if (EnvHelper.isDevelopment()) {
         console.log([ `[HTTP]: Complex query: ${url} with options`, optionsOverride ]);
     }
 
