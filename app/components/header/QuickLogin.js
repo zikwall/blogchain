@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { authenticate } from "../../redux/actions";
 import { Message } from "semantic-ui-react";
+import { bindActionCreators } from "redux";
 
-const QuickLogin = ({ visible, authenticate }) => {
+const QuickLogin = ({ visible, login }) => {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ error, setError ] = useState({
@@ -27,7 +28,7 @@ const QuickLogin = ({ visible, authenticate }) => {
     };
 
     const onSubmit = async () => {
-        const { status, message } = await authenticate({ username: username, password: password }, 'login');
+        const { status, message } = login({ username: username, password: password }, 'login');
 
         if (status === 100) {
             setError({
@@ -86,4 +87,8 @@ const QuickLogin = ({ visible, authenticate }) => {
     )
 };
 
-export default connect(state => state, { authenticate })(QuickLogin);
+const mapDispatchToProps = dispatch => bindActionCreators({
+    login: authenticate
+}, dispatch);
+
+export default connect(state => state, mapDispatchToProps)(QuickLogin);
