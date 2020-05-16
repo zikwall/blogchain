@@ -6,7 +6,7 @@
 
 ### Client
 
-- [x] Next (WIP)
+- [x] Next.js (WIP)
 
 ### Backend-s:
 
@@ -17,10 +17,54 @@
 
 ### Todo
 
+- [x] Custom Blogchain HTTP client
+- [x] Automatically HTTP error handling with use native http codes
+- [x] UI component collection
+- [x] Authorization\Auntification support: client side & server side based on JWT
+- [ ] Support SEO
+    - [x] Title
+    - [ ] Description
+    - [ ] Other meta tags
 - [x] Feeds | Index | Home (WIP)
-- [ ] Post | Posts | Tags
-- [x] Profile include (settings) (WIP)
+- [x] Post | Posts | Tags
+    - [x] Support WYSIWYG editor based on Quill: todo emoji
+    - [x] Create\Update\View content
+    - [ ] Delete content
+    - [ ] Content
+    - [x] TimeAgo
+    - [x] Author info
+    - [x] Image
+    - [x] Annotation
+    - [ ] Company Heading (if company exist)
+    - [ ] Company info (if exist)
+    - [ ] Comments
+    - [x] Tags
+    - [ ] Labels
+    - [ ] Actions
+    - [ ] Stats: views, rating, bookmarks
 - [ ] Top
+    - [ ] Most Popular
+    - [ ] Month | Week | Day
+- [ ] Publisher related items
+- [ ] News
+- [ ] Authors
+- [ ] Companies
+- [x] Login
+- [ ] Registration
+- [ ] Forgot password
+- [ ] Profile
+    - [ ] Overview
+        - [x] Information: Avatar, Location & etc.
+        - [ ] Pinned items
+        - [ ] Activity
+    - [ ] All items
+    - [ ] Stars
+    - [ ] Following
+    - [ ] Followers
+- [ ] Settings
+    - [ ] Security
+    - [ ] Profile edit
+- [ ] Global search
 
 ### Welcome
 
