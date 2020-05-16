@@ -40,7 +40,9 @@ const UIArticle = ({ id, title, text, image, tags, labels, publisher }) => {
 
             <Header as='h2'>
                 <Link href={'/post/[id]'} as={link} passHref>
-                    { title }
+                    <a>
+                        { title }
+                    </a>
                 </Link>
             </Header>
 
