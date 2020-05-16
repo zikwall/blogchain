@@ -1,3 +1,8 @@
+/**
+ * THIS ALL IS DEPRECATED!
+ * TODO REMOVE ALL
+ */
+
 import { API_DOMAIN } from "../../constants";
 import { Session } from '../auth';
 import { Cookie } from "../../help";

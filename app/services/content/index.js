@@ -1,3 +1,8 @@
+/**
+ * THIS ALL IS DEPRECATED!
+ * TODO REMOVE ALL
+ */
+
 import { apiFetch, apiPost } from "../api";
 
 const MakeDMLRequest = (url, fields, token) => {
