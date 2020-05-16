@@ -45,12 +45,8 @@ export const UpdateContent = (id, fields, token) => {
     })
 };
 
-export const GetContent = async (id) => {
+/*export const GetContent = async (id) => {
     return await apiFetch(`/api/v1/content/${id}`);
-};
-
-export const GetEditContent = async (id, req) => {
-    return await apiFetch(`/api/editor/content/${id}`, {}, req);
 };
 
 export const GetContents = async (tag = null, page = 0) => {
@@ -66,3 +62,11 @@ export const GetContents = async (tag = null, page = 0) => {
 
     return await apiFetch(url);
 };
+ */
+
+/*
+export const GetEditContent = async (id, req) => {
+    return await apiFetch(`/api/editor/content/${id}`, {}, req);
+};
+*/
+
