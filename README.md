@@ -27,6 +27,7 @@
     - [ ] Other meta tags
 - [x] Active Links support by href (or asHref)
 - [x] Feeds | Index | Home (WIP)
+    - [x] Pagination
 - [x] Post | Posts | Tags
     - [x] Support WYSIWYG editor based on Quill: todo emoji
     - [x] Create\Update\View content
