@@ -10,7 +10,7 @@ import { Cookie } from "@blogchain/help";
 
 const EditorPageInner = ({ token, id, content }) => {
     const [ image, setImage ] = useState([]);
-    const [ preview, setPreview ] = useState(content.image);
+    const [ preview, setPreview ] = useState(makeCdn(content.image));
     const [ contents, setContents ] = useState(content.content);
     const [ titles, setTitles ] = useState(content.title);
     const [ annotation, setAnnotation ] = useState(content.annotation);
