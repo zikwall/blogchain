@@ -1,0 +1,9 @@
+{
+  "headers": {
+    "X-Blogchain-App": 1,
+    "X-Platform": "web-next",
+    "X-App-Version": "0.0.1-build-commit#hash",
+    "X-Device-Name": "",
+    "X-Device-Id": ""
+  }
+}

@@ -1,5 +1,7 @@
 import { EnvHelper } from '@blogchain/help';
 
+export const APP_CONFIG = require('app.config');
+
 export const API_DOMAIN = EnvHelper.through(
     'http://127.0.0.1:3001',
     'http://127.0.0.1:3001'
