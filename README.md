@@ -21,6 +21,7 @@
 - [x] Automatically HTTP error handling with use native http codes
 - [x] UI component collection
 - [x] Authorization\Auntification support: client side & server side based on JWT
+- [x] Custom app X-Header(s)
 - [ ] Support SEO
     - [x] Title
     - [ ] Description
