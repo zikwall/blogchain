@@ -1,4 +1,4 @@
-import { API_DOMAIN } from "@blogchain/constants";
+import { API_DOMAIN, APP_CONFIG } from "@blogchain/constants";
 import { Http } from "@blogchain/utils";
 import { ObjectHelper, EnvHelper } from "@blogchain/help";
 
@@ -28,6 +28,7 @@ async function request(url, params, options, method = 'GET') {
         headers : {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            ...APP_CONFIG.headers
         }
     };
 
