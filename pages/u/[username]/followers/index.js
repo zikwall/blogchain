@@ -1,4 +1,4 @@
-import UserLayout from "@blogchain/layouts/UserLayout";
+import UserLayout from "@blogchain/layouts/ProfileLayout";
 import { ProfileClient } from "@blogchain/services";
 
 const Index = ({ user }) => {
