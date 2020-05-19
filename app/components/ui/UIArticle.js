@@ -5,26 +5,7 @@ import { makeCdn } from "@blogchain/constants";
 import UICoverImage from "./UICoverImage";
 import UIPublisher from "./UIPublisher";
 import UITagBar from "./UITagbar";
-
-export const LabelBar = ({ link, ratings, views, bookmarks, comments }) => (
-    <>
-        <Label basic pointing>
-            <Icon name='lightning' /> { ratings }
-        </Label>
-        <Label basic pointing>
-            <Icon name='eye' /> { views }
-        </Label>
-        <Label basic pointing>
-            <Icon name='bookmark' /> { bookmarks }
-        </Label>
-        <Link href={`/post/[id]/#comments`} as={`${link}#comments`}>
-            <Label basic color='blue' pointing as='a'>
-                Comments
-                <Label.Detail>{ comments }</Label.Detail>
-            </Label>
-        </Link>
-    </>
-);
+import UILabelBar from "@blogchain/components/ui/UILabelBar";
 
 const UIArticle = ({ id, title, text, image, tags, labels, publisher }) => {
     const link = `/post/${id}`;
@@ -59,7 +40,7 @@ const UIArticle = ({ id, title, text, image, tags, labels, publisher }) => {
             { text }
 
             <div style={{ paddingTop: '5px' }} />
-            <LabelBar
+            <UILabelBar
                 link={link}
                 ratings={labels.ratings}
                 views={labels.views}

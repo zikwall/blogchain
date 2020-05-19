@@ -1,5 +1,5 @@
 import { Grid, Header, Segment } from "semantic-ui-react";
-import {LabelBar} from "./UIArticle";
+import UILabelBar from "@blogchain/components/ui/UILabelBar";
 import UIPinsModal from "./UIPinsModal";
 
 const UIPinned = ({ items }) => {
@@ -63,7 +63,7 @@ const PinnedItem = ({ title, labels }) => (
             </a>
         </Header>
 
-        <LabelBar
+        <UILabelBar
             ratings={labels.ratings}
             bookmarks={labels.bookmarks}
             comments={labels.comments}

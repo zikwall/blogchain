@@ -26,3 +26,7 @@ export { default as UISelect } from './ui/UISelect';
 export { default as UITagsAsside } from './ui/UITagsAsside';
 export { default as UITabMenu } from './ui/UITabMenu';
 export { default as UIPinsModal } from './ui/UIPinsModal';
+export { default as UICreatedAt } from './ui/UICreatedAt';
+export { default as UILabelBar } from './ui/UILabelBar';
+export { default as UIArticleActions } from './ui/UIArticleAtions';
+export { default as UIProfileArticle } from './ui/UIProfileArticle';

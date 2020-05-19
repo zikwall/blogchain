@@ -1,6 +1,7 @@
 import { Label } from "semantic-ui-react";
 import moment from "moment";
 import { Time } from '@blogchain/utils';
+import { UICreatedAt } from "@blogchain/components";
 
 const UIPublisher = ({ name, time, avatar }) => {
     const avatarIs = !!avatar ? avatar : "/images/zebra_pl.jpg";
@@ -11,9 +12,7 @@ const UIPublisher = ({ name, time, avatar }) => {
                 <img src={avatarIs}/>
                 {name}
             </Label>
-            <Label as='a' basic>
-                {moment(Time.toJsUnix(time)).fromNow()}
-            </Label>
+            <UICreatedAt time={time} />
         </>
     )
 };

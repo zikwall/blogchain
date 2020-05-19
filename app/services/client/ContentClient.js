@@ -31,3 +31,13 @@ export async function own(id, token) {
 
     return BlogchainClient.get(url, null, options);
 }
+
+export async function userContents(id, page = 0) {
+    let url = StringHelper.REST('/api/v1/contents/user', id);
+
+    if (typeof page !== 'undefined' && page > 0) {
+        url = StringHelper.REST(url, page);
+    }
+
+    return BlogchainClient.get(url);
+}
