@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Input, Divider } from "semantic-ui-react";
-import UserLayout from "@blogchain/layouts/UserLayout";
+import UserLayout from "@blogchain/layouts/ProfileLayout";
 import { ContentClient, ProfileClient } from "@blogchain/services";
 import { UIProfileArticle, UIPagination } from "@blogchain/components";
 

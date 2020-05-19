@@ -1,10 +1,6 @@
-import ProtectedLayout from "./ProtectedLayout";
-import Head from "next/head";
-import { Button, Container, Grid, Header, Icon, Image, Label, Ref, Sticky} from "semantic-ui-react";
-import { createRef } from 'react';
-import { UIMenuItemLink, UITabMenu } from "@blogchain/components";
+import {Button, Header, Icon, Image, Label} from "semantic-ui-react";
 
-const Sidebar = ({ user }) => {
+const UIProfileSidebar = ({ user }) => {
     const avatar = !!user.profile.avatar ? user.profile.avatar : "/images/zebra_pl.jpg";
 
     return (
@@ -79,38 +75,4 @@ const Sidebar = ({ user }) => {
     )
 };
 
-const UserLayout = ({ user, children, title }) => {
-    const contextRef = createRef();
-
-    return (
-        <ProtectedLayout
-            title={`${user.profile.name} | Blogchain`}
-        >
-            <Container>
-                <Grid>
-                    <Ref innerRef={contextRef}>
-                        <Grid.Row columns={2}>
-                            <Grid.Column width={5}>
-                                <Sticky context={contextRef} offset={30}>
-                                    <Sidebar user={user}/>
-                                </Sticky>
-                            </Grid.Column>
-                            <Grid.Column width={11}>
-                                <UITabMenu>
-                                    <UIMenuItemLink href="/u/[username]" as={`/u/${user.username}`} name="Обзор" />
-                                    <UIMenuItemLink href="/u/[username]/all" as={`/u/${user.username}/all`} name="Все статьи" />
-                                    <UIMenuItemLink href="/u/[username]/stars" as={`/u/${user.username}/stars`} name="Звезды" />
-                                    <UIMenuItemLink href="/u/[username]/followers" as={`/u/${user.username}/followers`} name="Подписчики" />
-                                    <UIMenuItemLink href="/u/[username]/followings" as={`/u/${user.username}/followings`} name="Подписки" />
-                                </UITabMenu>
-                                { children }
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Ref>
-                </Grid>
-            </Container>
-        </ProtectedLayout>
-    )
-};
-
-export default UserLayout;
+export default UIProfileSidebar;

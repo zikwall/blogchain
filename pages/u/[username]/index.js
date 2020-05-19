@@ -1,4 +1,4 @@
-import UserLayout from "@blogchain/layouts/UserLayout";
+import UserLayout from "@blogchain/layouts/ProfileLayout";
 import { apiFetch } from "@blogchain/services/api";
 import { UIPinned } from "@blogchain/components";
 import { ProfileClient } from '@blogchain/services';

@@ -30,3 +30,4 @@ export { default as UICreatedAt } from './ui/UICreatedAt';
 export { default as UILabelBar } from './ui/UILabelBar';
 export { default as UIArticleActions } from './ui/UIArticleAtions';
 export { default as UIProfileArticle } from './ui/UIProfileArticle';
+export { default as UIProfileSidebar } from './ui/UIProfileSidebar';
