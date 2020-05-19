@@ -60,7 +60,7 @@
         - [x] Information: Avatar, Location & etc.
         - [ ] Pinned items
         - [ ] Activity
-    - [ ] All items
+    - [x] All items
     - [ ] Stars
     - [ ] Following
     - [ ] Followers
