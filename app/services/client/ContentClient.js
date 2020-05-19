@@ -31,3 +31,9 @@ export async function own(id, token) {
 
     return BlogchainClient.get(url, null, options);
 }
+
+export async function userContents(id) {
+    let url = StringHelper.REST('/api/v1/contents/user', id);
+
+    return BlogchainClient.get(url);
+}
