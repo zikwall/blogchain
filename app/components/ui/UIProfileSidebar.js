@@ -79,7 +79,7 @@ const UIProfileLocationWithContacts = ({ email, location }) => (
             <>
                 <div style={{paddingTop: '5px'}}/>
                 <Label basic>
-                    <Icon name='map marker alternate'/> Russian, Moscow
+                    <Icon name='map marker alternate'/> { location }
                 </Label>
             </>
         }
