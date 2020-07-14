@@ -77,3 +77,13 @@ https://blogchain.now.sh/
 
 1. Use one of backend apps, example Go: `go run .`
 2. `npm run dev`
+
+### Preview
+
+Home with tags | Editor page | Profile
+--- | --- | --- |
+![Preview](./screenshots/app.png) | ![Preview](./screenshots/editor.png) | ![Preview](./screenshots/profile.png)
+
+Post | Login | Error pages
+--- | --- | --- |
+![Preview](./screenshots/post.png) | ![Preview](./screenshots/login.png) | ![Preview](./screenshots/404.png)
