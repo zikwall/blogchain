@@ -19,7 +19,7 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-class MyApp extends App {
+class BlogchainClientApplication extends App {
     static async getInitialProps({ Component, ctx }) {
 
         /**
@@ -80,4 +80,4 @@ class MyApp extends App {
     }
 }
 
-export default withRedux(makeStore)(MyApp);
+export default withRedux(makeStore)(BlogchainClientApplication);
