@@ -1,6 +1,15 @@
 import {API_DOMAIN, APP_CONFIG} from "@blogchain/constants";
 import {Http} from "@blogchain/utils";
 import {ObjectHelper, EnvHelper} from "@blogchain/help";
+import {BlogchainClient} from "@blogchain/services";
+
+export function withRequestBearer(token) {
+    return {
+        headers: {
+            Authorization: BlogchainClient.authHeader(token)
+        }
+    };
+}
 
 export function get(url, params, options) {
     return request(url, params, options);

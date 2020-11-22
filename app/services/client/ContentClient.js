@@ -1,12 +1,9 @@
 import {BlogchainClient} from '@blogchain/services';
 import {StringHelper} from "@blogchain/help";
+import {withRequestBearer} from "@blogchain/services/client/BlogchainClient";
 
 function withRequestCredentials(url, params, token) {
-    return BlogchainClient.post(url, params, {
-        headers: {
-            Authorization: BlogchainClient.authHeader(token)
-        }
-    }, false)
+    return BlogchainClient.post(url, params, withRequestBearer(token), false)
 }
 
 export async function createContent(fields, token) {
@@ -68,13 +65,8 @@ export async function content(id) {
 
 export async function own(id, token) {
     let url = StringHelper.REST('/api/editor/content', id);
-    let options = {
-        headers: {
-            'Authorization': BlogchainClient.authHeader(token)
-        }
-    };
 
-    return BlogchainClient.get(url, null, options);
+    return BlogchainClient.get(url, null, withRequestBearer(token));
 }
 
 export async function userContents(id, page = 0) {
