@@ -2,7 +2,7 @@ import { ProtectedLayout } from "@blogchain/layouts";
 import { Container } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { ContentClient } from "@blogchain/services";
+import { ContentClient, Content } from "@blogchain/services";
 import { connect } from "react-redux";
 import { makeCdn, SESSION_TOKEN_KEY } from "@blogchain/constants";
 import { CommonForm } from "@blogchain/components/editor/CommonForm";
