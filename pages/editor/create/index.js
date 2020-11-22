@@ -2,7 +2,7 @@ import { ProtectedLayout } from "@blogchain/layouts";
 import { Container } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
-import { Content } from "@blogchain/services";
+import { ContentClient } from "@blogchain/services";
 import { connect } from "react-redux";
 import { CommonForm } from "@blogchain/components/editor/CommonForm";
 
@@ -34,7 +34,7 @@ const CreatePage = ({ token }) => {
         data.append('annotation', annotation);
         data.append('tags', JSON.stringify(tags));
 
-        const { status, content_id } = await Content.CreateContent(data, token);
+        const { status, content_id } = await ContentClient.createContent(data, token);
 
         if (status === false) {
             return

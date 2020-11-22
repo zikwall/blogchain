@@ -31,15 +31,16 @@ function onResolveResponse(response) {
 
 function onSuccessResponse(response) {
     return {
+        ...response,
         status: true,
-        message: response.message,
     }
 }
 
 function onErrorResponse(response) {
     return {
-        ...response,
         status: false,
+        message: response.message,
+        content_id: 0
     }
 }
 
