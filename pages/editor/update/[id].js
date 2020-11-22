@@ -40,8 +40,6 @@ const EditorPageInner = ({ token, id, content }) => {
 
         const { status } = await ContentClient.updateContent(id, data, token);
 
-        console.log(['AAA',status]);
-
         if (status === false) {
             return
         }
