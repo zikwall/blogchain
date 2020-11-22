@@ -50,28 +50,3 @@ export const UpdateContent = (id, fields, token) => {
     })
 };
 
-/*export const GetContent = async (id) => {
-    return await apiFetch(`/api/v1/content/${id}`);
-};
-
-export const GetContents = async (tag = null, page = 0) => {
-    let url = '/api/v1/contents';
-
-    if (!!tag) {
-        url = `/api/v1/tag/${tag}`;
-    }
-
-    if (typeof page !== 'undefined' && page > 0) {
-        url = url + `/${page}`
-    }
-
-    return await apiFetch(url);
-};
- */
-
-/*
-export const GetEditContent = async (id, req) => {
-    return await apiFetch(`/api/editor/content/${id}`, {}, req);
-};
-*/
-
