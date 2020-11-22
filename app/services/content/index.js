@@ -4,6 +4,47 @@
  */
 
 import { apiFetch, apiPost } from "../api";
+import { BlogchainClient } from "@blogchain/services";
+
+async function withRequestCredentials(url, params, token) {
+    return BlogchainClient.post(url, params, {
+        "Authorization": "Bearer " + token
+    })
+}
+
+async function createContent(fields, token) {
+   let response = await withRequestCredentials('/api/editor/content/add', fields, token);
+   
+   return onResolveResponse(response);
+}
+
+async function updateContent(id, fields, token) {
+    let response = await withRequestCredentials(`/api/editor/content/update/${id}`, fields, token);
+
+    return onResolveResponse(response);
+}
+
+function onResolveResponse(response) {
+    if (!!response && response.status !== 100) {
+        return onSuccessResponse(response);
+    }
+    
+    return onErrorResponse(response);
+}
+
+function onSuccessResponse(response) {
+    return {
+        status: false,
+        message: response.message,
+    }
+}
+
+function onErrorResponse(response) {
+    return {
+        ...response,
+        status: true,
+    }
+}
 
 const MakeDMLRequest = (url, fields, token) => {
     return apiPost(url, {

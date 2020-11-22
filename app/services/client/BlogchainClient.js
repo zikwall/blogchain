@@ -1,13 +1,13 @@
-import { API_DOMAIN, APP_CONFIG } from "@blogchain/constants";
-import { Http } from "@blogchain/utils";
-import { ObjectHelper, EnvHelper } from "@blogchain/help";
+import {API_DOMAIN, APP_CONFIG} from "@blogchain/constants";
+import {Http} from "@blogchain/utils";
+import {ObjectHelper, EnvHelper} from "@blogchain/help";
 
 export function get(url, params, options) {
     return request(url, params, options);
 }
 
-export function post(url, params, options) {
-    return request(url, params, options, 'POST');
+export function post(url, params, options, useDefaultHeaders = true) {
+    return request(url, params, options, 'POST', useDefaultHeaders);
 }
 
 export function create(url, params, options) {
@@ -22,15 +22,22 @@ export function remove(url, params, options) {
     return request(url, params, options, 'DELETE');
 }
 
-async function request(url, params, options, method = 'GET') {
+async function request(url, params, options, method = 'GET', useDefaultHeaders = true) {
     let optionsOverride = {
         method,
-        headers : {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            ...APP_CONFIG.headers
-        }
     };
+
+    if (useDefaultHeaders) {
+        optionsOverride = {
+            ...optionsOverride, ...{
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    ...APP_CONFIG.headers
+                }
+            }
+        };
+    }
 
     optionsOverride = ObjectHelper.mergeDeep(optionsOverride, options);
 
@@ -38,12 +45,12 @@ async function request(url, params, options, method = 'GET') {
         if (method === 'GET') {
             url += '?' + objectToQueryString(params);
         } else {
-            optionsOverride.body = JSON.stringify(params);
+            optionsOverride.body = params;
         }
     }
 
     if (EnvHelper.isDevelopment()) {
-        console.log([ `[HTTP]: Complex query: ${url} with options`, optionsOverride ]);
+        console.log([`[HTTP]: Complex query: ${url} with options`, optionsOverride]);
     }
 
     const response = await fetch(API_DOMAIN + url, optionsOverride);

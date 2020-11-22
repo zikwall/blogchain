@@ -2,7 +2,7 @@ import { ProtectedLayout } from "@blogchain/layouts";
 import { Container } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { ContentClient, Content } from "@blogchain/services";
+import { ContentClient } from "@blogchain/services";
 import { connect } from "react-redux";
 import { makeCdn, SESSION_TOKEN_KEY } from "@blogchain/constants";
 import { CommonForm } from "@blogchain/components/editor/CommonForm";
@@ -38,7 +38,9 @@ const EditorPageInner = ({ token, id, content }) => {
         data.append('annotation', annotation);
         data.append('tags', JSON.stringify(tags));
 
-        const { status } = await Content.UpdateContent(id, data, token);
+        const { status } = await ContentClient.updateContent(id, data, token);
+
+        console.log(['AAA',status]);
 
         if (status === false) {
             return
