@@ -76,7 +76,7 @@ https://blogchain.now.sh/
 ### Run dev
 
 1. Use one of backend apps, example Go: `go run .`
-2. `npm run dev`
+2. `yarn dev`
 
 ### Preview
 
