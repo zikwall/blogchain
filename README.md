@@ -6,14 +6,15 @@
 
 ### Client
 
-- [x] Next.js (WIP)
+- [x] [Next.js](https://github.com/zikwall/blogchain)
+- [ ] [Svelte](https://github.com/zikwall/blogchain-svelte)
 
 ### Backend-s:
 
-- [x] [Go (WIP)](https://github.com/zikwall/blogchain-go)
+- [x] [Go](https://github.com/zikwall/blogchain-go)
 - [ ] Rust
 - [ ] PHP
-- [ ] Node.js
+- [ ] Node.js (Express, Polka - self server)
 
 ### Todo
 
