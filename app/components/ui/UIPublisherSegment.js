@@ -1,6 +1,6 @@
 import {Button, Header, Image} from "semantic-ui-react";
 
-const Object = ({ src, title, subTitle }) => (
+const ObjectComponent = ({ src, title, subTitle }) => (
     <div style={{
         display: 'flex',
         flexDirection: 'row',
@@ -36,7 +36,7 @@ const UIPublisherSegment = ({ src, title, subTitle }) => (
         alignItems: 'center'
     }}>
         <div>
-            <Object
+            <ObjectComponent
                 src={src}
                 title={title}
                 subTitle={subTitle}
