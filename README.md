@@ -1,4 +1,5 @@
 [![build](https://github.com/zikwall/blogchain/workflows/Test%20Client/badge.svg)](https://github.com/zikwall/blogchain/actions)
+[![code quality](https://github.com/zikwall/blogchain/workflows/CodeQL/badge.svg)](https://github.com/zikwall/blogchain/actions)
 
 <div align="center">
   <img width="100" height="100" src="https://github.com/zikwall/blogchain/blob/master/screenshots/bc_300.png">
