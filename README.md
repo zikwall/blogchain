@@ -15,7 +15,7 @@
 ### Backend-s:
 
 - [x] [Go](https://github.com/zikwall/blogchain-go)
-- [ ] Rust
+- [ ] [Rust](https://github.com/zikwall/blogchain-rust)
 - [ ] PHP
 - [ ] Node.js (Express, Polka - self server)
 
