@@ -6,7 +6,8 @@ import { SESSION_TOKEN_KEY, USER_KEY } from "@blogchain/constants";
 const authenticate = ({ username, password }) => {
     return (dispatch) => {
         return AuthClient.login({ username, password }).then(({ status, token, user, message }) => {
-            if (status) {
+            // todo temporary fix: status code is always true
+            if (status && typeof token != "undefined") {
                 Cookie.setCookie(SESSION_TOKEN_KEY, token);
                 Cookie.setCookie(USER_KEY, JSON.stringify(user));
 
