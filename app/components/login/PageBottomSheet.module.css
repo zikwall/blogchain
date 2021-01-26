@@ -1,0 +1,95 @@
+.PageBottomBanner_bg_green {
+    background: #43a843;
+    box-shadow: 0 0 1px #000;
+}
+
+.PageBottomBanner_animated {
+    animation-delay: .4s;
+    animation-name: page-bottom-banner-intro;
+    animation-duration: .34s;
+    animation-timing-function: cubic-bezier(.36,.66,.04,1);
+    animation-fill-mode: both;
+}
+
+.PageBottomBanner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    box-sizing: border-box;
+    left: 0;
+}
+
+.PageBottomBanner__in {
+    padding: 13px 0;
+    margin: auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 1027px;
+}
+
+.PageBottomBanner__unauth .PageBottomBanner__in {
+    padding: 18px 0;
+}
+
+.PageBottomBanner_bg_green .PageBottomBanner__icon__logo {
+    background-image: url(data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAADKUlEQVRIicWWzUtUURjGn3PvzCR3ivSq9CWCDJeyIa2orIWQZjtrY/9AkCuZglYVhNTKRYFtamO0MbOdodQmFAUT8YNIwTYJmibona7j5O2Oc89540wfuEg72jQ9q3s4zz2/8x7e9z2HEU9DMB2MsdMMiAGoAbATgED2pAH4CmAQoIcceP2FJEHChbhMOZRPdDMhBJgQ/Ahj2rssRqkkQXSeEYkXALuYazhAo4yIVgDsyj0crkwE/T+AMwoASCv4BBElGGMkhAARQde/79l13R2GYYS3wfYDikbH87wi13URCoUQDAYxOzuLkZERJJNJWS37I5HIldra2jtboWuKvmA6nT4F4Iiu6xV5eXkVtm1X9vX1Hbcsy0omk59aW1vvNjc3n0ulUup0IlpWqXAhxIZzq6urc7FY7JBpmhgfH3+i2DESqpHLDrjhnGEYB2Kx2KP6+npMTEw8U11TGf4nWZZ10LIsTE1NzeUcPjAw8KqtrQ3l5eXHVP9RzfYN5bru6sLCwsuOjo6r+fn5oerq6lvZhicAnLVtO+44zsdAIJDJAd/30d/fj7GxMfT29qKnp6ezrKzscLbhfiqVejs5OQnHcU6HQiEh4Z7naaWlpWSa5tzMzMx8V1fX/cbGRqugoOC40qqKpfb5R2c7sZFhdHT0cTQaRV1dXdi27YRKqSnDZUslosrNTJ2dndeLi4vR3d1971/AKzYzcc6HBwcHZa1fVIH/dbavF2PMj8fjsvcr3ZRbrfNN/S0tLU8aGhowPz9/Umm1rSSc7/tHf9fjhRAr09PTtyORCIqKihCPxxeyeexCwhcXF9/qur7HMAwKh8Nob2/XbdvmJSUlS8PDw6ipqUFTU9Nz0zT3qiwqn1HLAHb/wZdYW1ur8jzPAbCoaVrmMbG0tIShoSF5t++LRqMXqqqqrhcWFh5UDGhFFZ4JXULXjfFjzDjn7OfLZgtakcceVPFr68nfx7++twHO/Ja1W20bymz/zX+Cf2Bc8DMa03K+ASJ+CQnBkSZxQ6EusyZO9MAhAfZZcOxkTGZdPcCuAagEkCc3l8VA5QNwDcB7gB5x4OkyGL4B16ksYhIMh5kAAAAASUVORK5CYII=);
+}
+
+.PageBottomBanner__icon {
+    margin-right: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: -12px;
+    margin-bottom: -12px;
+}
+
+.PageBottomBanner__icon__logo {
+    width: 36px;
+    height: 36px;
+}
+
+.PageBottomBanner__content {
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.PageBottomBanner_bg_green .PageBottomBanner__header {
+    color: #fff;
+}
+
+.PageBottomBanner__header {
+    margin-bottom: 1px;
+}
+
+.PageBottomBanner__header {
+    font-weight: 500;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    color: #000;
+}
+
+.PageBottomBanner_bg_green .PageBottomBanner__text {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.PageBottomBanner__actions {
+    margin-left: 12px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+

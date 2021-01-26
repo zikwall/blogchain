@@ -1,10 +1,16 @@
 import { useState } from 'react';
+
+// next
 import { useRouter } from "next/router";
+
+// redux
 import { connect } from 'react-redux';
-import classNames from 'classnames';
-import { authenticate } from "@blogchain/redux/actions";
-import { Message } from "semantic-ui-react";
 import { bindActionCreators } from "redux";
+import { authenticate } from "@blogchain/redux/actions";
+
+// components
+import classNames from 'classnames';
+import { Message } from "semantic-ui-react";
 
 const QuickLogin = ({ visible, login }) => {
     const [ username, setUsername ] = useState('');

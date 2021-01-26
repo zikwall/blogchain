@@ -1,10 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+// next
 import Head from "next/head";
+import Link from "next/link";
+
+// redux
 import { useRouter } from "next/router";
-import { Button, Card, Image, Form, Header, Grid, Message } from 'semantic-ui-react';
-import { authenticate } from "@blogchain/redux/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
+import { authenticate } from "@blogchain/redux/actions";
+
+// components
+import { Button, Card, Image, Form, Header, Grid, Message } from 'semantic-ui-react';
 import { WithoutHeaderLayout } from "@blogchain/layouts";
 
 const Login = ({ isAuthenticated, auth }) => {
@@ -100,7 +107,10 @@ const Login = ({ isAuthenticated, auth }) => {
                             </Form>
                         </Card.Content>
                         <Card.Content extra>
-                            New to us? <a href='#'>Sign Up</a>
+                            New to us? <Link href='/register'><a>Sign Up</a></Link>
+                        </Card.Content>
+                        <Card.Content extra>
+                            Forgot your password? <Link href='/recover'><a>To recover the password</a></Link>
                         </Card.Content>
                     </Card>
                 </Grid.Column>
