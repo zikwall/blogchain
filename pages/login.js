@@ -8,10 +8,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
+import { authenticate } from "@blogchain/redux/actions";
 
 // components
 import { Button, Card, Image, Form, Header, Grid, Message } from 'semantic-ui-react';
-import { authenticate } from "@blogchain/redux/actions";
 import { WithoutHeaderLayout } from "@blogchain/layouts";
 
 const Login = ({ isAuthenticated, auth }) => {

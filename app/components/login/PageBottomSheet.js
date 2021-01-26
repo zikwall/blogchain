@@ -1,9 +1,15 @@
 import { useSelector } from "react-redux";
-import styles from './PageBottomSheet.module.css';
-import { Button, Container } from "semantic-ui-react";
-import { getToken } from "@blogchain/redux/reducers";
+
+// next
 import { useRouter } from "next/router";
+
+// redux
+import { getToken } from "@blogchain/redux/reducers";
+
+// components
+import { Button, Container } from "semantic-ui-react";
 import { LoginModal } from "@blogchain/components";
+import styles from './PageBottomSheet.module.css';
 
 const LoginPageBottomSheet = () => {
     const router = useRouter();

@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Button, Form, Card, Message } from "semantic-ui-react";
+
+// redux
 import { useDispatch } from "react-redux";
 import { authenticate } from "@blogchain/redux/actions";
+
+// components
+import { Button, Form, Card, Message } from "semantic-ui-react";
 
 const LoginForm = ({ onSuccess }) => {
     const dispatch = useDispatch();

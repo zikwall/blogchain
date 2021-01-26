@@ -1,8 +1,12 @@
 import Head from "next/head";
-import { Container, Menu, Icon, Button, Image } from 'semantic-ui-react';
+
+// redux
 import { useSelector } from "react-redux";
 import { getToken } from "@blogchain/redux/reducers";
-import { Header, LoginPageBottomSheet, UIMenuItemLink } from "@blogchain/components";
+
+// components
+import { Container, Menu, Icon, Button, Image } from 'semantic-ui-react';
+import { Header, LoginPageBottomSheet, UnauthDummy, UIMenuItemLink } from "@blogchain/components";
 
 const CommonLayout = ({ children, title }) => {
     const token = useSelector(state => getToken(state));
@@ -64,10 +68,7 @@ const CommonLayout = ({ children, title }) => {
                 </div>
             </Container>
 
-            { /* if user is not authorized see botomm sheet */ }
-            { !token && <div style={{
-                paddingBottom: '80px'
-            }} /> }
+            <UnauthDummy visible={!token} />
         </>
     )
 };
