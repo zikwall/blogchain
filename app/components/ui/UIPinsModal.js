@@ -4,7 +4,7 @@ const UIPinsModal = () => {
     return (
         <Modal
             size={'tiny'}
-            dimmer={'inverted'}
+            dimmer={'blurring'}
             trigger={
                 <Label as='a' basic>
                     Customize your pins
