@@ -1,0 +1,61 @@
+.UnauthActionBox_rich {
+    padding: 40px;
+}
+
+.UnauthActionBox {
+    padding: 52px 40px 56px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.UnauthActionBox_rich .UnauthActionBox__in {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.UnauthActionBox_rich .UnauthActionBox__hero, .UnauthActionBox_rich .UnauthActionBox__aside {
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+}
+.UnauthActionBox__hero {
+    text-align: center;
+}
+
+.UnauthActionBox__ownerPhoto {
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 88px;
+    height: 88px;
+}
+
+.UnauthActionBox__header {
+    margin: 16px 0;
+    color: #000;
+    font-size: 18px;
+    line-height: 22px;
+    word-wrap: break-word;
+}
+
+.UnauthActionBox__text {
+    font-size: 14px;
+    line-height: 18px;
+    color: #000;
+}
+
+.UnauthActionBox .LoginBox, .UnauthActionBox .JoinForm {
+    background: #f7f8fa;
+    border-radius: 4px;
+    padding: 36px 30px 24px;
+}
+
+.JoinForm__footer {
+    text-align: center;
+    margin-top: 24px;
+    color: #6f7985;
+}
