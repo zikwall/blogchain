@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useContext } from "react";
 import Link from "next/link";
 
 // components
@@ -6,14 +6,60 @@ import { Modal, List } from "semantic-ui-react";
 import LoginForm from "./LoginForm";
 import styles from './Modal.module.css';
 
+const LoginModalStateContext = React.createContext();
+const LoginModalDispatchContext = React.createContext();
+
+function modalReducer(state, action) {
+    switch (action.type) {
+        case 'OPEN_MODAL':
+            console.log("OPEN", state, action)
+            return { ...state, open: true, countOpened: state.countOpened + 1 }
+        case 'CLOSE_MODAL':
+            console.log("CLOSE", state, action)
+            return { ...state, open: false }
+        default:
+            throw new Error(`Unhandled action type: ${action.type}`)
+    }
+}
+
+export function LoginModalProvider({ children }) {
+    const [ state, dispatch ] = useReducer(modalReducer, { open: false, countOpened: 0 })
+    return (
+        <LoginModalStateContext.Provider value={state}>
+            <LoginModalDispatchContext.Provider value={dispatch}>
+                {children}
+            </LoginModalDispatchContext.Provider>
+        </LoginModalStateContext.Provider>
+    )
+}
+
+export function useLoginModalState() {
+    const context = useContext(LoginModalStateContext)
+    if (context === undefined) {
+        throw new Error('useCountState must be used within a CountProvider')
+    }
+    return context
+}
+
+export function useLoginModalDispatch() {
+    const context = useContext(LoginModalDispatchContext)
+    if (context === undefined) {
+        throw new Error('useCountDispatch must be used within a CountProvider')
+    }
+    return context
+}
+
 const LoginModal = ({ trigger }) => {
-    const [ open, setOpen ] = useState(false);
+    const state = useLoginModalState();
+    const dispatch = useLoginModalDispatch();
+
+    const { open } = state;
 
     return (
         <Modal
             basic
-            onClose={() => setOpen(false)}
-            onOpen={() => setOpen(true)}
+            onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
+            onOpen={() => dispatch({ type: 'OPEN_MODAL' })}
             open={open}
             size={'large'}
             dimmer={'blurring'}
@@ -38,7 +84,7 @@ const LoginModal = ({ trigger }) => {
                     </div>
                     <div className={ styles.UnauthActionBox__aside }>
                         <div className={ styles.JoinForm }>
-                            <LoginForm onSuccess={() => setOpen(false)} />
+                            <LoginForm onSuccess={() => dispatch({ type: 'CLOSE_MODAL' })} />
                             <div className={ styles.JoinForm__footer }>
                                 <List link>
                                     <List.Item>New to us? <Link href='/register'><a>Sign Up</a></Link></List.Item>

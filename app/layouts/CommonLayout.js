@@ -1,15 +1,48 @@
+import { useEffect, useCallback } from 'react';
 import Head from "next/head";
 
 // redux
 import { useSelector } from "react-redux";
 import { getToken } from "@blogchain/redux/reducers";
+import { LoginModalProvider, useLoginModalDispatch, useLoginModalState } from '@blogchain/components/login/LoginModal';
 
 // components
 import { Container, Menu, Icon, Button, Image } from 'semantic-ui-react';
 import { Header, LoginPageBottomSheet, UnauthDummy, UIMenuItemLink } from "@blogchain/components";
 
-const CommonLayout = ({ children, title }) => {
+const CommonLayout = ({ children, title }) => (
+    <LoginModalProvider>
+        <Common title={ title }>
+            { children }
+        </Common>
+    </LoginModalProvider>
+)
+
+const Common = ({ children, title }) => {
     const token = useSelector(state => getToken(state));
+    const state = useLoginModalState();
+    const dispatch = useLoginModalDispatch();
+
+    const scrollHandler = useCallback(() => {
+        // If the user is not logged in, we show him a modal window
+        if (!token) {
+            if ((window.pageYOffset || document.documentElement.scrollTop / window.innerHeight * 100) > 30) {
+                if (state.countOpened === 0) {
+                    dispatch({ type: 'OPEN_MODAL', countOpened: state.countOpened + 1 });
+                }
+            }
+        }
+    }, [ dispatch, state, token ]);
+
+    useEffect(() => {
+        if (!token) {
+            window.addEventListener('scroll', scrollHandler);
+        }
+
+        return () => {
+            window.removeEventListener('scroll', scrollHandler);
+        }
+    }, [ state, token ]);
 
     return (
         <>
