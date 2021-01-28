@@ -12,10 +12,8 @@ const LoginModalDispatchContext = React.createContext();
 function modalReducer(state, action) {
     switch (action.type) {
         case 'OPEN_MODAL':
-            console.log("OPEN", state, action)
             return { ...state, open: true, countOpened: state.countOpened + 1 }
         case 'CLOSE_MODAL':
-            console.log("CLOSE", state, action)
             return { ...state, open: false }
         default:
             throw new Error(`Unhandled action type: ${action.type}`)
