@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Link from "next/link";
 
 // redux
 import { useDispatch } from "react-redux";
 import { authenticate } from "@blogchain/redux/actions";
 
 // components
-import { Button, Form, Card, Message } from "semantic-ui-react";
+import { Button, Form, Message } from "semantic-ui-react";
 
 const LoginForm = ({ onSuccess }) => {
     const dispatch = useDispatch();
@@ -54,43 +53,35 @@ const LoginForm = ({ onSuccess }) => {
     };
 
     return (
-        <Card fluid>
-            <Card.Content>
-                {
-                    error.has &&
-                    <Message
-                        error
-                        header='Action Forbidden'
-                        content={error.message}
-                    />
-                }
-                <Form size='large'>
-                    <Form.Input
-                        fluid icon='user'
-                        iconPosition='left'
-                        placeholder='E-mail address'
-                        onChange={onChangeUsername}
-                    />
-                    <Form.Input
-                        fluid
-                        icon='lock'
-                        iconPosition='left'
-                        placeholder='Password'
-                        type='password'
-                        onChange={onChangePassword}
-                    />
-                    <Button fluid onClick={onSubmit} color={'green'} >
-                        Login
-                    </Button>
-                </Form>
-            </Card.Content>
-            <Card.Content extra>
-                New to us? <Link href='/register'><a>Sign Up</a></Link>
-            </Card.Content>
-            <Card.Content extra>
-                Forgot your password? <Link href='/recover'><a>To recover the password</a></Link>
-            </Card.Content>
-        </Card>
+        <>
+            {
+                error.has &&
+                <Message
+                    error
+                    header='Action Forbidden'
+                    content={error.message}
+                />
+            }
+            <Form size='large'>
+                <Form.Input
+                    fluid icon='user'
+                    iconPosition='left'
+                    placeholder='E-mail address'
+                    onChange={onChangeUsername}
+                />
+                <Form.Input
+                    fluid
+                    icon='lock'
+                    iconPosition='left'
+                    placeholder='Password'
+                    type='password'
+                    onChange={onChangePassword}
+                />
+                <Button fluid onClick={onSubmit} color={'green'} >
+                    Login
+                </Button>
+            </Form>
+        </>
     )
 }
 
