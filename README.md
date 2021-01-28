@@ -84,10 +84,8 @@ https://blogchain.now.sh/
 
 ### Preview
 
-Home with tags | Editor page | Profile
---- | --- | --- |
-![Preview](./screenshots/main.png) | ![Preview](./screenshots/editor.png) | ![Preview](./screenshots/profile.png)
-
-Post | Login | Error pages
---- | --- | --- |
-![Preview](./screenshots/post.png) | ![Preview](./screenshots/login.png) | ![Preview](./screenshots/404.png)
+Posts | Login | Error pages | Profile
+--- | --- | --- | ---
+![Preview](./screenshots/post.png) | ![Preview](./screenshots/login.png) | ![Preview](./screenshots/404.png) | ![Preview](./screenshots/profile.png)
+![Preview](./screenshots/main.png) | ![Preview](./screenshots/modal_login.png) | - | ![Preview](./screenshots/profile_all.png)
+![Preview](./screenshots/editor.png) | - | - | -
