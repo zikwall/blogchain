@@ -1,6 +1,3 @@
-# docker build -t qwx1337/blogchain-client .
-# docker run -d -p 3000:3000 --name blogchain-client qwx1337/blogchain-client
-
 FROM node:12
 
 ENV PORT 3000
