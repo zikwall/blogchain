@@ -9,7 +9,7 @@ const UIPublisher = ({ name, time, avatar }) => {
     return (
         <>
             <Label as='a' basic image>
-                <img src={avatarIs}/>
+                <img src={avatarIs} decoding={"async"}/>
                 {name}
             </Label>
             <UICreatedAt time={time} />
