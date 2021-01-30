@@ -47,6 +47,12 @@
     color: rgba(0,0,0,.87)
 }
 
+.post_cover_image{
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 /* quick login */
 #top_profile_menu.shown {
     visibility: visible;

@@ -1,4 +1,5 @@
-import {Button, Header, Image} from "semantic-ui-react";
+import { Button, Header } from "semantic-ui-react";
+import Image from 'next/image';
 
 const ObjectComponent = ({ src, title, subTitle }) => (
     <div style={{
@@ -9,7 +10,14 @@ const ObjectComponent = ({ src, title, subTitle }) => (
         <div style={{
             paddingRight: '10px'
         }}>
-            <Image rounded src={src} size='tiny' />
+            {/*<Image rounded src={src} size='tiny' />*/}
+            <Image
+                src={src}
+                alt="Publisher avatar"
+                width={80}
+                height={80}
+                className="ui tiny rounded image"
+            />
         </div>
         <div style={{
             display: 'flex',

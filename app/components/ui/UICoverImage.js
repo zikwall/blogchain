@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 
 const UICoverImage = ({ src, mode='cover' }) => {
     return (
@@ -10,6 +11,15 @@ const UICoverImage = ({ src, mode='cover' }) => {
             marginTop: '10px',
             marginBottom: '10px'
         }} src={src} />
+
+        /*<Image
+            src={src}
+            alt="Post cover image"
+            width={808}
+            height={300}
+            className="post_cover_image"
+            objectFit={mode}
+        />*/
     )
 };
 
