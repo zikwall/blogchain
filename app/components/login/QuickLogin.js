@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 
 // next
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 // redux
 import { useDispatch } from 'react-redux';
 import { authenticate } from "@blogchain/redux/actions";
 
 // components
-import classNames from 'classnames';
 import { Button, Card, Form, List, Message } from "semantic-ui-react";
 import styles from './QuickLogin.module.css';
-import Link from "next/link";
+
 
 const QuickLogin = ({ login }) => {
     const dispatch = useDispatch();
