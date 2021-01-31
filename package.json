@@ -14,7 +14,6 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
-    "classnames": "^2.2.6",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",

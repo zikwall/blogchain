@@ -5,7 +5,7 @@ import { USER_KEY, SESSION_TOKEN_KEY } from "@blogchain/constants";
 import Session from "./Session";
 
 // checks if the page is being loaded on the server, and if so, get auth token from the cookie:
-export default (ctx) => {
+export default function BootstrappedContext(ctx) {
     if(ctx.isServer) {
 
         // if has cookies & has token -- try auth

@@ -1,5 +1,4 @@
 import { createRef } from 'react';
-import Head from "next/head";
 import {
     Container,
     Grid,

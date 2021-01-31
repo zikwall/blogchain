@@ -1,6 +1,6 @@
-import Initialize from "./Initialize";
+import BootstrappedContext from "./Initialize";
 import Session from "./Session";
 
 export {
-    Initialize, Session
+    BootstrappedContext, Session
 };

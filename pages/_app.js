@@ -4,7 +4,7 @@ import ErrorPage from 'next/error';
 import withRedux from "next-redux-wrapper";
 import { MainLayout } from "@blogchain/layouts";
 import { makeStore } from "@blogchain/redux/Store";
-import { Initialize } from '@blogchain/services/auth';
+import { BootstrappedContext } from '@blogchain/services/auth';
 import { Http } from "@blogchain/utils";
 
 // assets
@@ -25,7 +25,7 @@ class BlogchainClientApplication extends App {
         /**
          * Initial session of user
          */
-        Initialize(ctx);
+        BootstrappedContext(ctx);
 
         /**
          * Initial props in pages

@@ -2,7 +2,7 @@ import { Container, Grid, Ref, Sticky } from "semantic-ui-react";
 import CommonLayout from "./CommonLayout";
 import { UIMenuItemLink, UITagsAsside, UITabMenu } from "@blogchain/components";
 import { createRef, useEffect, useState } from "react";
-import { TagClient } from '../services';
+import { TagClient } from '@blogchain/services';
 
 const Flows = [
     {title: 'Разработка', count: '+55', href: '/flows/develop'},

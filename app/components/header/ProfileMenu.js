@@ -1,34 +1,28 @@
-import { useState } from 'react';
-import { Dropdown, Image, Menu } from "semantic-ui-react";
+import { Dropdown, Image, Menu, Popup } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
-import AuthItem from "@blogchain/components/header/AuthItem";
-import QuickLogin from "@blogchain/components/header/QuickLogin";
+import AuthItem from "@blogchain/components/login/AuthItem";
+import QuickLogin from "@blogchain/components/login/QuickLogin";
 import { deauthenticate } from '@blogchain/redux/actions';
-import CloseWrapper from "@blogchain/components/close/CloseWrapper";
 import UIDropdownItemLink from "@blogchain/components/ui/UIDropdownItemLink";
 
 const ProfileMenu = ({ isAuthenticated, logout, user }) => {
-    const [ isDropped, setIsDropped ] = useState(false);
-    const onOutsideOrEscape = () => {
-        setIsDropped(false);
-    };
-
     if (!isAuthenticated) {
         return (
             <>
-                <Menu.Item
-                    onClick={() => {
-                        setIsDropped(!isDropped)
-                    }}>
-
-                    <AuthItem />
-                </Menu.Item>
-
-                <CloseWrapper onEscapeOutside={ onOutsideOrEscape }>
-                    <QuickLogin visible={isDropped} />
-                </CloseWrapper>
+                <Popup
+                    content={
+                        <QuickLogin />
+                    }
+                    on='click'
+                    position='bottom right'
+                    trigger={
+                        <Menu.Item>
+                            <AuthItem />
+                        </Menu.Item>
+                    }
+                />
             </>
         )
     }
