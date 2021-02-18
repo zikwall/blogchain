@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Container} from 'semantic-ui-react';
+import { ThemeProvider, useThemeContext } from "@blogchain/components";
 
 const MainLayout = ({ children }) => {
     return (
@@ -31,11 +32,28 @@ const MainLayout = ({ children }) => {
                 <script defer src="/js/katex.min.js"></script>
                 <title>Blogchain | Ваш лучший блогер</title>
             </Head>
-            <Container fluid className="root-container">
-                { children }
-            </Container>
+            <ThemeProvider>
+                <AppRootContainer>
+                    { children }
+                </AppRootContainer>
+            </ThemeProvider>
         </>
     )
 };
+
+const AppRootContainer = ({ children }) => {
+    const [ theme ] = useThemeContext();
+
+    return (
+        <div style={{
+            backgroundColor: theme.isDark ? '#0d1117' : '#ffffff',
+            transition: '0.5s background ease',
+        }}>
+            <Container fluid className="root-container">
+                { children }
+            </Container>
+        </div>
+    )
+}
 
 export default MainLayout;

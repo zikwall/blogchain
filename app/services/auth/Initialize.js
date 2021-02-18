@@ -1,8 +1,9 @@
 import Router from 'next/router';
 import { reauthenticate, deauthenticate } from '@blogchain/redux/actions';
-import { Cookie } from '@blogchain/help';
-import { USER_KEY, SESSION_TOKEN_KEY } from "@blogchain/constants";
+import { Cookie, StringHelper } from '@blogchain/help';
+import { USER_KEY, SESSION_TOKEN_KEY, USER_THEME } from "@blogchain/constants";
 import Session from "./Session";
+import { toDarkMode } from "@blogchain/components/ui/theme/context";
 
 // checks if the page is being loaded on the server, and if so, get auth token from the cookie:
 export default function BootstrappedContext(ctx) {
@@ -30,6 +31,12 @@ export default function BootstrappedContext(ctx) {
                 ctx.store.dispatch(deauthenticate());
             } else {
                 ctx.store.dispatch(reauthenticate(token, user));
+            }
+
+            const theme = Cookie.getCookie(USER_THEME, ctx.req);
+
+            if (typeof theme !== "undefined" && StringHelper.toBoolean(theme) === true) {
+                ctx.store.dispatch(toDarkMode());
             }
         }
 

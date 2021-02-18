@@ -32,6 +32,13 @@ export { default as UIArticleActions } from './ui/UIArticleAtions';
 export { default as UIProfileArticle } from './ui/UIProfileArticle';
 export { default as UIProfileSidebar } from './ui/UIProfileSidebar';
 
+// Theme
+import { ThemeProvider, useThemeContext } from "./ui/theme/context";
+export {
+    ThemeProvider, useThemeContext
+}
+export { default as UIThemeSwitcher } from './ui/theme/UIThemeSwitcher';
+
 // Login
 export { default as LoginPageBottomSheet } from './login/PageBottomSheet';
 export { default as LoginModal } from './login/LoginModal';
