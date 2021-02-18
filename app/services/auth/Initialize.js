@@ -11,6 +11,12 @@ export default function BootstrappedContext(ctx) {
 
         // if has cookies & has token -- try auth
         if(ctx.req.headers.cookie) {
+            const theme = Cookie.getCookie(USER_THEME, ctx.req);
+
+            if (typeof theme !== "undefined" && StringHelper.toBoolean(theme) === true) {
+                ctx.store.dispatch(toDarkMode());
+            }
+
             const ucookie = Cookie.getCookie(USER_KEY, ctx.req);
             const tcookie = Cookie.getCookie(SESSION_TOKEN_KEY, ctx.req);
 
@@ -31,12 +37,6 @@ export default function BootstrappedContext(ctx) {
                 ctx.store.dispatch(deauthenticate());
             } else {
                 ctx.store.dispatch(reauthenticate(token, user));
-            }
-
-            const theme = Cookie.getCookie(USER_THEME, ctx.req);
-
-            if (typeof theme !== "undefined" && StringHelper.toBoolean(theme) === true) {
-                ctx.store.dispatch(toDarkMode());
             }
         }
 
