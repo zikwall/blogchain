@@ -4,8 +4,10 @@ import UITags from "./UITags";
 import { Header} from "semantic-ui-react";
 import UICoverImage from "./UICoverImage";
 import { makeCdn } from "@blogchain/constants";
+import { useThemeContext } from "@blogchain/components";
 
 const UIArticleContent = ({ content }) => {
+    const [ theme ] = useThemeContext();
 
     return (
         <>
@@ -14,7 +16,7 @@ const UIArticleContent = ({ content }) => {
                 time={content.created_at}
                 avatar={content.related.publisher.profile.avatar}
             />
-            <Header as='h1'>
+            <Header as='h1' inverted={theme.isDark}>
                 { content.title }
             </Header>
 
@@ -27,6 +29,10 @@ const UIArticleContent = ({ content }) => {
 
             <div
                 className="root-dangerous-content-html"
+                style={{
+                    transition: '0.5s color ease',
+                    color: theme.isDark ? '#ffffff' : '#000000'
+                }}
                 dangerouslySetInnerHTML={{ __html: content.content }}
             />
 
