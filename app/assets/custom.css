@@ -52,3 +52,11 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.themedlink {
+    transition: 0.2s color ease
+}
+
+.themedlink.dark {
+    color: #ffffff!important;
+}
