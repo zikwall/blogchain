@@ -1,22 +1,7 @@
-import React from "react";
-import { Button } from "semantic-ui-react";
-import { useRouter, withRouter } from 'next/router';
-import Link from 'next/link';
-
-const ActivePaginationButton = withRouter(({ link, page, router }) => {
-    const href = `${link}?page=${page}`;
-
-    return (
-        <Link href={href}>
-            <Button
-                icon
-                active={(router.asPath === href)}
-            >
-                {page + 1}
-            </Button>
-        </Link>
-    )
-});
+import { useCallback } from "react";
+import { Button, Pagination } from "semantic-ui-react";
+import { useRouter } from 'next/router';
+import { useThemeContext } from "@blogchain/components";
 
 const UIPagination = ({ link, pages, current }) => {
     if (pages <= 0) {
@@ -24,16 +9,15 @@ const UIPagination = ({ link, pages, current }) => {
     }
 
     const router = useRouter();
+    const [ theme ] = useThemeContext();
 
-    const renderButtons = () => {
-        return [...new Array(pages)].map((v, k) => (
-            <ActivePaginationButton key={k} page={k} link={link}/>
-        ))
-    };
+    const navigate = useCallback(async (page) => {
+        await router.push(`${link}?page=${page}`);
+    }, [ router ]);
 
-    const navigate = (page) => {
-        router.push(`${link}?page=${page}`);
-    };
+    const onPaginate = useCallback(async (e, { activePage }) => {
+        await navigate(activePage);
+    }, []);
 
     const onPressNext = () => {
         if (current >= pages - 1) {
@@ -54,7 +38,7 @@ const UIPagination = ({ link, pages, current }) => {
     return (
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',}}>
             <div>
-                <Button.Group>
+                <Button.Group basic inverted={theme.isDark}>
                     <Button
                         labelPosition='left'
                         icon='left chevron'
@@ -70,21 +54,18 @@ const UIPagination = ({ link, pages, current }) => {
                 </Button.Group>
             </div>
             <div>
-                <Button.Group>
-                    {renderButtons()}
-                </Button.Group>{' '}
-
-                {/*<Button.Group>
-                <Button icon>
-                    10
-                </Button>
-                <Button icon>
-                    20
-                </Button>
-                <Button icon>
-                    30
-                </Button>
-            </Button.Group>*/}
+                <Pagination
+                    inverted={theme.isDark}
+                    boundaryRange={1}
+                    siblingRange={1}
+                    ellipsisItem={null}
+                    firstItem={null}
+                    lastItem={null}
+                    defaultActivePage={current}
+                    activePage={current}
+                    totalPages={pages}
+                    onPageChange={onPaginate}
+                />
             </div>
         </div>
     )

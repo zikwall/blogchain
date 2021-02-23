@@ -43,7 +43,7 @@ Index.getInitialProps = async ({ res, query }) => {
     return {
         contents: contents,
         meta: meta,
-        currentPage: !!page ? page : 0,
+        currentPage: !!page ? page : 1,
         statusCode: statusCode
     }
 };
