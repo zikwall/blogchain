@@ -7,8 +7,7 @@ export default function Index({ contents, meta, currentPage }) {
         <IndexLayout
             title={'Blogchain | Ваш лучший блогер'}
         >
-
-            {contents.map((content, key) => (
+            {(Array.from(contents) || []).map((content, key) => (
                 <UIArticle
                     key={key}
                     id={content.id}
@@ -38,12 +37,13 @@ export default function Index({ contents, meta, currentPage }) {
 
 Index.getInitialProps = async ({ res, query }) => {
     const { page } = query;
-    const { status, contents, meta, statusCode } = await ContentClient.contents(null, page);
+    const currentPage = !!page ? page : 0
+    const {status, contents, meta, statusCode} = await ContentClient.contents(null, currentPage);
 
     return {
         contents: contents,
         meta: meta,
-        currentPage: !!page ? page : 1,
+        currentPage: currentPage,
         statusCode: statusCode
     }
 };
