@@ -1,7 +1,7 @@
 FROM node:alpine
 
 ENV PORT ${PORT:-3000}
-
+RUN apk update && apk add bash
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
