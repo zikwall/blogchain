@@ -6,20 +6,21 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install PM2 globally
-RUN npm install --global pm2
+RUN yarn global add pm2
 
 # Copy "package.json" and "package-lock.json" before other files
 # Utilise Docker cache to save re-installing dependencies if unchanged
 COPY package*.json /usr/src/app/
+COPY yarn.lock /usr/src/app/
 
 # Install dependencies
-RUN npm install --production
+RUN yarn install --production
 
 # Copy all files
 COPY . /usr/src/app
 
 # Build app
-RUN npm run build
+RUN yarn run build
 
 # Expose the listening port
 EXPOSE $PORT
@@ -29,4 +30,4 @@ EXPOSE $PORT
 USER node
 
 # Launch app with PM2
-CMD [ "pm2-runtime", "start", "npm", "--", "start" ]
+CMD [ "pm2-runtime", "start", "yarn", "--", "start" ]
