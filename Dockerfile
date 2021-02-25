@@ -20,7 +20,7 @@ RUN yarn install --production
 COPY . /usr/src/app
 
 # Build app
-RUN yarn run build
+RUN yarn build
 
 # Expose the listening port
 EXPOSE $PORT
@@ -30,4 +30,4 @@ EXPOSE $PORT
 USER node
 
 # Launch app with PM2
-CMD [ "pm2-runtime", "start", "yarn", "--", "start" ]
+CMD [ "pm2-runtime", "start", "yarn", "--interpreter", "bash", "--", "start" ]
