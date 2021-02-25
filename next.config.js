@@ -12,6 +12,12 @@ if (isDevelopment()) {
     imageDomains.push('127.0.0.1', 'avatars1.githubusercontent.com', 'habrastorage.org', 'hsto.org');
 }
 
+if (!isDevelopment()) {
+    console.log([
+        'Usage:', process.env.API_HOST, process.env.PORT,
+    ])
+}
+
 module.exports = {
     images: {
         domains: imageDomains,

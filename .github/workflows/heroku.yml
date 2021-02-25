@@ -7,6 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: whoami
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku auth:whoami
+
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
@@ -15,4 +20,3 @@ jobs:
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           usedocker: true
           # justlogin: true
-      - run: heroku auth:whoami
