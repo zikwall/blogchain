@@ -1,16 +1,32 @@
-FROM node:12
+FROM node:alpine
 
-ENV PORT 3000
+ENV PORT ${PORT:-3000}
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY package*.json /usr/src/app/
-RUN npm install
+# Install PM2 globally
+RUN npm install --global pm2
 
+# Copy "package.json" and "package-lock.json" before other files
+# Utilise Docker cache to save re-installing dependencies if unchanged
+COPY package*.json /usr/src/app/
+
+# Install dependencies
+RUN npm install --production
+
+# Copy all files
 COPY . /usr/src/app
 
+# Build app
 RUN npm run build
-EXPOSE 3000
 
-CMD [ "npm", "start" ]
+# Expose the listening port
+EXPOSE $PORT
+
+# Run container as non-root (unprivileged) user
+# The "node" user is provided in the Node.js Alpine base image
+USER node
+
+# Launch app with PM2
+CMD [ "pm2-runtime", "start", "npm", "--", "start" ]
