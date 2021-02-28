@@ -8,7 +8,7 @@ import { LoginModalProvider, useLoginModalDispatch, useLoginModalState } from '@
 
 // components
 import { Container, Menu, Icon, Button, Image } from 'semantic-ui-react';
-import { Header, LoginPageBottomSheet, UnauthDummy, UIMenuItemLink } from "@blogchain/components";
+import {Header, LoginPageBottomSheet, UnauthDummy, UIMenuItemLink, useThemeContext} from "@blogchain/components";
 
 const CommonLayout = ({ children, title }) => (
     <LoginModalProvider>
@@ -22,6 +22,7 @@ const Common = ({ children, title }) => {
     const token = useSelector(state => getToken(state));
     const state = useLoginModalState();
     const dispatch = useLoginModalDispatch();
+    const [ theme ] = useThemeContext();
 
     const scrollHandler = useCallback(() => {
         // If the user is not logged in, we show him a modal window
@@ -65,9 +66,15 @@ const Common = ({ children, title }) => {
                     justifyContent: 'space-between'
                 }}>
                     <div>
-                        <Menu text>
+                        <Menu text inverted={theme.isDark}>
                             <Menu.Item header>
-                                <span style={{ paddingRight: '5px' }}>Crafted with</span> <Icon name='heart outline' /> by zikwall
+                                <span style={{ paddingRight: '5px', color: theme.isDark ? '#ffffff' : '#000000' }}>
+                                    Crafted with
+                                </span>
+                                <Icon name='heart outline' inverted={theme.isDark} />
+                                <span style={{ color: theme.isDark ? '#ffffff' : '#000000' }}>
+                                    by zikwall
+                                </span>
                             </Menu.Item>
                             <UIMenuItemLink name="О Сайте" href="/" />
                             <UIMenuItemLink name="Служба поддержки" href="/" />

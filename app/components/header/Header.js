@@ -2,11 +2,13 @@ import { Input, Menu } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { authenticate, reauthenticate } from '@blogchain/redux/actions';
 import ProfileMenu from './ProfileMenu';
-import UIMenuItemLink from "@blogchain/components/ui/UIMenuItemLink";
+import { UIMenuItemLink, UIThemeSwitcher, useThemeContext } from '@blogchain/components';
 
 const Header = ({ isAuthenticated }) => {
+    const [ theme ] = useThemeContext();
+
     return (
-        <Menu secondary>
+        <Menu secondary inverted={theme.isDark}>
             <Menu.Item>
                 <img src={'/images/bc_300.png'} />
             </Menu.Item>
@@ -22,7 +24,11 @@ const Header = ({ isAuthenticated }) => {
 
             <Menu.Menu position='right'>
                 <Menu.Item>
-                    <Input icon='search' placeholder='Поиск...' />
+                    <UIThemeSwitcher />
+                </Menu.Item>
+
+                <Menu.Item>
+                    <Input icon='search' placeholder='Поиск...' inverted={theme.isDark} />
                 </Menu.Item>
 
                 <ProfileMenu />

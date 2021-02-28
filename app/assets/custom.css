@@ -52,3 +52,20 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.themedlink {
+    transition: 0.2s color ease
+}
+
+.themedlink.dark {
+    color: #ffffff!important;
+}
+
+.ui.fluid.card.dark {
+    background-color: rgb(13, 17, 23);
+    box-shadow: 0 1px 3px 0 rgb(56 62 70), 0 0 0 1px rgb(56 62 70);
+}
+
+.quill {
+    background-color: #ffffff;
+}

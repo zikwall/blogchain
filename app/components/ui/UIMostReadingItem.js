@@ -1,29 +1,43 @@
-import {Divider, Header, Icon, Label} from "semantic-ui-react";
+import { Divider, Header, Icon, Label } from "semantic-ui-react";
+import { useThemeContext } from "@blogchain/components";
 
-const MostReadingLabels = ({ ups, views, bookmarks, comments }) => (
-    <>
-        <Label basic>
-            <Icon name='arrow up' /> { ups }
-        </Label>
-        <Label basic>
-            <Icon name='eye' /> { views }
-        </Label>
-        <Label basic>
-            <Icon name='bookmark' /> { bookmarks }
-        </Label>
-        <Label basic as="a">
-            <Icon name='comment' /> { comments }
-        </Label>
-    </>
-);
+const MostReadingLabels = ({ ups, views, bookmarks, comments }) => {
+    const [ theme ] = useThemeContext();
+    const additionalProps = {};
 
-const UIMostReadingItem = ({ labels, title, href }) => {
+    if (theme.isDark) {
+        additionalProps['color'] = 'black';
+    } else {
+        additionalProps['basic'] = true;
+    }
+
     return (
         <>
-            <Header as="h4">
+            <Label {...additionalProps}>
+                <Icon name='arrow up' /> { ups }
+            </Label>
+            <Label {...additionalProps}>
+                <Icon name='eye' /> { views }
+            </Label>
+            <Label {...additionalProps}>
+                <Icon name='bookmark' /> { bookmarks }
+            </Label>
+            <Label as="a" {...additionalProps}>
+                <Icon name='comment' /> { comments }
+            </Label>
+        </>
+    )
+};
+
+const UIMostReadingItem = ({ labels, title, href }) => {
+    const [ theme ] = useThemeContext();
+
+    return (
+        <>
+            <Header as="h4" inverted={theme.isDark}>
                 <a href={href} style={{
                     textDecoration: 'none',
-                    color: 'rgba(0,0,0,.87)'
+                    color: theme.isDark ? '#ffffff' : 'rgba(0,0,0,.87)',
                 }}>
                     { title }
                 </a>
@@ -34,7 +48,7 @@ const UIMostReadingItem = ({ labels, title, href }) => {
                 bookmarks={labels.bookmarks}
                 comments={labels.comments}
             />
-            <Divider />
+            <Divider inverted={theme.isDark}/>
         </>
     )
 };

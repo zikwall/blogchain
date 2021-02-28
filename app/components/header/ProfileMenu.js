@@ -6,12 +6,16 @@ import AuthItem from "@blogchain/components/login/AuthItem";
 import QuickLogin from "@blogchain/components/login/QuickLogin";
 import { deauthenticate } from '@blogchain/redux/actions';
 import UIDropdownItemLink from "@blogchain/components/ui/UIDropdownItemLink";
+import { useThemeContext } from "@blogchain/components";
 
 const ProfileMenu = ({ isAuthenticated, logout, user }) => {
+    const [ theme ] = useThemeContext();
+
     if (!isAuthenticated) {
         return (
             <>
                 <Popup
+                    inverted={theme.isDark}
                     content={
                         <QuickLogin />
                     }

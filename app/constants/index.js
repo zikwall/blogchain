@@ -15,6 +15,7 @@ export const IMAGES_CDN = EnvHelper.through(
 
 export const SESSION_TOKEN_KEY = '__blogchain_token';
 export const USER_KEY = '__blogchain_identifier';
+export const USER_THEME = '__blogchain_theme';
 
 export const makeCdn = (file) => {
     return IMAGES_CDN + '/' + file;

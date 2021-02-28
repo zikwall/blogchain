@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDropzone } from "react-dropzone";
+import {useThemeContext} from "@blogchain/components";
 
 const thumb = {
     display: 'inline-flex',
@@ -33,7 +34,9 @@ const thumbsContainer = {
 };
 
 function UIDropzone({ setFiles, files }) {
-    const {getRootProps, getInputProps} = useDropzone({
+    const [ theme ] = useThemeContext();
+
+    const { getRootProps, getInputProps } = useDropzone({
         accept: 'image/*',
         onDrop: acceptedFiles => {
             setFiles(acceptedFiles.map(file => Object.assign(file, {
@@ -69,6 +72,7 @@ function UIDropzone({ setFiles, files }) {
                     border: '3px solid #f0f1f4',
                     borderRadius: '5px',
                     borderStyle: 'dashed',
+                    color: theme.isDark ? '#ffffff' : '#000000'
                 }}>Drag 'n' drop image here, or click to select image</p>
             </div>
             <aside style={thumbsContainer}>

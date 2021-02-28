@@ -1,9 +1,11 @@
-import { Dropdown } from "semantic-ui-react";
+import { Dropdown, Icon } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import { getToken, getUser } from "@blogchain/redux/reducers";
 import Link from "next/link";
+import { useThemeContext } from "@blogchain/components";
 
 const UIArticleActions = ({ id, ownerId }) => {
+    const [ theme ] = useThemeContext();
     const isAuthorized = useSelector(state => !!getToken(state));
     const user = useSelector(state => getUser(state));
 
@@ -24,7 +26,7 @@ const UIArticleActions = ({ id, ownerId }) => {
     };
 
     return (
-        <Dropdown floating labeled button>
+        <Dropdown icon={<Icon name={'angle down'} inverted={theme.isDark}/>}>
             <Dropdown.Menu>
                 <Dropdown.Item>
                     <Link href={'/post/[id]'} as={`/post/${id}`}>

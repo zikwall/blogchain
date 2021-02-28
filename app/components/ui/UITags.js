@@ -1,41 +1,30 @@
 import { Label } from "semantic-ui-react";
+import { useThemeContext } from "@blogchain/components";
+
+const ThemedLabel = ({ children }) => {
+    const [ theme ] = useThemeContext();
+    const additionalProps = {};
+
+    if (theme.isDark) {
+        additionalProps['color'] = 'black';
+    }
+
+    return (
+        <Label pointing as='a' tag {...additionalProps}>
+            { children }
+        </Label>
+    )
+}
 
 const UITags = () => (
-    <div>
-        <Label pointing as='a' tag>
-            Алгоритмы
-        </Label>
-        <Label pointing as='a' tag>
-            python
-        </Label>
-        <Label pointing as='a' tag>
-            video scene detection
-        </Label>
-        <Label pointing as='a' tag>
-            video processing
-        </Label>
-        <Label pointing as='a' tag>
-            обработка видео
-        </Label>
-        <Label pointing as='a' tag>
-            computer vision
-        </Label>
-        <Label pointing as='a' tag>
-            компьютерное зрение
-        </Label>
-        <Label pointing as='a' tag>
-            динамическое программирование
-        </Label>
-        <Label pointing as='a' tag>
-            питон
-        </Label>
-        <Label pointing as='a' tag>
-            video analysis
-        </Label>
-        <Label pointing as='a' tag>
-            анализ видео
-        </Label>
-    </div>
+    Array.from([
+        'Алгоритмы', 'python', 'video scene detection', 'video processing', 'обработка видео', 'computer vision',
+        'компьютерное зрение', 'динамическое программирование', 'питон', 'video analysis', 'анализ видео'
+    ], (label) => (
+        <ThemedLabel pointing as='a' tag>
+            { label }
+        </ThemedLabel>
+    ))
 );
 
 export default UITags;

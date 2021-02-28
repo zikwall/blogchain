@@ -12,3 +12,17 @@ export function REST(base, ...parts) {
 
     return base;
 }
+
+export function toBoolean(string) {
+    const booleanMap = {
+        true: true, false: false,
+    };
+
+    const value = String(string).toLowerCase();
+
+    if (!booleanMap.hasOwnProperty(value)) {
+        return false;
+    }
+
+    return booleanMap[value];
+}

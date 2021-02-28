@@ -11,9 +11,10 @@ import { authenticate } from "@blogchain/redux/actions";
 // components
 import { Button, Card, Form, List, Message } from "semantic-ui-react";
 import styles from './QuickLogin.module.css';
-
+import { useThemeContext } from "@blogchain/components";
 
 const QuickLogin = ({ login }) => {
+    const [ theme ] = useThemeContext();
     const dispatch = useDispatch();
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -60,7 +61,7 @@ const QuickLogin = ({ login }) => {
                     content={error.message}
                 />
             }
-            <Form size='small'>
+            <Form size='small' inverted={theme.isDark}>
                 <Form.Input
                     fluid icon='user'
                     iconPosition='left'
@@ -76,7 +77,7 @@ const QuickLogin = ({ login }) => {
                     onChange={onChangePassword}
                 />
 
-                <Button fluid basic size={'tiny'} content='Войти' onClick={ onSubmit } />
+                <Button fluid basic size={'tiny'} content='Войти' onClick={ onSubmit } inverted={theme.isDark} />
                 <div className={ styles.quick_login_spacebetween } />
             </Form>
 
@@ -89,7 +90,7 @@ const QuickLogin = ({ login }) => {
 
             <Card.Content extra>
                 <div className={ styles.quick_login_footer }>
-                    <List link>
+                    <List link inverted={theme.isDark}>
                         <List.Item><Link href='/recover'><a>Забыли пароль?</a></Link></List.Item>
                     </List>
                 </div>

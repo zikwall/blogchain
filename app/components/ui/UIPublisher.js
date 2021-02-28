@@ -1,14 +1,20 @@
 import { Label } from "semantic-ui-react";
-import moment from "moment";
-import { Time } from '@blogchain/utils';
-import { UICreatedAt } from "@blogchain/components";
+import { UICreatedAt, useThemeContext } from "@blogchain/components";
 
 const UIPublisher = ({ name, time, avatar }) => {
     const avatarIs = !!avatar ? avatar : "/images/zebra_pl.jpg";
+    const [ theme ] = useThemeContext();
+    const additionalProps = {};
+
+    if (theme.isDark) {
+        additionalProps['color'] = 'black';
+    } else {
+        additionalProps['basic'] = true;
+    }
 
     return (
         <>
-            <Label as='a' basic image>
+            <Label as='a' image {...additionalProps}>
                 <img src={avatarIs} decoding={"async"}/>
                 {name}
             </Label>

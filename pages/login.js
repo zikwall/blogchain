@@ -13,8 +13,10 @@ import { authenticate } from "@blogchain/redux/actions";
 // components
 import { Button, Card, Image, Form, Header, Grid, Message } from 'semantic-ui-react';
 import { WithoutHeaderLayout } from "@blogchain/layouts";
+import { useThemeContext } from "@blogchain/components";
 
 const Login = ({ isAuthenticated, auth }) => {
+    const [ theme ] = useThemeContext();
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ error, setError ] = useState({
@@ -68,14 +70,14 @@ const Login = ({ isAuthenticated, auth }) => {
 
             <Grid textAlign='center' style={{ height: '85vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
-                    <Header as='h2' textAlign='center'>
+                    <Header as='h2' textAlign='center' inverted={theme.isDark}>
                         <Image src={'/images/bc_300.png'} />
 
                         <span style={{marginRight: 20, marginLeft: 10, verticalAlign: 'middle'}}>
                             Log-in to your account
                         </span>
                     </Header>
-                    <Card fluid>
+                    <Card fluid className={ theme.isDark ? 'dark' : 'white' }>
                         <Card.Content>
                             {
                                 error.has &&
@@ -85,7 +87,7 @@ const Login = ({ isAuthenticated, auth }) => {
                                     content={error.message}
                                 />
                             }
-                            <Form size='large'>
+                            <Form size='large' inverted={theme.isDark}>
 
                                 <Form.Input
                                     fluid icon='user'
@@ -101,16 +103,26 @@ const Login = ({ isAuthenticated, auth }) => {
                                     type='password'
                                     onChange={onChangePassword}
                                 />
-                                <Button fluid onClick={onSubmit}>
+                                <Button fluid onClick={onSubmit} inverted={theme.isDark}>
                                     Login
                                 </Button>
                             </Form>
                         </Card.Content>
                         <Card.Content extra>
-                            New to us? <Link href='/register'><a>Sign Up</a></Link>
+                            <ThemedLinkedText
+                                isDark={theme.isDark}
+                                text={'New to us? '}
+                                linkText={'Sign Up'}
+                                link={'/register'}
+                            />
                         </Card.Content>
                         <Card.Content extra>
-                            Forgot your password? <Link href='/recover'><a>To recover the password</a></Link>
+                            <ThemedLinkedText
+                                isDark={theme.isDark}
+                                text={'Forgot your password? '}
+                                linkText={'To recover the password'}
+                                link={'/recover'}
+                            />
                         </Card.Content>
                     </Card>
                 </Grid.Column>
@@ -118,6 +130,29 @@ const Login = ({ isAuthenticated, auth }) => {
         </WithoutHeaderLayout>
     )
 };
+
+const ThemedLinkedText = ({ isDark, text, linkText, link }) => {
+    let additionalStyles = {};
+
+    if (isDark) {
+        additionalStyles = {
+            color: isDark ? '#1e70bf' : 'rgba(0,0,0,.87)'
+        }
+    }
+
+    return (
+        <div style={{
+            color: isDark ? '#ffffff' : 'rgba(0,0,0,.87)'
+        }}>
+            {text}
+            <Link href={link}>
+                <a style={additionalStyles}>
+                    {linkText}
+                </a>
+            </Link>
+        </div>
+    )
+}
 
 const mapStateToProps = (state) => (
     { isAuthenticated: !!state.authentication.token }

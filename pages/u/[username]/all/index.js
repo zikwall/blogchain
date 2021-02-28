@@ -2,16 +2,20 @@ import { useEffect, useState } from 'react';
 import { Input, Divider } from "semantic-ui-react";
 import UserLayout from "@blogchain/layouts/ProfileLayout";
 import { ContentClient, ProfileClient } from "@blogchain/services";
-import { UIProfileArticle, UIPagination } from "@blogchain/components";
+import {UIProfileArticle, UIPagination, useThemeContext} from "@blogchain/components";
 
-const SearchBar = () => (
-    <div style={{
-        paddingTop: '10px',
-    }}>
-        <Input icon='search' placeholder='Поиск...' fluid />
-        <Divider />
-    </div>
-);
+const SearchBar = () => {
+    const [ theme ] = useThemeContext();
+
+    return (
+        <div style={{
+            paddingTop: '10px',
+        }}>
+            <Input icon='search' placeholder='Поиск...' fluid inverted={theme.isDark} />
+            <Divider inverted={theme.isDark} />
+        </div>
+    )
+};
 
 const Index = ({ user, currentPage }) => {
     const [ contents, setContents ] = useState([]);
