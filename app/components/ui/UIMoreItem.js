@@ -3,13 +3,20 @@ import { useThemeContext } from "@blogchain/components";
 
 const MoreLabels = ({ views, comments }) => {
     const [ theme ] = useThemeContext();
+    const additionalProps = {};
+
+    if (theme.isDark) {
+        additionalProps['color'] = 'black';
+    } else {
+        additionalProps['basic'] = true;
+    }
 
     return (
         <>
-            <Label basic>
+            <Label {...additionalProps}>
                 <Icon name='eye' /> { views }
             </Label>
-            <Label basic as="a">
+            <Label as="a" {...additionalProps}>
                 <Icon name='comment' /> { comments }
             </Label>
         </>
