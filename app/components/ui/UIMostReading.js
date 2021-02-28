@@ -1,27 +1,30 @@
-import {Button, Divider, Header} from "semantic-ui-react";
+import { Button, Divider, Header } from "semantic-ui-react";
 import UIMostReadingItem from "./UIMostReadingItem";
+import { useThemeContext } from "@blogchain/components";
 
 const UIMostReading = () => {
+    const [ theme ] = useThemeContext();
+
     return (
         <>
             <Divider />
 
             <div style={{
-                backgroundColor: '#f7f7f7',
+                backgroundColor: theme.isDark ? 'rgb(13, 17, 23)' : '#f7f7f7',
                 padding: '15px',
                 borderRadius: '5px'
             }}>
-                <Header as="h3" color='grey'>
+                <Header as="h3" color='grey' inverted={theme.isDark}>
                     Самое читаемое
                 </Header>
 
-                <Divider />
+                <Divider inverted={theme.isDark}/>
 
                 <div>
-                    <Button.Group>
-                        <Button basic color='blue'>Сутки</Button>
-                        <Button basic color='blue'>Неделя</Button>
-                        <Button basic color='blue'>Месяц</Button>
+                    <Button.Group inverted={theme.isDark}>
+                        <Button basic color='blue' inverted={theme.isDark}>Сутки</Button>
+                        <Button basic color='blue' inverted={theme.isDark}>Неделя</Button>
+                        <Button basic color='blue' inverted={theme.isDark}>Месяц</Button>
                     </Button.Group>
                 </div>
 
