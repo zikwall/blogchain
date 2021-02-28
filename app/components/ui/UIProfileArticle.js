@@ -1,6 +1,6 @@
 import { Card } from "semantic-ui-react";
 import Link from "next/link";
-import { UIArticleActions, UICreatedAt, UILabelBar, UITagbar } from "@blogchain/components";
+import { UIArticleActions, UICreatedAt, UILabelBar, UITagbar, useThemeContext } from "@blogchain/components";
 
 const labels = {
     ratings: 10,
@@ -10,21 +10,25 @@ const labels = {
 };
 
 const UIProfileArticle = ({ content }) => {
+    const [ theme ] = useThemeContext();
+
     return (
-        <Card fluid>
+        <Card fluid className={ theme.isDark ? 'dark' : 'white' }>
             <Card.Content>
                 <Card.Header>
                     <div style={{
                         display: 'flex',
                         justifyContent: 'space-between',
-                        flex: 3
+                        flex: 3,
                     }}>
                         <div style={{
                             display: 'flex',
                             flex: 2,
                         }}>
                             <Link href={'/post/[id]'} as={`/post/${content.id}`}>
-                                <a>
+                                <a style={{
+                                    color: theme.isDark ? '#ffffff' : 'rgba(0,0,0,.87)'
+                                }}>
                                     {content.title}
                                 </a>
                             </Link>
@@ -40,7 +44,11 @@ const UIProfileArticle = ({ content }) => {
                 {
                     !!content.annotation &&
                     <Card.Description>
-                        {content.annotation}
+                        <div style={{
+                            color: theme.isDark ? '#ffffff' : 'rgba(0,0,0,.87)',
+                        }}>
+                            {content.annotation}
+                        </div>
                     </Card.Description>
                 }
             </Card.Content>
