@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { TextArea } from "semantic-ui-react";
+import { useThemeContext } from "@blogchain/components";
 
 const UITexArea = ({ value, onChange, label, placeholder, limit }) => {
+    const [ theme ] = useThemeContext();
     const [ len, setLen ] = useState(!!value ? value.length : 0);
     const [ limitation, setLimitation ] = useState(false);
 
@@ -42,7 +44,7 @@ const UITexArea = ({ value, onChange, label, placeholder, limit }) => {
                     justifyContent: 'flex-end'
                 }}>
                     <p style={{
-                        color: limitation ? 'red' : '#000'
+                        color: limitation ? 'red' : theme.isDark ? '#ffffff' : '#000'
                     }}>{len}/{limit}</p>
                 </div>
             }

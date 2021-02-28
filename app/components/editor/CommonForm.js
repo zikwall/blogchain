@@ -5,7 +5,8 @@ import {
     UIEditor,
     UICoverImage,
     UITextArea,
-    UISelect
+    UISelect,
+    useThemeContext,
 } from "@blogchain/components";
 
 import { TagClient } from '@blogchain/services';
@@ -16,6 +17,7 @@ const CommonForm = (
         onSubmit, setTitle, setAnnotation, setImage, setContent, setTags
     }) => {
 
+    const [ theme ] = useThemeContext();
     const [ search, setSearch ] = useState(null);
 
     return (
@@ -29,7 +31,7 @@ const CommonForm = (
                 </div>
             }
 
-            <Form success>
+            <Form success inverted={theme.isDark}>
                 <Form.Group>
                     <Form.Input
                         value={title}
