@@ -1,8 +1,9 @@
 import { Grid, Header, Segment } from "semantic-ui-react";
-import UILabelBar from "@blogchain/components/ui/UILabelBar";
 import UIPinsModal from "./UIPinsModal";
+import { useThemeContext, UILabelBar } from "@blogchain/components";
 
 const UIPinned = ({ items }) => {
+    const [ theme ] = useThemeContext();
     let groupingItems = [];
     let c = 0;
 
@@ -36,7 +37,9 @@ const UIPinned = ({ items }) => {
                 paddingTop: '10px',
                 paddingBottom: '10px'
             }}>
-                <span>Pinned</span>
+                <span style={{ color: theme.isDark ? '#ffffff' : '#000000' }}>
+                    Pinned
+                </span>
                 <UIPinsModal />
             </div>
             <Grid>
@@ -52,24 +55,28 @@ const UIPinned = ({ items }) => {
     )
 };
 
-const PinnedItem = ({ title, labels }) => (
-    <Segment>
-        <Header as='h5'>
-            <a href="/post/13" style={{
-                textDecoration: 'none',
-                color: 'rgba(0,0,0,.87)'
-            }}>
-                { title }
-            </a>
-        </Header>
+const PinnedItem = ({ title, labels }) => {
+    const [ theme ] = useThemeContext();
 
-        <UILabelBar
-            ratings={labels.ratings}
-            bookmarks={labels.bookmarks}
-            comments={labels.comments}
-            views={labels.views}
-        />
-    </Segment>
-);
+    return (
+        <Segment inverted={theme.isDark}>
+            <Header as='h5' inverted={theme.isDark}>
+                <a href="/post/13" style={{
+                    textDecoration: 'none',
+                    color: theme.isDark ? '#ffffff' : 'rgba(0,0,0,.87)'
+                }}>
+                    { title }
+                </a>
+            </Header>
+
+            <UILabelBar
+                ratings={labels.ratings}
+                bookmarks={labels.bookmarks}
+                comments={labels.comments}
+                views={labels.views}
+            />
+        </Segment>
+    )
+};
 
 export default UIPinned;

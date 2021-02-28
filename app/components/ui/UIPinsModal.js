@@ -1,12 +1,22 @@
 import { Modal, Image, Button, Icon, Label, Input } from "semantic-ui-react";
+import { useThemeContext } from "@blogchain/components";
 
 const UIPinsModal = () => {
+    const [ theme ] = useThemeContext();
+    const additionalProps = {};
+
+    if (theme.isDark) {
+        additionalProps['color'] = 'black';
+    } else {
+        additionalProps['basic'] = true;
+    }
+
     return (
         <Modal
             size={'tiny'}
             dimmer={'blurring'}
             trigger={
-                <Label as='a' basic>
+                <Label as='a' {...additionalProps}>
                     Customize your pins
                 </Label>
             }>

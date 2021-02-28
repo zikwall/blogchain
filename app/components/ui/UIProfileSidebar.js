@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Button, Header, Icon, Image, Label } from "semantic-ui-react";
 import { getToken, getUser } from "@blogchain/redux/reducers";
+import { useThemeContext } from "@blogchain/components";
 
 const UIProfileImage = ({ status, avatar }) => (
     <div style={{
@@ -23,34 +24,40 @@ const UIProfileImage = ({ status, avatar }) => (
     </div>
 );
 
-const UIProfileName = ({ name, username }) => (
-    <div style={{ paddingTop: '10px', paddingBottom: '10px' }}>
-        <Header as="h1">
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column'
-            }}>
-                <span>{name}</span>
-            </div>
-        </Header>
-        <span style={{
-            fontHeight: 300,
-            fontSize: '24px',
-            lineHeight: '14px',
-        }}>{username}</span>
-    </div>
-);
+const UIProfileName = ({ name, username }) => {
+    const [ theme ] = useThemeContext();
+
+    return (
+        <div style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+            <Header as="h1" inverted={theme.isDark}>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column'
+                }}>
+                    <span>{name}</span>
+                </div>
+            </Header>
+            <span style={{
+                fontHeight: 300,
+                fontSize: '24px',
+                lineHeight: '14px',
+                color: theme.isDark ? '#ffffff' : '#000000'
+            }}>{username}</span>
+        </div>
+    )
+};
 
 const UIProfileEditButton = ({ id }) => {
     const isAuthorized = useSelector(state => !!getToken(state));
     const authorizedUser = useSelector(state => getUser(state));
+    const [ theme ] = useThemeContext();
 
     return (
 
         (isAuthorized && authorizedUser.id === id) &&
         <>
             <div style={{paddingTop: '10px', paddingBottom: '10px'}}>
-                <Button animated='fade' basic fluid>
+                <Button animated='fade' basic fluid inverted={theme.isDark}>
                     <Button.Content visible>Редактировать профиль</Button.Content>
                     <Button.Content hidden>Приступить</Button.Content>
                 </Button>
@@ -59,32 +66,47 @@ const UIProfileEditButton = ({ id }) => {
     )
 };
 
-const UIProfileDescription = ({ description }) => (
-    !!description &&
-    <div style={{paddingTop: '10px', paddingBottom: '10px'}}>
-        { description }
-    </div>
-);
+const UIProfileDescription = ({ description }) => {
+    const [ theme ] = useThemeContext();
 
-const UIProfileLocationWithContacts = ({ email, location }) => (
-    <div style={{paddingTop: '10px', paddingBottom: '10px'}}>
-        {
-            !!email &&
-            <Label basic>
-                <Icon name='send'/> {email}
-            </Label>
-        }
-        {
-            !!location &&
-            <>
-                <div style={{paddingTop: '5px'}}/>
-                <Label basic>
-                    <Icon name='map marker alternate'/> { location }
+    return (
+        !!description &&
+        <div style={{ paddingTop: '10px', paddingBottom: '10px', color: theme.isDark ? '#ffffff' : '#000000' }}>
+            { description }
+        </div>
+    )
+};
+
+const UIProfileLocationWithContacts = ({ email, location }) => {
+    const [ theme ] = useThemeContext();
+    const additionalProps = {};
+
+    if (theme.isDark) {
+        additionalProps['color'] = 'black';
+    } else {
+        additionalProps['basic'] = true;
+    }
+
+    return (
+        <div style={{paddingTop: '10px', paddingBottom: '10px'}}>
+            {
+                !!email &&
+                <Label {...additionalProps}>
+                    <Icon name='send'/> {email}
                 </Label>
-            </>
-        }
-    </div>
-);
+            }
+            {
+                !!location &&
+                <>
+                    <div style={{paddingTop: '5px'}}/>
+                    <Label {...additionalProps}>
+                        <Icon name='map marker alternate'/> { location }
+                    </Label>
+                </>
+            }
+        </div>
+    )
+};
 
 const UIProfileSidebar = ({ user }) => {
     const avatar = !!user.profile.avatar ? user.profile.avatar : "/images/zebra_pl.jpg";
