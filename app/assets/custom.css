@@ -69,3 +69,7 @@
 .quill {
     background-color: #ffffff;
 }
+
+.root-dangerous-content-html .ql-syntax {
+    background-color: transparent!important;
+}
