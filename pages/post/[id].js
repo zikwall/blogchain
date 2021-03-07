@@ -52,9 +52,11 @@ const Post = ({ content }) => {
 
 Post.getInitialProps = async ({ query, res }) => {
     const { id } = query;
-    const { content, statusCode } = await ContentClient.content(id);
 
-    return { content: content, statusCode: statusCode }
+    const { statusCode, response } = await ContentClient.content(id);
+    const { content } = response;
+
+    return { content, statusCode }
 };
 
 export default Post;

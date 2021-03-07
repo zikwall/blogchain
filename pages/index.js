@@ -37,13 +37,10 @@ export default function Index({ contents, meta, currentPage }) {
 
 Index.getInitialProps = async ({ res, query }) => {
     const { page } = query;
-    const currentPage = !!page ? page : 0
-    const {status, contents, meta, statusCode} = await ContentClient.contents(null, currentPage);
+    const currentPage = !!page ? page : 0;
 
-    return {
-        contents: contents,
-        meta: meta,
-        currentPage: currentPage,
-        statusCode: statusCode
-    }
+    const { response, statusCode } = await ContentClient.contents(null, currentPage);
+    const { contents, meta } = response;
+
+    return { contents, meta, currentPage, statusCode }
 };
