@@ -20,7 +20,7 @@ const UserComment = ({ isDark, author, avatar, time, content, comments }) => {
 
             {
                 !!comments && Array.isArray(comments) && comments.length > 0 &&
-                <Comment.Group threaded >
+                <Comment.Group threaded className={ isDark ? 'dark' : 'white' }>
                     { (Array.from(comments) || []).map((comment, i) => {
                         return (
                             <UserComment key={i}
