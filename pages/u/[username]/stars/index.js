@@ -11,7 +11,12 @@ const Index = ({ user }) => {
 
 Index.getInitialProps = async ({ query }) => {
     const { username } = query;
-    const { user, statusCode } = await ProfileClient.profile(username);
+
+    if (String(username).length === 0) {
+        return { statusCode: 404 }
+    }
+
+    const { response: { user }, statusCode } = await ProfileClient.profile(username);
 
     return { user, statusCode };
 };
