@@ -24,9 +24,15 @@ const ContentPage = ({ content }) => {
 ContentPage.getInitialProps = async ({ res, query, req }) => {
     const { id } = query;
     const token = Cookie.getCookie(SESSION_TOKEN_KEY, req);
-    const { status, content, statusCode } = await ContentClient.own(id, token);
 
-    return { content: content, statusCode: statusCode }
+    if (!token) {
+        return { statusCode: 403 };
+    }
+
+    const { response, statusCode } = await ContentClient.own(id, token);
+    const { content } = response;
+
+    return { content, statusCode }
 };
 
 export default ContentPage;
