@@ -24,7 +24,7 @@ const QuickLogin = ({ login }) => {
 
     const router = useRouter();
 
-    const auth = (username, password) => {
+    const auth = async (username, password) => {
         return dispatch(authenticate({ username: username, password: password }));
     }
 

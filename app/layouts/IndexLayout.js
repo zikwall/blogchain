@@ -20,18 +20,19 @@ const IndexLayout = ({ children, title }) => {
     const [ tags, setTags ] = useState(null);
 
     useEffect(() => {
-        TagClient.tags().then(({ status, tags }) => {
-            // tmp
-            if (!!tags) {
-                setTags(tags.map((v) => (
-                    {
-                        href: `/tag/${v.label}`,
-                        title: v.name,
+        (async () => {
+            const { response, status } = await TagClient.tags();
+
+            if (status) {
+                setTags(
+                    Array.from(response.tags || []).map((tag) => ({
+                        href: `/tag/${tag.label}`,
+                        title: tag.name,
                         count: '+5'
-                    }
-                )))
+                    })
+                ));
             }
-        });
+        })()
     }, []);
 
     return (

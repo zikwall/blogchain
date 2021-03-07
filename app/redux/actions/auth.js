@@ -4,26 +4,33 @@ import { AuthClient } from "@blogchain/services";
 import { SESSION_TOKEN_KEY, USER_KEY } from "@blogchain/constants";
 
 const authenticate = ({ username, password }) => {
-    return (dispatch) => {
-        return AuthClient.login({ username, password }).then(({ status, token, user, message }) => {
-            // todo temporary fix: status code is always true
-            if (status && typeof token != "undefined") {
+    return async (dispatch) => {
+        const { status, message, response } = await AuthClient.login({ username, password });
+
+        if (status) {
+            const { token, user } = response;
+
+            if (typeof token !== 'undefined') {
                 Cookie.setCookie(SESSION_TOKEN_KEY, token);
                 Cookie.setCookie(USER_KEY, JSON.stringify(user));
 
-                dispatch({type: AUTHENTICATE, token: token, user: user});
+                dispatch({
+                    type: AUTHENTICATE,
+                    token: token,
+                    user: user
+                });
 
                 return {
-                    status: true,
+                    status,
                     message: ""
                 }
             }
+        }
 
-            return {
-                status: false,
-                message: message
-            };
-        });
+        return {
+            status,
+            message,
+        };
     }
 };
 

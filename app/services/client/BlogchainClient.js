@@ -64,12 +64,11 @@ async function request(url, params, options, method = 'GET', useDefaultHeaders =
 
     const response = await fetch(API_DOMAIN + url, optionsOverride);
     const httpStatusCode = response.status;
+    const result = await response.json();
 
     if (Http.isOk(httpStatusCode) === false) {
-        return generateErrorResponse(httpStatusCode, 'The server responded with an unexpected status.')
+        return generateErrorResponse(httpStatusCode, result.message || 'The server responded with an unexpected status.')
     }
-
-    const result = await response.json();
 
     // returns a single Promise object
     return {

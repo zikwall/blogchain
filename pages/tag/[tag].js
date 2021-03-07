@@ -2,12 +2,12 @@ import IndexLayout from "@blogchain/layouts/IndexLayout";
 import { ContentClient } from "@blogchain/services";
 import { UIMostReading, UIPagination, UIArticle } from '@blogchain/components';
 
-export default function Tag({ contents, meta, currentPage, tagName }) {
+export default function Tag({ contents, meta, currentPage, tag }) {
     return (
         <IndexLayout
-            title={`Поиск по тегу ${tagName} | Blogchain`}
+            title={`Поиск по тегу ${tag} | Blogchain`}
         >
-            {contents.map((content, key) => (
+            {(Array.from(contents) || []).map((content, key) => (
                 <UIArticle
                     key={key}
                     id={content.id}
@@ -29,7 +29,7 @@ export default function Tag({ contents, meta, currentPage, tagName }) {
                 />
             ))}
 
-            <UIPagination link={`/tag/${tagName}`} pages={meta.pages} current={currentPage} />
+            <UIPagination link={`/tag/${tag}`} pages={meta.pages} current={currentPage} />
             <UIMostReading />
         </IndexLayout>
     );
@@ -37,13 +37,10 @@ export default function Tag({ contents, meta, currentPage, tagName }) {
 
 Tag.getInitialProps = async ({ res, query }) => {
     const { tag, page } = query;
-    const { status, contents, meta, statusCode } = await ContentClient.contents(tag, page);
+    const currentPage = !!page ? page : 0;
 
-    return {
-        contents: contents,
-        meta: meta,
-        currentPage: !!page ? page : 0,
-        tagName: tag,
-        statusCode: statusCode
-    }
+    const { statusCode, response } = await ContentClient.contents(tag, page);
+    const { contents, meta } = response;
+
+    return { contents, meta, currentPage, statusCode, tag }
 };

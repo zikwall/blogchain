@@ -34,7 +34,7 @@ const CreatePage = ({ token }) => {
         data.append('annotation', annotation);
         data.append('tags', JSON.stringify(tags));
 
-        const { status, content_id } = await ContentClient.createContent(data, token);
+        const { status, response: { content_id } } = await ContentClient.createContent(data, token);
 
         if (status === false) {
             return
