@@ -22,11 +22,17 @@ const Index = ({ user, currentPage }) => {
     const [ meta, setMeta ] = useState(null);
 
     useEffect(() => {
-        ContentClient.userContents(user.id, currentPage).then(({ contents, meta }) => {
-            setContents(contents);
-            setMeta(meta)
-        });
-    }, []);
+        (async () => {
+            const { response, status } = await ContentClient.userContents(user.id, currentPage);
+
+            if (status) {
+                const { contents, meta } = response;
+
+                setContents(contents);
+                setMeta(meta)
+            }
+        })()
+    }, [ currentPage ]);
 
     return (
         <UserLayout user={user}>
