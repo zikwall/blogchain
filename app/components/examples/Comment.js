@@ -19,10 +19,19 @@ const UserComment = ({ isDark, author, avatar, time, content, comments }) => {
             </Comment.Content>
 
             {
-                comments &&
-                <Comment.Group>
-                    { (Array.from(comments) || []).map((comment) => {
-                        return comment
+                !!comments && Array.isArray(comments) && comments.length > 0 &&
+                <Comment.Group threaded >
+                    { (Array.from(comments) || []).map((comment, i) => {
+                        return (
+                            <UserComment key={i}
+                                isDark={isDark}
+                                avatar={comment.avatar}
+                                author={comment.author}
+                                time={comment.time}
+                                content={comment.content}
+                                comments={comment.comments || []}
+                            />
+                        )
                     }) }
                 </Comment.Group>
             }
@@ -54,30 +63,26 @@ const CommentExampleThreaded = () => {
                 time={'вчера в 23:56'}
                 content={'А как подобный алгоритм справляется с такими фильмами, где присутствует сплит-экран, например как The Sisters Де Пальмы (2 экрана), Timecode Фиггиса (4 экрана), Charly Нельсона и тп?'}
                 comments={[
-                    <UserComment
-                        isDark={theme.isDark}
-                        avatar={'https://habrastorage.org/getpro/habr/avatars/791/217/d31/791217d314e7458aef0f63497e212538.png'}
-                        author={'SashulyaK'}
-                        time={'Только что'}
-                        content={'Хороший воспрос) Если использовать только фичи видеоряда, то, скорее всего, не сработает. Но если добавить звук (или использовать только звук), это может решить проблему.'}
-                    />,
-
-                    <UserComment
-                        isDark={theme.isDark}
-                        avatar={'https://habrastorage.org/getpro/habr/avatars/279/fd4/4f1/279fd44f1aab1c22791c701977182439.png'}
-                        author={'marsermd'}
-                        time={'вчера в 23:39'}
-                        content={'Хабр здорового человека, где снова пишут про разработку'}
-                        comments={[
-                            <UserComment
-                                isDark={theme.isDark}
-                                avatar={'https://habrastorage.org/getpro/habr/avatars/279/fd4/4f1/279fd44f1aab1c22791c701977182439.png'}
-                                author={'marsermd'}
-                                time={'вчера в 23:49'}
-                                content={'Какая приятная статья! Давненько такого на хабре не читал. Спасибо большое!'}
-                            />
-                        ]}
-                    />
+                    {
+                        avatar:'https://habrastorage.org/getpro/habr/avatars/791/217/d31/791217d314e7458aef0f63497e212538.png',
+                        author: 'SashulyaK',
+                        time: 'Только что',
+                        content: 'Хороший воспрос) Если использовать только фичи видеоряда, то, скорее всего, не сработает. Но если добавить звук (или использовать только звук), это может решить проблему.'
+                    },
+                    {
+                        avatar: 'https://habrastorage.org/getpro/habr/avatars/279/fd4/4f1/279fd44f1aab1c22791c701977182439.png',
+                        author: 'marsermd',
+                        time: 'вчера в 23:39',
+                        content: 'Хабр здорового человека, где снова пишут про разработку',
+                        comments: [
+                            {
+                                avatar: 'https://habrastorage.org/getpro/habr/avatars/279/fd4/4f1/279fd44f1aab1c22791c701977182439.png',
+                                author: 'marsermd',
+                                time: 'вчера в 23:49',
+                                content: 'Какая приятная статья! Давненько такого на хабре не читал. Спасибо большое!',
+                            }
+                        ]
+                    },
                 ]}
             />
 

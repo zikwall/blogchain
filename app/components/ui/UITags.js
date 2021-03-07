@@ -20,8 +20,8 @@ const UITags = () => (
     Array.from([
         'Алгоритмы', 'python', 'video scene detection', 'video processing', 'обработка видео', 'computer vision',
         'компьютерное зрение', 'динамическое программирование', 'питон', 'video analysis', 'анализ видео'
-    ], (label) => (
-        <ThemedLabel pointing as='a' tag>
+    ], (label, i) => (
+        <ThemedLabel key={i} pointing as='a' tag>
             { label }
         </ThemedLabel>
     ))
