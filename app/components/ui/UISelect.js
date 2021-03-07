@@ -6,18 +6,18 @@ const UISelect = ({ fetcher, placeholder, multiple, value, search, onChange, onS
     const [ isFetching, setIsFetching ] = useState(true);
 
     useEffect(() => {
-        async function Init() {
-            const { tags, status } = await fetcher();
+        (async () => {
+            const { response, status } = await fetcher();
 
             if (status) {
-                setSelectOptions(tags.map((v, i) => (
-                    { value: v.id, text: v.name }
+                const { tags } = response;
+
+                setSelectOptions((Array.from(tags) || []).map((tag) => (
+                    { value: tag.id, text: tag.name }
                 )));
                 setIsFetching(false);
             }
-        }
-
-        Init();
+        })()
     }, []);
 
     return (
