@@ -46,7 +46,7 @@ const AppRootContainer = ({ children }) => {
 
     return (
         <div style={{
-            backgroundColor: theme.isDark ? '#0d1117' : '#ffffff',
+            backgroundColor: theme.isDark ? '#22272e' : '#ffffff',
             transition: '0.5s background ease',
         }}>
             <Container fluid className="root-container">

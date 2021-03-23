@@ -36,7 +36,7 @@ const UICompanyInfo = () => {
 
     return (
         <div style={{
-            backgroundColor: theme.isDark ? 'rgb(13, 17, 23)' : '#f7f7f7',
+            backgroundColor: theme.isDark ? 'rgb(34, 39, 46)' : '#f7f7f7',
             padding: '10px',
             borderRadius: '5px',
             marginBottom: '15px',
