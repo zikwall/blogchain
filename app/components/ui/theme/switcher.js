@@ -55,6 +55,7 @@ export const SwitcherComponent = ({ isDarkMode, onSwitch }) => {
 
 input:checked + .slider {
   background-color: ${scheme.PrimaryColor};
+  box-shadow: 0 1px 3px 0 rgb(68 76 86), 0 0 0 1px rgb(68 76 86);
 }
 
 input:focus + .slider {

@@ -12,7 +12,6 @@ const UIMostReading = () => {
             <Card fluid className={ theme.isDark ? 'dark' : 'white' }>
                 <Card.Content>
                     <div style={{
-                        backgroundColor: theme.isDark ? 'rgb(34, 39, 46)' : '#f7f7f7',
                         borderRadius: '5px'
                     }}>
                         <Header as="h3" color='grey' inverted={theme.isDark}>
