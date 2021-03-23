@@ -1,4 +1,4 @@
-import { Divider, Segment } from "semantic-ui-react";
+import { Divider, Segment, Card } from "semantic-ui-react";
 import UIPublisherSegment from "./UIPublisherSegment";
 import { useThemeContext } from "@blogchain/components";
 
@@ -14,7 +14,7 @@ const UIPublisherSection = () => {
     const [ theme ] = useThemeContext();
 
     return (
-        <Segment inverted={theme.isDark}>
+        <Card fluid className={ theme.isDark ? 'dark' : 'white' }>
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -42,7 +42,7 @@ const UIPublisherSection = () => {
                     <Link href="/" title="ВКонтакте" />
                 </div>
             </div>
-        </Segment>
+        </Card>
     )
 };
 
