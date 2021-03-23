@@ -62,8 +62,8 @@
 }
 
 .ui.fluid.card.dark {
-    background-color: rgb(13, 17, 23);
-    box-shadow: 0 1px 3px 0 rgb(56 62 70), 0 0 0 1px rgb(56 62 70);
+    background-color: rgb(34, 39, 46);
+    box-shadow: 0 1px 3px 0 rgb(68 76 86), 0 0 0 1px rgb(68 76 86);
 }
 
 .ui.threaded.comments .comment .comments.dark {
@@ -76,4 +76,22 @@
 
 .root-dangerous-content-html .ql-syntax {
     background-color: transparent!important;
+}
+
+.actions.themedlink.dark a {
+    color: #4183c4!important;
+}
+
+.ui.inverted.menu {
+    background-color: rgb(34, 39, 46);
+}
+
+.ui.black.label, .ui.black.labels .label {
+    background-color: rgb(34, 39, 46)!important;
+    box-shadow: 0 1px 3px 0 rgb(68 76 86), 0 0 0 1px rgb(68 76 86)!important;
+    border-color: rgb(34, 39, 46)!important;
+}
+
+.ui.black.pointing.label:before {
+    content: none
 }

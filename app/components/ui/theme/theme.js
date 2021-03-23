@@ -1,10 +1,10 @@
 export const Theme = {
     Dark: {
-        PrimaryColor: '#0d1117',
+        PrimaryColor: '#22272e',
         SecondaryColor: '#ffffff'
     },
     White: {
         PrimaryColor: '#ffffff',
-        SecondaryColor: '#0d1117'
+        SecondaryColor: '#22272e'
     },
 };
