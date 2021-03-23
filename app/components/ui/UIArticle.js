@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Segment } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import Link from "next/link";
 import { makeCdn } from "@blogchain/constants";
 import UICoverImage from "./UICoverImage";
@@ -13,43 +13,44 @@ const UIArticle = ({ id, title, text, image, tags, labels, publisher }) => {
     const [ theme ] = useThemeContext();
 
     return (
-        <Segment inverted={theme.isDark}>
+        <Card fluid className={ theme.isDark ? 'dark' : 'white' }>
+            <Card.Content>
+                <UIPublisher
+                    name={publisher.author}
+                    time={publisher.time}
+                    avatar={publisher.avatar}
+                />
 
-            <UIPublisher
-                name={publisher.author}
-                time={publisher.time}
-                avatar={publisher.avatar}
-            />
+                <div style={{ paddingTop: '1.5em' }} />
 
-            <Header as='h2' inverted={theme.isDark}>
-                <Link href={'/post/[id]'} as={link} passHref>
-                    <a className={['themedlink', theme.isDark ? 'dark' : 'white'].join(' ')}>
-                        { title }
-                    </a>
-                </Link>
-            </Header>
+                <Card.Header as='h2'>
+                    <Link href={'/post/[id]'} as={link} passHref>
+                        <a className={['themedlink', theme.isDark ? 'dark' : 'white'].join(' ')}>
+                            { title }
+                        </a>
+                    </Link>
+                </Card.Header>
 
-            {
-                !!tags > 0 &&
-                <UITagBar tags={tags} />
-            }
+                {
+                    !!tags > 0 &&
+                    <UITagBar tags={tags} />
+                }
 
-            {
-                image &&
-                <UICoverImage src={makeCdn(image)} />
-            }
-
-            { text }
-
-            <div style={{ paddingTop: '5px' }} />
-            <UILabelBar
-                link={link}
-                ratings={labels.ratings}
-                views={labels.views}
-                comments={labels.comments}
-                bookmarks={labels.bookmarks}
-            />
-        </Segment>
+                {
+                    image &&
+                    <UICoverImage src={makeCdn(image)} />
+                }
+            </Card.Content>
+            <Card.Content extra>
+                <UILabelBar
+                    link={link}
+                    ratings={labels.ratings}
+                    views={labels.views}
+                    comments={labels.comments}
+                    bookmarks={labels.bookmarks}
+                />
+            </Card.Content>
+        </Card>
     )
 };
 

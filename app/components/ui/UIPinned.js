@@ -1,6 +1,7 @@
-import { Grid, Header, Segment } from "semantic-ui-react";
-import UIPinsModal from "./UIPinsModal";
+import { Grid, Card } from "semantic-ui-react";
+import Link from "next/link";
 import { useThemeContext, UILabelBar } from "@blogchain/components";
+import UIPinsModal from "./UIPinsModal";
 
 const UIPinned = ({ items }) => {
     const [ theme ] = useThemeContext();
@@ -59,23 +60,24 @@ const PinnedItem = ({ title, labels }) => {
     const [ theme ] = useThemeContext();
 
     return (
-        <Segment inverted={theme.isDark}>
-            <Header as='h5' inverted={theme.isDark}>
-                <a href="/post/13" style={{
-                    textDecoration: 'none',
-                    color: theme.isDark ? '#ffffff' : 'rgba(0,0,0,.87)'
-                }}>
-                    { title }
-                </a>
-            </Header>
+        <Card fluid className={ theme.isDark ? 'dark' : 'white' }>
+            <Card.Content>
+                <Card.Header as='h5'>
+                    <Link href={'/post/[id]'} as={'/post/13'} passHref>
+                        <a className={['themedlink', theme.isDark ? 'dark' : 'white'].join(' ')}>
+                            { title }
+                        </a>
+                    </Link>
+                </Card.Header>
 
-            <UILabelBar
-                ratings={labels.ratings}
-                bookmarks={labels.bookmarks}
-                comments={labels.comments}
-                views={labels.views}
-            />
-        </Segment>
+                <UILabelBar
+                    ratings={labels.ratings}
+                    bookmarks={labels.bookmarks}
+                    comments={labels.comments}
+                    views={labels.views}
+                />
+            </Card.Content>
+        </Card>
     )
 };
 
