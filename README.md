@@ -19,6 +19,15 @@
 - [ ] PHP
 - [ ] Node.js (Express, Polka - self server)
 
+### Welcome
+
+https://blogchain-client.herokuapp.com/
+
+**Example user**
+
+- Login: zikwall
+- Password: prizrak211
+
 ### Todo
 
 - [x] Custom Blogchain HTTP client
@@ -72,10 +81,6 @@
     - [ ] Security
     - [ ] Profile edit
 - [ ] Global search
-
-### Welcome
-
-https://blogchain.now.sh/
 
 ### Run dev
 
