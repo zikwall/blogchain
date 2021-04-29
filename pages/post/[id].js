@@ -1,25 +1,28 @@
-import { createRef } from 'react';
-import {
-    Container,
-    Grid,
-    Ref,
-    Sticky,
-} from "semantic-ui-react";
+// native
+import { createRef, useEffect } from 'react';
 
+// dependencies
+import { Container, Grid, Ref, Sticky } from "semantic-ui-react";
+
+// application
 import CommentExampleThreaded from "@blogchain/components/examples/Comment";
 import MoreOfAuthor from "@blogchain/components/examples/MoreOfAuthor";
 import { CommonLayout } from "@blogchain/layouts";
+import { UICompanyBanner, UIPublisherSection, UICompanyInfo, UIArticleContent } from "@blogchain/components";
+import { ContentClient, BlogchainClient } from "@blogchain/services";
 
-import {
-    UICompanyBanner,
-    UIPublisherSection,
-    UICompanyInfo,
-    UIArticleContent
-} from "@blogchain/components";
-import { ContentClient } from "@blogchain/services";
-
-const Post = ({ content }) => {
+const Post = ({ content, viewers }) => {
     const contextRef = createRef();
+
+    useEffect(() => {
+        // send statistics
+        (async () => {
+            !!content && await BlogchainClient.post('/statistic/post/push', JSON.stringify({
+                post_id: content.id,
+                owner_id: content.related.publisher.id,
+            }))
+        })()
+    }, [])
 
     return (
         <CommonLayout
@@ -54,9 +57,9 @@ Post.getInitialProps = async ({ query, res }) => {
     const { id } = query;
 
     const { statusCode, response } = await ContentClient.content(id);
-    const { content } = response;
+    const { content, viewers } = response;
 
-    return { content, statusCode }
+    return { content, viewers, statusCode }
 };
 
 export default Post;

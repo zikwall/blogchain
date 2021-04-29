@@ -1,8 +1,13 @@
+// native
 import { useEffect, useState } from 'react';
+
+// dependencies
 import { Input, Divider } from "semantic-ui-react";
+
+// application
 import UserLayout from "@blogchain/layouts/ProfileLayout";
 import { ContentClient, ProfileClient } from "@blogchain/services";
-import {UIProfileArticle, UIPagination, useThemeContext} from "@blogchain/components";
+import { UIProfileArticle, UIPagination, useThemeContext } from "@blogchain/components";
 
 const SearchBar = () => {
     const [ theme ] = useThemeContext();
@@ -20,16 +25,18 @@ const SearchBar = () => {
 const Index = ({ user, currentPage }) => {
     const [ contents, setContents ] = useState([]);
     const [ meta, setMeta ] = useState(null);
+    const [ stats, setStats ] = useState([]);
 
     useEffect(() => {
         (async () => {
             const { response, status } = await ContentClient.userContents(user.id, currentPage);
 
             if (status) {
-                const { contents, meta } = response;
+                const { contents, meta, stats } = response;
 
                 setContents(contents);
-                setMeta(meta)
+                setMeta(meta);
+                setStats(stats ?? [])
             }
         })()
     }, [ currentPage ]);
@@ -40,7 +47,11 @@ const Index = ({ user, currentPage }) => {
 
             {
                 contents && contents.map((content, k) => (
-                    <UIProfileArticle content={content} key={k} />
+                    <UIProfileArticle
+                        key={k}
+                        content={content}
+                        views={content.id in stats ? stats[content.id] : 0}
+                    />
                 ))
             }
 

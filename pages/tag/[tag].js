@@ -2,7 +2,7 @@ import IndexLayout from "@blogchain/layouts/IndexLayout";
 import { ContentClient } from "@blogchain/services";
 import { UIMostReading, UIPagination, UIArticle } from '@blogchain/components';
 
-export default function Tag({ contents, meta, currentPage, tag }) {
+export default function Tag({ contents, meta, currentPage, tag, stats }) {
     return (
         <IndexLayout
             title={`Поиск по тегу ${tag} | Blogchain`}
@@ -22,7 +22,7 @@ export default function Tag({ contents, meta, currentPage, tag }) {
                     text={content.annotation}
                     labels={{
                         ratings: 10,
-                        views: 23,
+                        views: content.id in stats ? stats[content.id] : 0,
                         bookmarks: 5,
                         comments: 214
                     }}
@@ -40,7 +40,7 @@ Tag.getInitialProps = async ({ res, query }) => {
     const currentPage = !!page ? page : 0;
 
     const { statusCode, response } = await ContentClient.contents(tag, page);
-    const { contents, meta } = response;
+    const { contents, meta, stats } = response;
 
-    return { contents, meta, currentPage, statusCode, tag }
+    return { contents, meta, currentPage, stats, statusCode, tag }
 };
