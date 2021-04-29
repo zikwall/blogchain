@@ -1,6 +1,6 @@
-import {BlogchainClient} from '@blogchain/services';
-import {StringHelper} from "@blogchain/help";
-import {withRequestBearer} from "@blogchain/services/client/BlogchainClient";
+import { BlogchainClient } from '@blogchain/services';
+import { StringHelper } from "@blogchain/help";
+import { withRequestBearer } from "@blogchain/services/client/BlogchainClient";
 
 function withRequestCredentials(url, params, token) {
     return BlogchainClient.post(url, params, withRequestBearer(token), false)
