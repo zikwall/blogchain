@@ -9,7 +9,7 @@ const labels = {
     comments: 214
 };
 
-const UIProfileArticle = ({ content }) => {
+const UIProfileArticle = ({ content, views }) => {
     const [ theme ] = useThemeContext();
 
     return (
@@ -67,7 +67,7 @@ const UIProfileArticle = ({ content }) => {
                         <UILabelBar
                             link={`/post/${content.id}`}
                             ratings={labels.ratings}
-                            views={labels.views}
+                            views={views}
                             comments={labels.comments}
                             bookmarks={labels.bookmarks}
                         />

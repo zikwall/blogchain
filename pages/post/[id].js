@@ -11,7 +11,7 @@ import { CommonLayout } from "@blogchain/layouts";
 import { UICompanyBanner, UIPublisherSection, UICompanyInfo, UIArticleContent } from "@blogchain/components";
 import { ContentClient, BlogchainClient } from "@blogchain/services";
 
-const Post = ({ content }) => {
+const Post = ({ content, viewers }) => {
     const contextRef = createRef();
 
     useEffect(() => {
@@ -57,9 +57,9 @@ Post.getInitialProps = async ({ query, res }) => {
     const { id } = query;
 
     const { statusCode, response } = await ContentClient.content(id);
-    const { content } = response;
+    const { content, viewers } = response;
 
-    return { content, statusCode }
+    return { content, viewers, statusCode }
 };
 
 export default Post;
