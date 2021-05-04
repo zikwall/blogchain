@@ -8,13 +8,14 @@ import thunkMiddleware from 'redux-thunk';
 import rootReducer from './reducers';
 import { EnvHelper } from "@blogchain/help";
 
-const loggerMiddleware = createLogger();
-
 export const makeStore = (initialState, options) => {
     const middlewares = [
         thunkMiddleware,
-        loggerMiddleware,
     ];
+
+    if (EnvHelper.isDevelopment()) {
+        middlewares.push(createLogger());
+    }
 
     return createStore(rootReducer, initialState,
         !EnvHelper.isDevelopment()
