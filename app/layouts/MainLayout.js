@@ -45,10 +45,7 @@ const AppRootContainer = ({ children }) => {
     const [ theme ] = useThemeContext();
 
     return (
-        <div style={{
-            backgroundColor: theme.isDark ? '#22272e' : '#ffffff',
-            transition: '0.5s background ease',
-        }}>
+        <div className={theme.isDark ? 'theme-dark' : 'theme-default'}>
             <Container fluid className="root-container">
                 { children }
             </Container>

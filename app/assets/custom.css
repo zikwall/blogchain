@@ -95,3 +95,19 @@
 .ui.black.pointing.label:before {
     content: none
 }
+
+.theme-dark, .theme-default {
+    transition: 0.5s background ease;
+}
+
+div.theme-dark {
+    background-color: #22272e;
+}
+
+.theme-dark .ui.inverted.menu {
+    border: none;
+}
+
+.theme-dark .ui.secondary.pointing.menu {
+    border-bottom: 2px solid rgba(34,36,38,.15);
+}
