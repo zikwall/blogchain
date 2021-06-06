@@ -4,7 +4,7 @@ const dockerSecret = {};
 
 dockerSecret.read = function read(secretName) {
     try {
-        return fs.readFileSync(`/srv/vp_secret/${secretName}`, 'utf8');
+        return fs.readFileSync(`./secrets/${secretName}`, 'utf8');
     } catch(err) {
         if (err.code !== 'ENOENT') {
             console.log(`An error occurred while trying to read the secret: ${secretName}. Err: ${err}`);
