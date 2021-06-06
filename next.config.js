@@ -17,7 +17,9 @@ const runtime = {
 if (isDevelopment()) {
     imageDomains.push('http://127.0.0.1:1337', 'avatars1.githubusercontent.com', 'habrastorage.org', 'hsto.org');
 } else {
-    imageDomains.push(runtime.production_cdn_host)
+    if (typeof runtime.production_cdn_host == 'string') {
+        imageDomains.push(runtime.production_cdn_host)
+    }
 }
 
 module.exports = {
