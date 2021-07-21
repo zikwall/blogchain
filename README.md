@@ -21,7 +21,7 @@
 
 ### Welcome
 
-https://blogchain-client.herokuapp.com/
+http://mediafanbox.online:3000/
 
 **Example user**
 
