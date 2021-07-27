@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # Install PM2 globally
 RUN yarn global add pm2
 
-# Copy "package.json" and "package-lock.json" before other files
+# Copy "package.json" and "old.package-lock.json" before other files
 # Utilise Docker cache to save re-installing dependencies if unchanged
 COPY package*.json /usr/src/app/
 COPY yarn.lock /usr/src/app/
