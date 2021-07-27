@@ -17,7 +17,7 @@ COPY yarn.lock /usr/src/app/
 RUN yarn install --production
 
 # Copy all files
-COPY COPY --chown=node:node . /usr/src/app/
+COPY --chown=node:node . /usr/src/app
 
 # Build app
 RUN yarn build
