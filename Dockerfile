@@ -10,14 +10,14 @@ RUN yarn global add pm2
 
 # Copy "package.json" and "old.package-lock.json" before other files
 # Utilise Docker cache to save re-installing dependencies if unchanged
-COPY package*.json /usr/src/app/
+COPY package.json /usr/src/app/
 COPY yarn.lock /usr/src/app/
 
 # Install dependencies
 RUN yarn install --production
 
 # Copy all files
-COPY . /usr/src/app
+COPY COPY --chown=node:node . /usr/src/app/
 
 # Build app
 RUN yarn build
