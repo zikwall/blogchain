@@ -24,12 +24,6 @@ const MainLayout = ({ children }) => {
                 <meta name="msapplication-TileColor" content="#ffffff" />
                 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
                 <meta name="theme-color" content="#ffffff" />
-                <script src="/js/highlight.pack.js"></script>
-                <script src="/js/hls.js" />
-                <link href="/css/highlight-github.css" rel="stylesheet" />
-
-                <link rel="stylesheet" href="/css/katex.min.css"/>
-                <script defer src="/js/katex.min.js"></script>
                 <title>Blogchain | Ваш лучший блогер</title>
             </Head>
             <ThemeProvider>

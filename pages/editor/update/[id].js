@@ -1,4 +1,4 @@
-import { ProtectedLayout } from "@blogchain/layouts";
+import { DeferredFormattingStyles, ProtectedLayout} from "@blogchain/layouts";
 import { Container } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -49,20 +49,22 @@ const EditorPageInner = ({ token, id, content }) => {
 
     return (
         <Container>
-            <CommonForm
-                title={titles}
-                content={contents}
-                annotation={annotation}
-                image={image}
-                preview={preview}
-                onSubmit={onSubmit}
-                setTitle={setTitles}
-                setContent={setContents}
-                setAnnotation={setAnnotation}
-                setImage={setImage}
-                setTags={setTags}
-                tags={tags}
-            />
+            <DeferredFormattingStyles>
+                <CommonForm
+                    title={titles}
+                    content={contents}
+                    annotation={annotation}
+                    image={image}
+                    preview={preview}
+                    onSubmit={onSubmit}
+                    setTitle={setTitles}
+                    setContent={setContents}
+                    setAnnotation={setAnnotation}
+                    setImage={setImage}
+                    setTags={setTags}
+                    tags={tags}
+                />
+            </DeferredFormattingStyles>
         </Container>
     )
 };

@@ -1,6 +1,6 @@
 import { ContentClient } from "@blogchain/services";
 import { Container } from 'semantic-ui-react';
-import { ProtectedLayout } from "@blogchain/layouts";
+import { DeferredFormattingStyles, ProtectedLayout } from "@blogchain/layouts";
 import { UICoverImage } from "@blogchain/components";
 import { makeCdn, SESSION_TOKEN_KEY } from "@blogchain/constants";
 import { Cookie } from "@blogchain/help";
@@ -10,13 +10,15 @@ const ContentPage = ({ content }) => {
         <ProtectedLayout
             title={`Просмотр контента ${content.title}`}
         >
-            <Container>
-                {
-                    content.image &&
-                    <UICoverImage src={makeCdn(content.image)} />
-                }
-                <div className="root-dangerous-content-html" dangerouslySetInnerHTML={{ __html: content.content }} />
-            </Container>
+            <DeferredFormattingStyles>
+                <Container>
+                    {
+                        content.image &&
+                        <UICoverImage src={makeCdn(content.image)} />
+                    }
+                    <div className="root-dangerous-content-html" dangerouslySetInnerHTML={{ __html: content.content }} />
+                </Container>
+            </DeferredFormattingStyles>
         </ProtectedLayout>
     )
 };

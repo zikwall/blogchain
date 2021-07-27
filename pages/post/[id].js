@@ -7,7 +7,7 @@ import { Container, Grid, Ref, Sticky } from "semantic-ui-react";
 // application
 import CommentExampleThreaded from "@blogchain/components/examples/Comment";
 import MoreOfAuthor from "@blogchain/components/examples/MoreOfAuthor";
-import { CommonLayout } from "@blogchain/layouts";
+import { CommonLayout, DeferredFormattingStyles } from "@blogchain/layouts";
 import { UICompanyBanner, UIPublisherSection, UICompanyInfo, UIArticleContent } from "@blogchain/components";
 import { ContentClient, BlogchainClient } from "@blogchain/services";
 
@@ -28,27 +28,29 @@ const Post = ({ content, viewers }) => {
         <CommonLayout
             title={`${content.title} | Blogchain`}
         >
-            <Container>
-                <UICompanyBanner />
+            <DeferredFormattingStyles>
+                <Container>
+                    <UICompanyBanner />
 
-                <Grid>
-                    <Ref innerRef={contextRef}>
-                        <Grid.Row columns={2}>
-                            <Grid.Column width={12}>
-                                <UIArticleContent content={content} />
-                                <UIPublisherSection />
-                                <CommentExampleThreaded />
-                            </Grid.Column>
-                            <Grid.Column width={4}>
-                                <UICompanyInfo />
-                                <Sticky context={contextRef} offset={30}>
-                                    <MoreOfAuthor />
-                                </Sticky>
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Ref>
-                </Grid>
-            </Container>
+                    <Grid>
+                        <Ref innerRef={contextRef}>
+                            <Grid.Row columns={2}>
+                                <Grid.Column width={12}>
+                                    <UIArticleContent content={content} />
+                                    <UIPublisherSection />
+                                    <CommentExampleThreaded />
+                                </Grid.Column>
+                                <Grid.Column width={4}>
+                                    <UICompanyInfo />
+                                    <Sticky context={contextRef} offset={30}>
+                                        <MoreOfAuthor />
+                                    </Sticky>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Ref>
+                    </Grid>
+                </Container>
+            </DeferredFormattingStyles>
         </CommonLayout>
     )
 };
