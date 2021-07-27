@@ -2,7 +2,7 @@ FROM node:alpine
 
 ENV PORT ${PORT:-3000}
 RUN apk update && apk add bash
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app && chown -R node:node /usr/src/app
 WORKDIR /usr/src/app
 
 # Install PM2 globally
