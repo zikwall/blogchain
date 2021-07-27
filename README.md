@@ -21,7 +21,7 @@
 
 ### Welcome
 
-https://blogchain-client.herokuapp.com/
+http://mediafanbox.online:3000/
 
 **Example user**
 
@@ -86,6 +86,15 @@ https://blogchain-client.herokuapp.com/
 
 1. Use one of backend apps, example Go: `go run .`
 2. `yarn dev`
+
+### Run in Docker
+
+```shell
+docker run -d --network=host -p3000:3000 \
+   -e CDN_HOST='https://fileserver:1338' \
+   -e API_HOST='http://backendserver:3001' \
+   --name blogchain-client qwx1337/blogchain-client:latest
+```
 
 ### Preview
 
