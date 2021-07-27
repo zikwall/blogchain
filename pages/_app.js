@@ -9,7 +9,6 @@ import { Http } from "@blogchain/utils";
 // assets
 import 'semantic-ui-css/semantic.min.css'
 import '@blogchain/assets/custom.css';
-import 'react-quill/dist/quill.snow.css';
 
 import Router from 'next/router';
 import NProgress from 'nprogress';
